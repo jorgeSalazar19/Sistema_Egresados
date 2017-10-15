@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Ingresar</title> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+
+  <style>
+    .box{
+      background: url({% static "/varios/fondo2.jpeg" %});
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      box-shadow: inset 0px 0px 100px black;
+    }
+    .contenido
+    {
+      background-color: white;
+      height: 55vh;
+      border-radius: 10px;
+
+      box-shadow: 0px 0px 60px black;
+    }
+
+  </style>
+  <body>
+  <section class="container-fluid">
+    <div class="row justify-content-center box">
+      <div class="col-sm-8 col-md-6 col-lg-5 align-self-center contenido">
+        <div class="row justify-content-center" style="height: 55vh;">
+          <div class="col-sm-12 col-md-12 col-lg-10 align-self-center">
+            <center>
+               <div>
+                <h3>Inicio de sesión</h3><hr>          
+              </div>
+            </center>
+            <form method="POST"> {% csrf_token %}
+              <div class="form-group">
+                <label for="idInput">Código</label>
+                <input type="text" required = "True" name = "username" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
+              </div>
+              <div class="form-group">Contraseña</label>
+                <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+              </div>
+              <center>
+                <button type="button" class="btn btn-primary">Olvidé mi contraseña</button>
+                <button type="submit" class="btn btn-primary" style="align-self: center;">Entrar</button>
+                {% if error.0 %}
+                    <h3>{{error.1}}</h3>
+                {% endif %}
+              </center>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>

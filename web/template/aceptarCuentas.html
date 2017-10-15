@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aceptar Cuentas</title> 
+  
+      <link rel="stylesheet" href={% static "css/style.css" %}>
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+</head>
+<style type="text/css">
+  .borde{
+
+    border: 2px solid black; 
+  }
+  #box{
+    height: 90vh;
+  }
+  .circular{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+  }
+</style>
+  <body>
+      <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-inverse p-4">
+            <h4 class="text-white">Administración de Cuentas</h4>
+            <span class="text-muted">Solicitudes pendientes</span><br>
+            <a class="btn btn-secundary login" href="/logout">Cerrar sesión</a>
+          </div>
+        </div>
+        <nav class="navbar navbar-inverse bg-inverse">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+      </div>
+
+      <section class="container">
+        <div class="row justify-content-center" id="box">
+          <div class="col-md-12 ">
+              <ul class="list-group ">
+                <li class="list-group-item">
+                  <div class="container">
+                    <div class="row justify-content-center">
+                      <div class="col align-self-center">
+                        <div class="row">
+                        <form method="POST"> {% csrf_token %}
+                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center  ">
+                            {% for pre_registro in pre_registros %}
+                                  <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
+                                  <label>{{pre_registro.career.name}}</label><br>
+                                  <label>{{pre_registro.dni}}</label>
+                                                            
+                            <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Eliminar</button>
+                            <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Aceptar</button>
+                          
+                            {% endfor %}
+                          </div>
+
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                </li>
+              </ul>
+          </div>
+        </div>
+      </section>
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
