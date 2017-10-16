@@ -2,30 +2,53 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth import login , authenticate
-from django.contrib.auth.models import User
 from domain.models import Graduated
 
 def LoginEgresado(request):
     error = (False, "")
     if request.method == "POST":
-
         username = request.POST.get('username')
         password = request.POST.get('password')
-        
-        usuario = User.objects.filter(username=username)
+        usuario = Graduated.objects.filter(dni=username)
+        datos_usuario = Graduated.objects.get(dni=username)
         if len(usuario) != 0:
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/dashboard_egresado")
+                print(datos_usuario.first_login)
+                if datos_usuario.first_login == 0:
+                    datos_usuario.first_login = 1
+                    datos_usuario.save()
+                    return redirect("/new_password?dni="+username)
+                else:
+                    return redirect("/dashboard_egresado")
             else:
                 error = (True, "Password no valida")
         else:
             error = (True, "No existe el usuario " + username)
-#    Graduateds = Graduated.objects.all()
-#    for graduated in Graduateds:
-#        print(graduated.user.email)
     template = loader.get_template('login.html')
+    ctx = { 'error': error,
+    }   
+    return HttpResponse(template.render(ctx,request))
+
+def NewPassword(request):
+    error = ""
+    dni = request.GET.get('dni')
+    usuario = Graduated.objects.get(dni=dni)
+
+    if request.method == "POST":
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+
+        if password == password2:
+            usuario.user.set_password(password)
+            usuario.user.save()
+            return redirect("/dashboard_egresado")
+        else:
+            error = "Las contraseñas no coinciden"
+
+
+    template = loader.get_template('ChangePassword.html')
     ctx = { 'error': error,
     }   
     return HttpResponse(template.render(ctx,request))

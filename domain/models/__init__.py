@@ -1,4 +1,4 @@
-from .users.graduated import Graduated
+from .users.graduate import Graduated
 from .categories.categories import Category
 from .careers.careers import Career
 from .pre_register.pre_registers import PreRegisterGraduated , PreRegisterAdmin
