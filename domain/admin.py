@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from domain.models import Graduated, Category , PreRegisterGraduated , Career ,  PreRegisterAdmin
+from domain.models import Graduated, Category , PreRegisterGraduated , Career ,  PreRegisterAdmin , Country
 
 @admin.register(Graduated)
 class GraduatedAdmin(admin.ModelAdmin):
@@ -9,6 +9,9 @@ class GraduatedAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    pass
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(PreRegisterGraduated)

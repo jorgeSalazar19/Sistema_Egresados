@@ -11,7 +11,6 @@ def LoginAdmin(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-
         usuario = User.objects.filter(username=username)
         if len(usuario) != 0:
             user = authenticate(username=username, password=password)
