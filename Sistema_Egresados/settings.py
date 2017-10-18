@@ -113,14 +113,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#Email settings 
 EMAIL_HOST = 'smtp.gmail.com'
-
 EMAIL_HOST_USER = 'sistema.egresados.utp@gmail.com'
-
 EMAIL_HOST_PASSWORD = 'sistemasutp2017'
-
 EMAIL_PORT = 587
-
 EMAIL_USE_TLS = True
+
+#sesion settings
+SESSION_COOKIE_AGE = 300 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 

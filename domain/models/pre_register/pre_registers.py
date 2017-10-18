@@ -40,7 +40,7 @@ class PreRegisterAdmin(models.Model):
     dni = models.CharField(max_length=15, null=False)
     country = models.ForeignKey(Country)
     genre = models.CharField(choices=GENRE, max_length=10)
-    cellphone = models.IntegerField()
+    cellphone = models.BigIntegerField()
 
     def __str__(self):
         return self.first_name + self.last_name

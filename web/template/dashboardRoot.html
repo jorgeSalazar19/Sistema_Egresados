@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Aceptar Cuentas</title> 
+  <title>Aceptar Cuentas Admins</title> 
   
       <link rel="stylesheet" href={% static "css/style.css" %}>
 <!-- Bootstrap CSS -->
@@ -53,9 +53,9 @@
                         <form method="POST"> {% csrf_token %}
                           <div class="col-sm-8 col-md-7 col-lg-8 align-self-center  ">
                             {% for pre_registro in pre_registros %}
-                                  <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
-                                  <label>{{pre_registro.career.name}}</label><br>
-                                  <label>{{pre_registro.dni}}</label>
+                                  <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5><br>
+                                  <label>{{pre_registro.dni}}</label><br>
+                                  <label>{{pre_registro.cellphone}}</label><br>
                                                             
                             <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Declinar solicitud</button>
                             <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Crear usuario</button>
