@@ -3,7 +3,7 @@
       placement: 'bottom',
       html: true,
       title : '<h6>Como</h6>', 
-      content : '<button type="livedemo" class="btn btn-primary btn-lg" id="admReg">Administrador</button> <button type="button" id="egresadoReg" class="btn btn-success btn-sm">Egresado</button>'
+      content : '<button type="button" class="btn btn-danger btn-sm" id="admReg">Administrador</button> <button type="button" id="egresadoReg" class="btn btn-success btn-sm">Egresado</button>'
     })
     $('html').click(function() {
       $('#close').popover('hide');
