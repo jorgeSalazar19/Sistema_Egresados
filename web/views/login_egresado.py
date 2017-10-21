@@ -17,9 +17,7 @@ def LoginEgresado(request):
                 usuario = usuario[0]
                 login(request, user)
                 if usuario.first_login == 0:
-                    usuario.first_login = 1
-                    usuario.save()
-                    return redirect("/new_password?dni="+username)
+                    return redirect("/new_passwordg?dni="+username)
                 else:
                     return redirect("/dashboard_egresado")
             else:
@@ -54,6 +52,8 @@ def NewPasswordG(request):
         password2 = request.POST.get('password2')
 
         if password == password2:
+            usuario.first_login = 1
+            usuario.save()
             usuario.user.set_password(password)
             usuario.user.save()
             return redirect("/dashboard_egresado")
