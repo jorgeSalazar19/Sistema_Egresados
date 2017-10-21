@@ -475,8 +475,16 @@ section.section {
 	height:500px;
 }
 #testimonials-3{	
+<<<<<<< HEAD
 	background-image: url(../img/12.jpg);
 	height:500px;
+=======
+	background-image: url(../img/guaducto.jpg);
+	height:500px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+>>>>>>> 6c39f7786ac300aa435981834659aca7031733ca
 }
 #testimonials-2{	
 	background-image: url(../img/6.jpg);
@@ -912,7 +920,11 @@ section.featured h2.slogan {
 
 .carousel-inner .form-inline .form-group button[type="livedemo"]{
 	padding:20px 60px;
+<<<<<<< HEAD
 	font-size: 20px;
+=======
+	font-size:20px;
+>>>>>>> 6c39f7786ac300aa435981834659aca7031733ca
 	background:#3a906d;
 	color:#fff;
 	border-radius:0;
@@ -1300,9 +1312,15 @@ About
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   position: absolute;
+<<<<<<< HEAD
   top: 89%;
   left: 40px;
   right: 70px;
+=======
+  top: 100%;
+  left: 20px;
+  right: 20px;
+>>>>>>> 6c39f7786ac300aa435981834659aca7031733ca
   height: auto;
   overflow: hidden;
   -webkit-transition: all 0.3s ease-out;
