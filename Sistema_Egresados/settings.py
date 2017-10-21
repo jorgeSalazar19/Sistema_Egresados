@@ -66,9 +66,9 @@ WSGI_APPLICATION = 'Sistema_Egresados.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'egresadosutp_db',
-        'USER': 'jorge',
-        'PASSWORD': 'jorge97',
+        'NAME': 'sesidox',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
