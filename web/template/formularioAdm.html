@@ -12,29 +12,31 @@
 </head>
     <style type="text/css">
       .caja{
+        background-color: transparent;
         padding-bottom: 50px; 
-        padding-top: 50px; 
+        padding-top: 50px;
       }
       .borde
       {
         border: 0.5px solid grey; 
         padding: 20px; 
-        border-top-right-radius: 20px;
+        border-radius: 20px;
         background-color: white;  
+      }
+      .box{
+      background: url({% static "/img/pereira_aire.jpg" %});
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0px 0px 100px black;
       }
     </style>
   <body>
 
-<section class="container" >      
+<section class="container-fluid box" >      
       <div class="row justify-content-center caja">
-        <div class="col-md-4 col-lg-6 align-self-center hidden-sm-down ">
-          <center><h1></h1></center>
-          <div>
-            <img class="d-block img-fluid" src= {% static "varios/logo2.png" %} >
-          </div>
+        
       <form method = "POST" > {% csrf_token %}
-        </div>
-        <div class="col-sm-12 col-md-8 col-lg-6 borde">
+                <div class="col-sm-12 col-md-12 col-lg-12 borde">
             <span>Nombre</span><br>
             <div class="input-group">
               <input type="text" required = "True" name = "first_name" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
@@ -48,7 +50,7 @@
             <div class="input-group">
               <input type="email" required = "True" name = "email" class="form-control" placeholder="email" aria-describedby="basic-addon1">
             </div><br>
-            <label >Genero</label><br>
+            <span >Genero</span><br>
             <div class="form-group row">
               <div class="col-10">
                 <select class="form-control" name = "genre" required = "True">
@@ -59,19 +61,26 @@
               </div>
             </div>
             <span>País</span><br>
-              <div class="col-10">
-                <select class="form-control" name = "country" required = "True">
-                {% for country in paises  %}
-                  <option value="{{country.id}}">{{country.name}}</option>
-                {% endfor %}
-                </select>
+              <div class="form-group row">
+                <div class="col-10">
+                  <select class="form-control" name = "country" required = "True">
+                  {% for country in paises  %}
+                    <option value="{{country.id}}">{{country.name}}</option>
+                  {% endfor %}
+                  </select>
+                </div>
               </div>
             <span>Teléfono</span><br>
             <div class="input-group">
               <input type="text" required = "True" name = "cellphone" class="form-control" placeholder="Número de teléfono" aria-describedby="basic-addon1">
             </div>
             <br>
-            <center><button type="submit" class="btn btn-primary">Enviar</button></center>
+            <center>
+              <form action="/">
+              <button type="button" style="background-color:#3a906d;" class="btn btn-primary"><a href="/">Cancelar</button>
+              </form>
+            <button type="submit" style="background-color:#3a906d;" class="btn btn-primary">Enviar</button>
+            </center>
         </div>
       </form>
       {% if mensaje.0 %}
