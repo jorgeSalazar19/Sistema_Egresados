@@ -716,9 +716,6 @@ button[type="submit"].light:hover {
 	margin-top: -20px;
 	width:160px;
 }
-.navbar .navbar-nav > .active > a {
-	padding-bottom: 0px;
-}
 .row-slider{
 height: auto;
 }
