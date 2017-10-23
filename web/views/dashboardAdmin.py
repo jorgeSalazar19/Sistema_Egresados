@@ -20,7 +20,6 @@ def DashboardAdmin(request):
             usuario = usuario[0]
             template = loader.get_template('DashBoardAdmin.html')
             pre_registros = PreRegisterGraduated.objects.all()
-            print("aca: " , usuario)
             ctx = { 'mensaje': mensaje,
             'pre_registros': pre_registros,
             'usuario' : usuario,
@@ -67,10 +66,11 @@ def AceptarCuentas(request):
             
         if action == "Eliminar":
             preregister.delete()
+
     template = loader.get_template('aceptarCuentas.html')
     pre_registros = PreRegisterGraduated.objects.all()
     ctx = { 'mensaje': mensaje,
-    'pre_registros': pre_registros,
+            'pre_registros': pre_registros,
     }   
     return HttpResponse(template.render(ctx,request))
 

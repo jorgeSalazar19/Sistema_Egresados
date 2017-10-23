@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^aceptar_cuentas/',AceptarCuentas, name="aceptar_cuentas"),
     url(r'^dashboard_egresado/',DashboardEgresado, name="dashboard_egresado"), 
     url(r'^dashboard_root/',DashboardRoot, name="dashboard_root"),
+    url(r'^aceptar_cuentas_admin/',AceptarCuentasAdmin, name="aceptar_cuentas_admin"),
     url(r'^logout/',closeSession, name="logout"),
 
 ]

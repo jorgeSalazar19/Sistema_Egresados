@@ -6,5 +6,5 @@ from .login_admin import LoginAdmin , NewPasswordA
 from .dashboardAdmin import DashboardAdmin , AceptarCuentas
 from .logout import closeSession
 from .dashboardEgresado import DashboardEgresado
-from .dashboardRoot import DashboardRoot
+from .dashboardRoot import DashboardRoot , AceptarCuentasAdmin
 
