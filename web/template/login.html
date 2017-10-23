@@ -52,7 +52,10 @@
                 <button type="button" style="background-color: #3a906d" class="btn btn-primary">Olvidé mi contraseña</button>
                 <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d">Entrar</button>
                 {% if error.0 %}
-                    <h3>{{error.1}}</h3>
+                  <div class="alert alert-danger" style="background-color: #3a906d;" padding="100px 100px">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h5 style="color:white;">{{error.1}}</h5>
+                </div>
                 {% endif %}
               </center>
             </form>
