@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^new_passworda/',NewPasswordA, name="new_passworda"),
     url(r'^login_admin/',LoginAdmin, name="login_admin"),
     url(r'^dashboard_admin/',DashboardAdmin, name="dashboard_admin"),
+    url(r'^aceptar_cuentas/',AceptarCuentas, name="aceptar_cuentas"),
     url(r'^dashboard_egresado/',DashboardEgresado, name="dashboard_egresado"), 
     url(r'^dashboard_root/',DashboardRoot, name="dashboard_root"),
     url(r'^logout/',closeSession, name="logout"),

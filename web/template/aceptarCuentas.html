@@ -1,11 +1,10 @@
-{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Aceptar Cuentas</title> 
+  <title>Cuentas</title> 
   
-      <link rel="stylesheet" href={% static "css/style.css" %}>
+      <link rel="stylesheet" href="css/style.css">
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   
@@ -24,53 +23,61 @@
     height: 100px;
     display: inline-block;
   }
+  .circular2{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
 </style>
   <body>
-      <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-inverse p-4">
-            <h4 class="text-white">Administración de Cuentas</h4>
-            <span class="text-muted">Solicitudes pendientes</span><br>
-            <a class="btn btn-secundary login" href="/logout">Cerrar sesión</a>
-          </div>
+
+
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link " href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
         </div>
-        <nav class="navbar navbar-inverse bg-inverse">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-      </div>
+      </nav>
 
       <section class="container">
         <div class="row justify-content-center" id="box">
           <div class="col-md-12 ">
               <ul class="list-group ">
                 <li class="list-group-item">
+
                   <div class="container">
                     <div class="row justify-content-center">
+                      {% for pre_registro in pre_registros %}
                       <div class="col align-self-center">
                         <div class="row">
-                        <form method="POST"> {% csrf_token %}
                           <div class="col-sm-8 col-md-7 col-lg-8 align-self-center  ">
-                            {% for pre_registro in pre_registros %}
-                                  <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
-                                  <label>{{pre_registro.career.name}}</label><br>
-                                  <label>{{pre_registro.dni}}</label>
-                                                            
-                            <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Declinar solicitud</button>
-                            <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Crear usuario</button>
-                          
-                            {% endfor %}
+                            
+                              <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
+                              <label>{{pre_registro.career.name}}</label><br>
+                              <label>{{pre_registro.dni}}</label>
 
-                            {% if mensaje.0 %}
-
-                              <h1>{{mensaje.1}}</h1>
-                              
-                            {% endif %}
                           </div>
-
+                          <div class="col-sm-4 col-md-5 col-lg-4 align-self-center ">
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                            <button type="button" class="btn btn-primary">Aceptar</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{pre_registro.id}}">
+                            <b>!</b>
+                            </button>
+                          </div>
+                          {% endfor %}
                         </div>
-                        </form>
                       </div>
                     </div>
                   </div>
@@ -81,6 +88,35 @@
         </div>
       </section>
 
+<!-- Modal -->
+{% for pre_registro in pre_registros %}
+<div class="modal fade" id="{{pre_registro.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+          <h6>{{pre_registro.dni}}</h6>
+          <h6>{{pre_registro.country.name}}</h6>
+          <h6>{{pre_registro.birthday}}</h6>
+          <h6>{{pre_registro.genre}}</h6>
+          <h6>{{pre_registro.career.name}}</h6>
+          <h6>{{pre_registro.graduation_year}}</h6>
+        </center>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>.

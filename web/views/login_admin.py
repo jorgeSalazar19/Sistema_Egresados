@@ -21,7 +21,7 @@ def LoginAdmin(request):
                 if usuario.first_login == 0:
                     return redirect("/new_passworda?dni="+username)
                 else:
-                    return redirect("/dashboard_admin")
+                    return redirect("/dashboard_admin?dni="+username)
             else:
                 error = (True, "Password no valida")
         else:

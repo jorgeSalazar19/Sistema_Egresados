@@ -67,3 +67,21 @@ $('body').on('click', 'button#admIng2', function() {
 $('body').on('click', 'button#egresadoIng2', function() {
     $(location).attr('href','login_egresado');
 });
+
+$(function(){
+  $("#login_nav").popover({
+    placement: 'bottom',
+    html: true,
+    content : '<center><button type="button" class="btn btn-danger btn-sm" id="admIn3" style=" background-color: #3a906d;" >Administrador</button><br><br> <button type="button" id="egresadoIng3" style=" background-color: #3a906d;" class="btn btn-success btn-sm">Egresado</button></center>'
+  })
+  $('html').click(function() {
+    $('#close').popover('hide');
+  });
+});
+
+$('body').on('click', 'button#admIn3', function() {
+    $(location).attr('href','login_admin');
+});
+$('body').on('click', 'button#egresadoIng3', function() {
+    $(location).attr('href','login_egresado');
+});

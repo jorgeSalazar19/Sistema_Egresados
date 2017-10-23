@@ -4,7 +4,7 @@ from django.template import loader
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
 
-from domain.models import PreRegisterGraduated , Graduated
+from domain.models import PreRegisterGraduated , Graduated , Admin
 
 from ..services import UserService
 from django.core.mail import EmailMessage
@@ -12,6 +12,42 @@ from django.conf import settings
 
 def DashboardAdmin(request):
     mensaje = (False,'')
+    if request.method == 'GET':
+        dni = request.GET.get('dni')
+        usuario = Admin.objects.filter(dni=dni)
+
+        if len(usuario) != 0:
+            usuario = usuario[0]
+            template = loader.get_template('DashBoardAdmin.html')
+            pre_registros = PreRegisterGraduated.objects.all()
+            print("aca: " , usuario)
+            ctx = { 'mensaje': mensaje,
+            'pre_registros': pre_registros,
+            'usuario' : usuario,
+            }   
+            return HttpResponse(template.render(ctx,request))
+
+    
+
+    if request.user is None or not request.user.is_authenticated():
+        return redirect('/login_admin')
+
+def AceptarCuentas(request):
+    mensaje = (False,'')
+    if request.method == 'GET':
+        dni = request.GET.get('dni')
+        usuario = Admin.objects.filter(dni=dni)
+
+        if len(usuario) != 0:
+            usuario = usuario[0]
+            template = loader.get_template('aceptarCuentas.html')
+            pre_registros = PreRegisterGraduated.objects.all()
+            print("aca: " , usuario)
+            ctx = { 'mensaje': mensaje,
+                    'pre_registros': pre_registros,
+                    'usuario' : usuario,
+            }   
+            return HttpResponse(template.render(ctx,request))
 
     if request.method == 'POST':
         Action_button = request.POST.get('tipo')
@@ -31,17 +67,14 @@ def DashboardAdmin(request):
             
         if action == "Eliminar":
             preregister.delete()
-
-    if request.user is None or not request.user.is_authenticated():
-        return redirect('/login_admin')
-    
     template = loader.get_template('aceptarCuentas.html')
     pre_registros = PreRegisterGraduated.objects.all()
     ctx = { 'mensaje': mensaje,
-            'pre_registros': pre_registros,
+    'pre_registros': pre_registros,
     }   
     return HttpResponse(template.render(ctx,request))
 
+    
 def SendMail(fromEmail,to_list,t_password):
     subject, from_email, to = 'Sistema Egresados -- Contraseña', fromEmail, to_list
     title = "<h1>Bienvenido al sistema de Egresados</h1><br>"
