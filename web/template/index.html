@@ -21,18 +21,11 @@
 
 		<link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>
 		<!-- skin -->
-		<link rel="stylesheet" href={% static "skin/default.css" %}>
-        <!-- =======================================================
-            Theme Name: Green
-            Theme URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-            Author: BootstrapMade
-            Author URL: https://bootstrapmade.com
-        ======================================================= -->
+		<link rel="stylesheet" href={% static "skin/default.css"%}>
     </head>
 
+
     <body>
-
-
 	<div class="header">
 	<section id="header" class="appear">
 
@@ -48,10 +41,11 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-						<li class="active"><a href="#">Inicio</a></li>
+
+						<li class="active"><a href="/">Inicio</a></li>
 						<li><a href="#section-about">Nosotros</a></li>
 						<li><a href="#team">Equipo</a></li>
-						<li><a href="#"> Login</a></li>
+						<li><button id = "login_nav" data-trigger="focus" type="button" class="btn btn-primary btn-sm" required="required" style=" background-color: #3a906d; color:white" >INGRESAR</button></li>
 
 					</ul>
 				</div><!--/.navbar-collapse -->
@@ -89,10 +83,10 @@
 								<form class="form-inline">
 									<div class="form-group">
 
-										<button id = "registro1" type="button" data-trigger="focus" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
+										<button id = "registro1" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
 									</div>
 									<div class="form-group">
-										<button id = "ingreso1" type="button" data-trigger="focus" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
+										<button id = "ingreso1" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
 										
 									</div>
 								</form>
@@ -115,11 +109,10 @@
 							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
 								<form class="form-inline">
 									<div class="form-group">
-
-										<button id = "registro2" type="button" data-trigger="focus" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
+										<button id = "registro2" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
 									</div>
 									<div class="form-group">
-										<button id = "ingreso2" type="button" data-trigger="focus" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
+										<button id = "ingreso2" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
 									</div>
 								</form>
 							</div>

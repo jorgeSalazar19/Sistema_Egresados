@@ -13,7 +13,7 @@
 
   <style>
     .box{
-      background: url({% static "/varios/fondo2.jpeg" %});
+      background: url({% static "/img/21-login.jpg" %});
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -21,7 +21,7 @@
     }
     .contenido
     {
-      background-color: white;
+      background-color: transparent;
       height: 55vh;
       border-radius: 10px;
 
@@ -37,20 +37,20 @@
           <div class="col-sm-12 col-md-12 col-lg-10 align-self-center">
             <center>
                <div>
-                <h3>Inicio de sesión</h3><hr>          
+                <h3 style="color:white;">Inicio de sesión</h3>          
               </div>
             </center>
             <form method="POST"> {% csrf_token %}
               <div class="form-group">
-                <label for="idInput">Código</label>
+                <label style="color:white;" for="idInput">Código</label>
                 <input type="text" required = "True" name = "username" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
               </div>
-              <div class="form-group">Contraseña</label>
+              <label style="color:white;" class="form-group">Contraseña</label>
                 <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
               </div>
               <center>
-                <button type="button" class="btn btn-primary">Olvidé mi contraseña</button>
-                <button type="submit" class="btn btn-primary" style="align-self: center;">Entrar</button>
+                <button type="button" style="background-color: #3a906d" class="btn btn-primary">Olvidé mi contraseña</button>
+                <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d">Entrar</button>
                 {% if error.0 %}
                     <h3>{{error.1}}</h3>
                 {% endif %}
