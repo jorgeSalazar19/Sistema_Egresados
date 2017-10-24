@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Pre Registro Administrador</title> 
-  
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href= {% static "css/style.css" %}<css>
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -32,11 +33,22 @@
     </style>
   <body>
 
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="/">SISTEMA DE EGRESADOS UTP <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
 <section class="container-fluid box" >      
       <div class="row justify-content-center caja">
         
       <form method = "POST" > {% csrf_token %}
-                <div class="col-sm-12 col-md-12 col-lg-12 borde">
+          <div class="col-sm-12 col-md-12 col-lg-12 borde">
             <span>Nombre</span><br>
             <div class="input-group">
               <input type="text" required = "True" name = "first_name" class="form-control" placeholder="Nombre" aria-describedby="basic-addon1">
@@ -76,10 +88,8 @@
             </div>
             <br>
             <center>
-              <form action="/">
-              <button type="button" style="background-color:#3a906d;" class="btn btn-primary"><a href="/">Cancelar</button>
-              </form>
-            <button type="submit" style="background-color:#3a906d;" class="btn btn-primary">Enviar</button>
+            <button type="button" style="background-color:#3a906d; border-radius:4px; padding:6px 6px;color:white; border-width:0px; cursor:pointer;" onclick="location.href='/';">Cancelar</button>
+            <button type="submit" style="background-color:#3a906d; border-width:0px; cursor:pointer;" class="btn btn-primary">Enviar</button>
             </center>
         </div>
       </form>

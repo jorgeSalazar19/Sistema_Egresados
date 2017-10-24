@@ -21,7 +21,7 @@ def LoginEgresado(request):
                 else:
                     return redirect("/dashboard_egresado")
             else:
-                error = (True, "Password no valida")
+                error = (True, "Contraseña no valida")
         else:
             usuario = User.objects.filter(username=username)
             if len(usuario) != 0:

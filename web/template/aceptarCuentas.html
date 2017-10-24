@@ -59,6 +59,7 @@
 
                   <div class="container">
                     <div class="row justify-content-center">
+                      <form method="POST"> {% csrf_token %}
                       {% for pre_registro in pre_registros %}
                       <div class="col align-self-center">
                         <div class="row">
@@ -70,8 +71,8 @@
 
                           </div>
                           <div class="col-sm-4 col-md-5 col-lg-4 align-self-center ">
-                            <button type="button" class="btn btn-danger">Eliminar</button>
-                            <button type="button" class="btn btn-primary">Aceptar</button>
+                            <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Declinar solicitud</button>
+                            <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Crear usuario</button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{pre_registro.id}}">
                             <b>!</b>
                             </button>
@@ -79,6 +80,7 @@
                           {% endfor %}
                         </div>
                       </div>
+                    </form>
                     </div>
                   </div>
 
