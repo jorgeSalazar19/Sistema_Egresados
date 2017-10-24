@@ -30,6 +30,18 @@
 
   </style>
   <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+              <a class="nav-link" href="/">SISTEMA DE EGRESADOS UTP <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
   <section class="container-fluid">
     <div class="row justify-content-center box">
       <div class="col-sm-8 col-md-6 col-lg-5 align-self-center contenido">
@@ -49,10 +61,14 @@
                 <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
               </div>
               <center>
-                <button type="button" style="background-color: #3a906d" class="btn btn-primary">Olvidé mi contraseña</button>
-                <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d">Entrar</button>
+                <button type="button" style="background-color: #3a906d; border-width:0px;" class="btn btn-primary">Olvidé mi contraseña</button>
+                <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d; border-width:0px;">Entrar</button>
                 {% if error.0 %}
-                    <h3>{{error.1}}</h3>
+                <br><br>
+                  <div class="alert " style="background-color: #3a906d; border-width:0px;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h5 style="color:white;">{{error.1}}</h5>
+                </div>
                 {% endif %}
               </center>
             </form>

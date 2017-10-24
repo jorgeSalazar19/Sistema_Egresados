@@ -9,10 +9,46 @@ from domain.models import PreRegisterAdmin , Admin
 from ..services import UserService
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 def DashboardRoot(request):
     mensaje = (False,'')
+
+    if request.method == 'GET':
+        username = request.GET.get('username')
+        usuario = User.objects.filter(username=username)
+
+        if len(usuario) != 0 and request.user.is_authenticated():
+            usuario = usuario[0]
+            template = loader.get_template('DashBoardRoot.html')
+            ctx = { 'mensaje': mensaje,
+            'usuario' : usuario,
+            }   
+            return HttpResponse(template.render(ctx,request))
+        else:
+            return redirect('/login_admin')
+
+
+
+def AceptarCuentasAdmin(request):
+    mensaje = (False , "")
+
+    if request.method == 'GET':
+        username = request.GET.get('username')
+        usuario = User.objects.filter(username=username)
+        if len(usuario) != 0 and request.user.is_authenticated():
+            usuario = usuario[0]
+            print('usuario' , usuario)
+            template = loader.get_template('aceptarCuentasAdmin.html')
+            pre_registros = PreRegisterAdmin.objects.all()
+            ctx = { 'mensaje': mensaje,
+                    'pre_registros' : pre_registros,
+                    'usuario' : usuario,
+            }   
+            return HttpResponse(template.render(ctx,request))
+        else:
+            return redirect('/login_admin')
 
     if request.method == 'POST':
         Action_button = request.POST.get('tipo')
@@ -33,14 +69,11 @@ def DashboardRoot(request):
 
         if action == "Eliminar":
             preregister.delete()
-            
-    if request.user is None or not request.user.is_authenticated():
-        return redirect('/')
 
-    template = loader.get_template('dashboardRoot.html')
+    template = loader.get_template('aceptarCuentasAdmin.html')
     pre_registros = PreRegisterAdmin.objects.all()
     ctx = { 'mensaje': mensaje,
-            'pre_registros' : pre_registros,
+    'pre_registros' : pre_registros,
     }   
     return HttpResponse(template.render(ctx,request))
 

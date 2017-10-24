@@ -21,9 +21,9 @@ def LoginAdmin(request):
                 if usuario.first_login == 0:
                     return redirect("/new_passworda?dni="+username)
                 else:
-                    return redirect("/dashboard_admin")
+                    return redirect("/dashboard_admin?dni="+username)
             else:
-                error = (True, "Password no valida")
+                error = (True, "Contraseña no valida")
         else:
             usuario = User.objects.filter(username=username)
             if len(usuario) != 0:
@@ -31,10 +31,10 @@ def LoginAdmin(request):
                 usuario = usuario[0]
                 if user is not None and usuario.is_superuser:
                     login(request,user)
-                    return redirect("/dashboard_root")
+                    return redirect("/dashboard_root?username="+username)
 
                 else:
-                    error=(True , "Password no valida")
+                    error=(True , "Contraseña no valida")
 
             else:
                 error = (True, "No existe el usuario " + username)
