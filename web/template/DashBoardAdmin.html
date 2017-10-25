@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dash Board</title> 
+  <title>DashBoard Admin / {{usuario.user.first_name}}</title> 
   
       <link rel="stylesheet" href={% static "css/style.css" %}>
 <!-- Bootstrap CSS -->
@@ -63,13 +63,18 @@
                 <img class="circular" src={% static "varios/perfil.jpg" %}>
               </div>
               <div class="col-sm-7 col-md-7 col-lg-9 ">
-                <h3>{{usuario.user.first_name}}</h3>
-                <h4>{{usuario.user.last_name}}</h4>
-                <h6>{{usuario.dni}}</h6>
-                <h6>{{usuario.user.email}}</h6>
-                <h6>{{usuario.country}}</h6>
-                <h6>{{usuario.genre}}</h6>
-                <h6>{{usuario.cellphone}}</h6>
+                <h1 align="center">Bienvenido Administrador</h5><br>
+                <h5>Nombre de usuario: {{usuario.user.first_name}} {{usuario.user.last_name}}</h5>
+                <h5>Dni: {{usuario.dni}}</h5>
+                <h5>Correo Electrónico: {{usuario.user.email}}</h5>
+                <h5>País: {{usuario.country}}</h5>
+                {% if usuario.genre == "male" %}
+                    <h5>Género: Masculino</h5>
+                {% endif %}
+                {% if usuario.genre == "female" %}
+                    <h5>Género: Femenino</h5>
+                {% endif %}
+                <h5>Teléfono: {{usuario.cellphone}}</h5>
               </div>
             </div>
             <div class="row box">

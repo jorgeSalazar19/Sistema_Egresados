@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Cuentas</title> 
+  <title>Activación Cuentas</title> 
   
       <link rel="stylesheet" href="css/style.css">
 <!-- Bootstrap CSS -->
@@ -99,14 +99,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <center>
-          <h6>{{pre_registro.dni}}</h6>
-          <h6>{{pre_registro.country.name}}</h6>
-          <h6>{{pre_registro.birthday}}</h6>
-          <h6>{{pre_registro.genre}}</h6>
-          <h6>{{pre_registro.career.name}}</h6>
-          <h6>{{pre_registro.graduation_year}}</h6>
-        </center>
+        <left>
+          <h6>Dni: {{pre_registro.dni}}</h6>
+          <h6>País: {{pre_registro.country.name}}</h6>
+          <h6>Fecha Nacimiento: {{pre_registro.birthday}}</h6>
+          {% if usuario.genre == "male" %}
+              <h6>Género: Masculino</h6>
+          {% endif %}
+          {% if usuario.genre == "female" %}
+              <h6>Género: Femenino</h6>
+          {% endif %}
+          <h6>Carrera Graduación: {{pre_registro.career.name}}</h6>
+          <h6>Año Graduación: {{pre_registro.graduation_year}}</h6>
+        </left>
 
       </div>
       <div class="modal-footer">
