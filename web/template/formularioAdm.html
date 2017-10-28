@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pre Registro Administrador</title> 
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href= {% static "css/style.css" %}<css>
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+</head>
+    <style type="text/css">
+      .caja{
+        background-color: transparent;
+        padding-bottom: 50px; 
+        padding-top: 50px;
+      }
+      .borde
+      {
+        border: 0.5px solid grey; 
+        padding: 20px; 
+        border-radius: 20px;
+        background-color: white;  
+      }
+      .box{
+      background: url({% static "/img/pereira_aire.jpg" %});
+      background-size: cover;
+      background-position: center;
+      box-shadow: inset 0px 0px 100px black;
+      }
+      .emsg{
+          color: red;
+      }
+      .hidden {
+           visibility:hidden;
+      }
+    </style>
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="/">SISTEMA DE EGRESADOS UTP <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+<section class="container-fluid box" >      
+      <div class="row justify-content-center caja">
+        
+      <form method = "POST" > {% csrf_token %}
+          <div class="col-sm-12 col-md-12 col-lg-12 borde">
+            <span>Nombre</span><br>
+            <div class="input-group">
+              <input type="text" required = "True" name = "first_name" class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "last_name" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="name">Ingrese un nombre válido</span><br>
+
+            <span>Identificación</span><br>
+            <div class="input-group">
+              <input type="text" required = "True" name = "dni" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="dni">Ingrese un DNI válido</span><br>
+
+            <span>Correo electrónico</span><br>
+            <div class="input-group">
+              <input type="email" required = "True" name = "email" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="email">Ingrese un email válido</span><br>
+
+            <span >Genero</span><br>
+            <div class="form-group row">
+              <div class="col-10">
+                <select class="form-control" name = "genre" required = "True">
+                  <option value = "male">Masculino</option>
+                  <option value = "female">Femenino</option>
+                  <option value = "other">Otro</option>
+                </select>
+              </div>
+            </div>
+            <span>País</span><br>
+              <div class="form-group row">
+                <div class="col-10">
+                  <select class="form-control" name = "country" required = "True">
+                  {% for country in paises  %}
+                    <option value="{{country.id}}">{{country.name}}</option>
+                  {% endfor %}
+                  </select>
+                </div>
+              </div>
+            <span>Teléfono</span><br>
+            <div class="input-group">
+              <input type="text" required = "True" name = "cellphone" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="tel">Ingrese un teléfono válido</span>
+            <br>
+            <center>
+            <button type="button" style="background-color:#3a906d; border-radius:4px; padding:6px 6px;color:white; border-width:0px; cursor:pointer;" onclick="location.href='/';">Cancelar</button>
+            <button type="submit" style="background-color:#3a906d; border-width:0px; cursor:pointer;" class="btn btn-primary">Enviar</button>
+            </center>
+        </div>
+      </form>
+      {% if mensaje.0 %}
+          <span>{{mensaje.1}}</span>    
+      {% endif %}
+      </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="http://code.gijgo.com/1.5.1/js/gijgo.js" type="text/javascript"></script>
+    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+ 
+    <script type="text/javascript" src= {% static "js/regularExpresions.js" %}></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Dash Board</title> 
+  
+      <link rel="stylesheet" href={% static "css/style.css" %}>
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+</head>
+<style type="text/css">
+  .borde{
+
+    border: 2px solid black; 
+  }
+  .box{
+    padding-top: 100px;
+  }
+  .circular{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
+  ul{
+    list-style:none
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  #reciente{
+    overflow-y: scroll;
+    height: 200px;
+  }
+</style>
+  <body>
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/aceptar_cuentas_admin?username={{usuario.username}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard_root?username={{usuario.username}}">Perfil</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="container">
+        <div class="row box">
+          <div class="col-md-12 ">
+            <div class="row"> 
+              <div class="col-sm-5 col-md-5 col-lg-3 ">
+                <img class="circular" src={% static "varios/perfil.jpg" %}>
+              </div>
+              <div class="col-sm-7 col-md-7 col-lg-9 ">
+                <h3>{{usuario.username}}</h3>
+                <h4>{{usuario.email}}</h4>
+              </div>
+            </div>
+            <div class="row box">
+              <div class="col">
+                <h5>Actividad reciente</h5><hr>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-9" id="reciente">  
+               
+              </div>
+              <div class="col-md-3">  
+                <ul style="">
+                  <li><a href="">Crear categorías</a></li>
+                  <li><a href="/aceptar_cuentas_admin?username={{usuario.username}}">Gestión de cuentas</a></li>
+                  <li><a href="">Editar información</a></li>
+                  <li><a href="/logout">Cerrar sesión</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

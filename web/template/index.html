@@ -1,0 +1,372 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+		<!-- BASICS -->
+        <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SISTEMA DE EGRESADOS UTP</title>
+        <meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type={% static "text/css" %} href={% static "css/isotope.css" %} media="screen" />
+		<link rel="stylesheet" href={% static "js/fancybox/jquery.fancybox.css" %} type="text/css" media="screen" />
+		<link rel="stylesheet" href={% static "css/bootstrap.css" %}>
+		<link rel="stylesheet" href={% static "css/bootstrap-theme.css" %}>
+		<link href={% static "css/responsive-slider.css" %} rel="stylesheet">
+		<link rel="stylesheet" href={% static "css/animate.css" %}>
+        <link rel="stylesheet" href={% static "css/style.css" %}>
+
+		<link rel="stylesheet" href={% static "css/font-awesome.min.css" %}>
+		<link rel="stylesheet" href={% static "skin/default.css"%}>
+    </head>
+
+
+    <body>
+	<div class="header">
+	<section id="header" class="appear">
+
+		<div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="fa fa-bars color-white"></span>
+					</button>
+
+					<h1><a class="navbar-brand" href="/" data-0="line-height:90px;" data-300="line-height:50px;">SISTEMA DE EGRESADOS UTP
+					</a></h1>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
+						<li class="active"><a href="/">Inicio</a></li>
+						<li><a href="#section-about">Nosotros</a></li>
+						<li><a href="#team">Equipo</a></li>
+						<li><button id = "login_nav" data-trigger="focus" type="button" class="btn btn-primary btn-sm" required="required" style=" background-color: transparent; color:white; padding-top:10px; font-size:12px; letter-spacing: .1em;">INGRESAR</button></li>
+					</ul>
+				</div><!--/.navbar-collapse -->
+			</div>
+
+
+	</section>
+	</div>
+
+
+<div class="slider">
+		<div id="about-slider">
+			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators visible-xs">
+					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-slider" data-slide-to="21-julio-grados"></li>
+					<li data-target="#carousel-slider" data-slide-to="graduados_2014"></li>
+				</ol>
+
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src={% static "img/21-julio-grados.jpg" %} class="img-responsive" alt="">
+						<div class="carousel-caption">
+							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+								<h2><span>¡Haz parte de nuestra comunidad!</span></h2>
+							</div>
+							<div class="col-md-10 col-md-offset-1">
+								<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
+									<p>Podrás recibir información detallada de las futuras actividades
+										que se realizarán para los egresados.</p>
+								</div>
+							</div>
+							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
+								<form class="form-inline">
+									<div class="form-group">
+										<button id = "registro1" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
+									</div>
+									<div class="form-group">
+										<button id = "ingreso2" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
+										
+									</div>
+								</form>
+							</div>
+						</div>
+				    </div>
+
+				    <div class="item">
+						<img src={% static "img/graduados_2014.jpg" %} class="img-responsive" alt="">
+						<div class="carousel-caption">
+							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.3s">
+								<h2>¡REGISTRATE AHORA!</h2>
+							</div>
+							<div class="col-md-10 col-md-offset-1">
+								<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.6s">
+									<p>Realiza tu registro y así podremos enviarte información
+										acerca de las actividades de tu gusto.</p>
+								</div>
+							</div>
+							<div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
+								<form class="form-inline">
+									<div class="form-group">
+										<button id = "registro2" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style="background-color: #3a906d" >REGISTRARSE</button>
+									</div>
+									<div class="form-group">
+										<button id = "ingreso1" data-trigger="focus" type="button" class="btn btn-primary btn-medium" required="required" style=" background-color: #fff; color:black" >INGRESAR</button>
+									</div>
+								</form>
+							</div>
+						</div>
+				    </div>
+				</div>
+
+				<a class="left carousel-control hidden-xs" href="#carousel-slider" data-slide="prev">
+					<i class="fa fa-angle-left"></i>
+				</a>
+
+
+				<a class=" right carousel-control hidden-xs"href="#carousel-slider" data-slide="next">
+
+					<i class="fa fa-angle-right"></i>
+				</a>
+			</div> <!--/#carousel-slider-->
+		</div><!--/#about-slider-->
+	</div><!--/#slider-->
+
+	<!--about-->
+	<section id="section-about">
+		<div class="container">
+			<div class="about">
+				<div class="row mar-bot40">
+					<div class="col-md-offset-3 col-md-6">
+						<div class="title">
+							<div class="wow bounceIn">
+								<h1 class="section-heading animated" data-animation="bounceInUp"> MISIÓN </h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="row-slider">
+						<div class="col-lg-6 mar-bot30">
+							<div class="responsive-slider" data-spy="responsive-slider" data-autoplay="true">
+								<div class="slides" data-group="slides">
+									<ul>
+
+										<div class="slide-body" data-group="slide">
+
+											<li><img alt="" class="img-responsive" src={% static "img/grados2015.jpg" %} width="100%" height="350"/></li>
+											<li><img alt="" class="img-responsive" src={%static "img/grados2014.jpg" %} width="100%" height="350"/></li>
+											<li><img alt="" class="img-responsive" src={% static "img/grados_julio.jpg" %} width="100%" height="350"/></li>
+
+
+										</div>
+									</ul>
+										<a class="slider-control left" href="#" data-jump="prev"><i class="fa fa-angle-left fa-2x"></i></a>
+										<a class="slider-control right" href="#" data-jump="next"><i class="fa fa-angle-right fa-2x"></i></a>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 ">
+							<div class="company mar-left10">
+								<h4>La Asociación Nacional de Egresados de la Universidad Tecnológica de Pereira es una organización sin ánimo de lucro, de derecho privado y beneficio común, que busca fomentar el desarrollo integral de la comunidad, la universidad, la empresa y los egresados; estrechando entre sus miembros los vínculos de fraternidad emanados por pertenecer a la misma Alma Mater.</h4>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<!--/about-->
+
+	<!-- spacer section:testimonial -->
+		<section id="testimonials-3" class="section" data-stellar-background-ratio="0.5">
+
+		<div class="container" style="padding-top: 40px">
+			<div class="row mar-bot10">
+					<div class="col-md-offset-3 col-md-6">
+						<center>
+							<div class="wow bounceIn">
+							    <h2 class="section-heading animated" data-animation="bounceInUp">VISIÓN</h2>
+							</div>
+						</center>
+					</div>
+				</div>
+			<div class="row">
+					<div class="col-lg-12">
+							<div class="align-center">
+										<div class="testimonial clearfix">
+											<h5>
+												En el año 2017, la Asociación Nacional de Egresados de la Universidad Tecnológica de Pereira será reconocida como una organización altamente representativa de los intereses de los agremiados, contando con una amplia participación del total de los egresados de nuestra Universidad.
+											</h5>
+											<br/>
+											<h5>
+											<a href= "http://aseutp.com/" target = "_blank" class="author" style="color:white;">&mdash; Asociación de egresados UTP </a>
+											</h5>
+										</div>
+
+							</div>
+					</div>
+			</div>
+
+		</div>
+
+		</section>
+
+		<!-- team -->
+		<section id="team" class="team-section appear clearfix">
+		<div class="container">
+
+				<div class="row mar-bot10">
+					<div class="col-md-offset-3 col-md-6">
+						<div class="section-header">
+						<div class="wow bounceIn">
+
+							<h1 class="section-heading animated" data-animation="bounceInUp">Nuestro equipo</h1>
+							<p>Ingenieros de sistemas encomendados a la realización de este proyecto.</p>
+
+						</div>
+						</div>
+					</div>
+				</div>
+
+					<div class="row align-center mar-bot45">
+
+						<div class="col-md-3">
+						<div class="wow bounceIn" data-animation-delay="4.8s">
+							<div class="team-member">
+								<div class="profile-picture">
+									<figure><img src={% static "img/members3.jpg" %} alt=""></figure>
+									<div class="profile-overlay"></div>
+								</div>
+								<div class="team-detail">
+									<h4>SEBASTIAN CALVO</h4>
+									<span>ADMINISTRADOR WEB</span>
+								</div>
+								<div class="team-bio">
+								<p>Administrador web del proyecto</p>
+								</div>
+							</div>
+						</div>
+						</div>
+
+
+						<div class="col-md-3">
+							<div class="wow bounceIn">
+							<div class="team-member">
+								<div class="profile-picture">
+									<figure><img src={% static "img/members2.jpg" %} alt=""></figure>
+									<div class="profile-overlay"></div>										
+								</div>
+								<div class="team-detail">
+									<h4>YESICA CIFUENTES</h4>
+									<span>JEFE DE EJECUCION</span>
+								</div>
+								<div class="team-bio">
+								<p>Jefe de ejecución del proyecto</p>
+								</div>
+							</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-3">
+
+							<div class="wow bounceIn">
+							<div class="team-member">
+								<div class="profile-picture">
+									<figure><img src={% static "img/members1.jpg" %} alt=""></figure>
+									<div class="profile-overlay"></div>									
+								</div>
+								<div class="team-detail">
+									<h4>JORGE SALAZAR</h4>
+									<span>DESARROLLADOR WEB</span>
+								</div>
+								<div class="team-bio">
+								<p>Desarrollador web del proyecto (backend)</p>
+								</div>
+							</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-3">
+							<div class="wow bounceIn">
+							<div class="team-member">
+								<div class="profile-picture">
+									<figure><img src={% static "img/members4.jpg" %} alt=""></figure>
+									<div class="profile-overlay"></div>										
+								</div>
+								<div class="team-detail">
+									<h4>EDWIN SANZ</h4>
+									<span>DISEÑADOR WEB</span>
+								</div>
+								<div class="team-bio">
+								<p>Diseñador web del proyecto (Frontend)</p>
+								</div>
+							</div>
+							</div>
+						</div>
+
+					</div>
+
+		</div>
+		</section>
+		<!-- /team -->
+
+		<!-- map -->
+		<section id="section-map" class="clearfix">
+			<div id="google-map" data-latitude="4.793892" data-longitude="-75.688707"></div>
+		</section>
+
+	<section id="footer" class="section footer">
+		<div class="container">
+			<div class="row animated opacity mar-bot0" data-andown="fadeIn" data-animation="animation">
+				<div class="col-sm-12 align-center">
+                    <ul class="social-network social-circle">                  
+
+                        <li><a href="https://www.facebook.com/aseutpe" target = "_blank" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/aseutp" target = "_blank" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+				</div>
+			</div>
+
+			<div class="row align-center copyright">
+					<div class="col-sm-12">
+					    <p>&copy; Egresados UTP</p>
+                        <div class="credits">
+
+                            <a href="http://www.utp.edu.co/" target="_blank">Imágenes e información referenciada por la Universidad Tecnológica de Pereira</a>
+                        </div>
+                    </div>
+			</div>
+		</div>
+	</section>
+
+	<a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+
+	<script src={% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}></script>
+	<script src={% static "js/jquery.js" %}></script>
+	<script src={% static "js/jquery.easing.1.3.js" %}></script>
+    <script src={% static "js/bootstrap.min.js" %}></script>
+	<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src={% static "js/jquery.isotope.min.js" %}></script>
+	<script src={% static "js/jquery.nicescroll.min.js" %}></script>
+	<script src={% static "js/fancybox/jquery.fancybox.pack.js" %}></script>
+	<script src={% static "js/skrollr.min.js" %}></script> %}
+	<script src={% static "js/jquery.scrollTo.js" %}></script>
+	<script src={% static "js/jquery.localScroll.js" %}></script>
+	<script src={% static "js/stellar.js" %}></script>
+	<script src={% static "js/responsive-slider.js" %}></script>
+	<script src={% static "js/jquery.appear.js" %}></script>
+	<script src={% static "js/grid.js" %}></script>
+    <script src={% static "js/main.js" %}></script>
+    <script src={% static "js/wow.min.js" %}></script>
+	<script>wow = new WOW({}).init();</script>
+    <script src={% static "contactform/contactform.js" %}></script>
+    <script type="text/javascript" src= {% static "js/script.js" %} ></script>
+    
+</body>
+</html>

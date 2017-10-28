@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuentas</title> 
+  
+      <link rel="stylesheet" href="css/style.css">
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+</head>
+<style type="text/css">
+  .borde{
+
+    border: 2px solid black; 
+  }
+  #box{
+    height: 90vh;
+  }
+  .circular{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+  }
+  .circular2{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+</style>
+  <body>
+
+
+      <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link " href="/aceptar_cuentas_admin?username={{usuario.username}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/dashboard_root?username={{usuario.username}}">Perfil</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="container">
+        <div class="row justify-content-center" >
+          <div class="col-md-12 ">
+
+              <ul class="list-group">
+
+                <form method="POST"> {% csrf_token %}
+                {% for pre_registro in pre_registros %}
+
+                <li class="list-group-item">
+
+                  <div class="container ">
+                    <div class="row justify-content-center">
+                    
+                      <div class="col align-self-center">
+                        <div class="row">
+                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center ">
+                            
+                              <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
+                              <label>{{pre_registro.dni}}</label><br>
+                              <label>{{pre_registro.cellphone}}</label>
+
+                          </div>
+                          <div class="col-sm-4 col-md-5 col-lg-4 align-self-center ">
+                            <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Declinar</button>
+                            <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Crear usuario</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{pre_registro.id}}">
+                            <b>!</b>
+                            </button>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+
+                </li>
+                {% endfor %}
+
+              </ul>
+          </div>
+        </div>
+      </section>
+
+<!-- Modal -->
+{% for pre_registro in pre_registros %}
+<div class="modal fade" id="{{pre_registro.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <center>
+          <h6>{{pre_registro.dni}}</h6>
+          <h6>{{pre_registro.country.name}}</h6>
+          <h6>{{pre_registro.genre}}</h6>
+          <h6>{{pre_registro.cellphone}}</h6>
+        </center>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>.
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
