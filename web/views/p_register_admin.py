@@ -23,8 +23,12 @@ def PreRegisterAdmin(request):
         if perfil_form.is_valid():
             if (len(usuario_dni) == 0) and (len(usuario_email) == 0):
                 if len(usuario_admin) == 0:
+                    name = perfil_form.cleaned_data['first_name']
+                    last_name = perfil_form.cleaned_data['last_name']
+                    email = perfil_form.cleaned_data['email']
+                    dni = perfil_form.cleaned_data['dni']
                     perfil_form.save()
-                    mensaje = (True , 'El registro se realizo correctamente')
+                    mensaje = (True , 'Registro Exitoso')
                 else:
                     mensaje = (True , 'El Usuario ya es un administrador')
             else:
