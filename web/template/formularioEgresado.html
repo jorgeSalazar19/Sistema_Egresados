@@ -28,12 +28,14 @@
       background-position: center;
       box-shadow: inset 0px 0px 100px black;
       }
+
       .emsg{
           color: red;
       }
       .hidden {
            visibility:hidden;
       }
+
     </style>
   <body>
 
@@ -54,6 +56,7 @@
             {% csrf_token %}
             <span>Nombre</span><br>
             <div class="input-group">
+
               <input type="text" required = "True" name = "first_name" class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
               <input type="text" required = "True" name = "last_name" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="name">Ingrese un nombre válido</span><br>
@@ -133,6 +136,8 @@
     <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
+
     <script type="text/javascript" src= {% static "js/regularExpresions.js" %}></script>
+
  </body>
 </html>

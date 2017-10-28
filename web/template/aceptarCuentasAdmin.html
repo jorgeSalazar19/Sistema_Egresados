@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Cuentas</title> 
+
+  <title>Activación Cuentas</title> 
+
   
       <link rel="stylesheet" href="css/style.css">
 <!-- Bootstrap CSS -->
@@ -52,6 +54,7 @@
       </nav>
 
       <section class="container">
+
         <div class="row justify-content-center" >
           <div class="col-md-12 ">
 
@@ -67,8 +70,7 @@
                     
                       <div class="col align-self-center">
                         <div class="row">
-                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center ">
-                            
+                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center ">                            
                               <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
                               <label>{{pre_registro.dni}}</label><br>
                               <label>{{pre_registro.cellphone}}</label>
@@ -81,7 +83,6 @@
                             <b>!</b>
                             </button>
                           </div>
-                          
                         </div>
                       </div>
                       </form>
@@ -108,12 +109,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <center>
-          <h6>{{pre_registro.dni}}</h6>
-          <h6>{{pre_registro.country.name}}</h6>
-          <h6>{{pre_registro.genre}}</h6>
-          <h6>{{pre_registro.cellphone}}</h6>
-        </center>
+        <left>
+          <h6>Dni: {{pre_registro.dni}}</h6>
+          <h6>País: {{pre_registro.country.name}}</h6>
+          {% if usuario.genre == "male" %}
+              <h6>Género: Masculino</h6>
+          {% endif %}
+          {% if usuario.genre == "female" %}
+              <h6>Género: Femenino</h6>
+          {% endif %}
+          <h6>Teléfono: {{pre_registro.cellphone}}</h6>
+        </left>
 
       </div>
       <div class="modal-footer">

@@ -11,15 +11,30 @@ def PreRegisterGraduated(request):
     if request.method == 'POST':
         id_pregister = request.POST.get('dni')
         email_preregister = request.POST.get('email')
+<<<<<<< HEAD
 
         usuario_dni = PreRegister.objects.filter(dni=id_pregister)
         usuario_email = PreRegister.objects.filter(email=email_preregister)
         usuario_graduated = Graduated.objects.filter(dni=id_pregister)
 
+=======
+        usuario_dni = PreRegister.objects.filter(dni=id_pregister)
+        usuario_email = PreRegister.objects.filter(email=email_preregister)
+        usuario_graduated = Graduated.objects.filter(dni=id_pregister)
+>>>>>>> bcf1d1623fad32c4f9a8e51f99938b5940d316f5
         perfil_form = RegisterFormGraduated(data=request.POST)
         if perfil_form.is_valid():
             if len(usuario_dni) == 0 and len(usuario_email) == 0:
                 if len(usuario_graduated) == 0:
+<<<<<<< HEAD
+=======
+                    name = perfil_form.cleaned_data['first_name']
+                    last_name = perfil_form.cleaned_data['last_name']
+                    email = perfil_form.cleaned_data['email']
+                    dni = perfil_form.cleaned_data['dni']
+                    birthday = perfil_form.cleaned_data['birthday']
+                    graduation_year = perfil_form.cleaned_data['graduation_year']
+>>>>>>> bcf1d1623fad32c4f9a8e51f99938b5940d316f5
                     perfil_form.save()
                     mensaje = (True , 'El registro se realizo correctamente')
                 else:
@@ -33,7 +48,10 @@ def PreRegisterGraduated(request):
     template = loader.get_template('formularioEgresado.html')
     careers = Career.objects.all()
     countries = Country.objects.all().order_by('name')
+<<<<<<< HEAD
     print(countries)
+=======
+>>>>>>> bcf1d1623fad32c4f9a8e51f99938b5940d316f5
     ctx = {
             'mensaje' : mensaje,
             'carreras' : careers,

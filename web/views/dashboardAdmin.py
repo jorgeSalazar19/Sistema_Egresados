@@ -39,7 +39,10 @@ def AceptarCuentas(request):
             usuario = usuario[0]
             template = loader.get_template('aceptarCuentas.html')
             pre_registros = PreRegisterGraduated.objects.all()
+<<<<<<< HEAD
             print("aca: " , usuario)
+=======
+>>>>>>> bcf1d1623fad32c4f9a8e51f99938b5940d316f5
             ctx = { 'mensaje': mensaje,
                     'pre_registros': pre_registros,
                     'usuario' : usuario,
