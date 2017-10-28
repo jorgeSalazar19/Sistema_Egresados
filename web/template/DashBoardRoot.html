@@ -3,7 +3,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
   <title>DashBoard Root / {{usuario.username}}</title> 
+
   
       <link rel="stylesheet" href={% static "css/style.css" %}>
 <!-- Bootstrap CSS -->
@@ -62,9 +64,11 @@
                 <img class="circular" src={% static "varios/perfil.jpg" %}>
               </div>
               <div class="col-sm-7 col-md-7 col-lg-9 ">
+
                 <h1 align="center">Bienvenido Super Administrador</h1><br>
                 <h5>Nombre de usuario: {{usuario.username}}</h5>
                 <h5>Correo Electrónico: {{usuario.email}}</h5>
+
               </div>
             </div>
             <div class="row box">

@@ -3,7 +3,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+
   <title>DashBoard Admin / {{usuario.user.first_name}}</title> 
+
   
       <link rel="stylesheet" href={% static "css/style.css" %}>
 <!-- Bootstrap CSS -->
@@ -63,6 +65,7 @@
                 <img class="circular" src={% static "varios/perfil.jpg" %}>
               </div>
               <div class="col-sm-7 col-md-7 col-lg-9 ">
+
                 <h1 align="center">Bienvenido Administrador</h5><br>
                 <h5>Nombre de usuario: {{usuario.user.first_name}} {{usuario.user.last_name}}</h5>
                 <h5>Dni: {{usuario.dni}}</h5>
@@ -75,6 +78,7 @@
                     <h5>Género: Femenino</h5>
                 {% endif %}
                 <h5>Teléfono: {{usuario.cellphone}}</h5>
+
               </div>
             </div>
             <div class="row box">

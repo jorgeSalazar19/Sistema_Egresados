@@ -24,6 +24,7 @@ def PreRegisterGraduated(request):
                     dni = perfil_form.cleaned_data['dni']
                     birthday = perfil_form.cleaned_data['birthday']
                     graduation_year = perfil_form.cleaned_data['graduation_year']
+
                     perfil_form.save()
                     mensaje = (True , 'El registro se realizo correctamente')
                 else:

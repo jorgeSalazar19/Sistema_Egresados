@@ -1,3 +1,4 @@
+
 from django.forms import ModelForm 
 from django.contrib.auth.models import User
 from domain.models import PreRegisterGraduated , PreRegisterAdmin
@@ -61,7 +62,6 @@ class RegisterFormAdmin(ModelForm):
     class Meta:
         model = PreRegisterAdmin
         fields=['first_name','last_name','email','dni','country','genre','cellphone']
-
     def clean_first_name(self):
         first_name = self.cleaned_data.get('first_name')
         if re.match(patron_nombre_apellido,first_name) is None:
