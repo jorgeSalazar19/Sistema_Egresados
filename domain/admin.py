@@ -1,11 +1,21 @@
 from django.contrib import admin
 
-from domain.models import Graduated, Category , PreRegisterGraduated , Career ,  PreRegisterAdmin , Country
-
+from domain.models import (
+	Graduated, 
+	Category , 
+	PreRegisterGraduated , 
+	Career ,  
+	PreRegisterAdmin , 
+	Country,
+	Admin
+)
 @admin.register(Graduated)
 class GraduatedAdmin(admin.ModelAdmin):
     list_display = ['user','dni','country','birthday','genre','career','graduation_year']
 
+@admin.register(Admin)
+class AdminAdmin(admin.ModelAdmin):
+    list_display = ['user','dni','country','genre','cellphone']
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
