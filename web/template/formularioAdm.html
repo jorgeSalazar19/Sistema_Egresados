@@ -57,21 +57,22 @@
         
       <form method = "POST" > {% csrf_token %}
           <div class="col-sm-12 col-md-12 col-lg-12 borde">
+          
             <span>Nombre</span><br>
             <div class="input-group">
 
-              <input type="text" required = "True" name = "first_name" class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
-              <input type="text" required = "True" name = "last_name" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "first_name" value = "{{datos.first_name}}"class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "last_name" value="{{datos.last_name}}" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="name">Ingrese un nombre válido</span><br>
 
             <span>Identificación</span><br>
             <div class="input-group">
-              <input type="text" required = "True" name = "dni" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "dni" value="{{datos.dni}}" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="dni">Ingrese un DNI válido</span><br>
 
             <span>Correo electrónico</span><br>
             <div class="input-group">
-              <input type="email" required = "True" name = "email" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
+              <input type="email" required = "True" name = "email" value="{{datos.email}}" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="email">Ingrese un email válido</span><br>
 
 
@@ -98,7 +99,7 @@
             <span>Teléfono</span><br>
             <div class="input-group">
 
-              <input type="text" required = "True" name = "cellphone" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "cellphone" value="{{datos.cellphone}}" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="tel">Ingrese un teléfono válido</span>
 
             <br>

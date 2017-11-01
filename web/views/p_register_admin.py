@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 
 def PreRegisterAdmin(request):
     mensaje = (False,'')
+    datos = []
     if request.method == 'POST':
         id_pregister = request.POST.get('dni')
         email_pregister = request.POST.get('email')
@@ -19,6 +20,7 @@ def PreRegisterAdmin(request):
         usuario_admin = Admin.objects.filter(dni=id_pregister)
 
         perfil_form = RegisterFormAdmin(data=request.POST)
+        datos = request.POST
 
         if perfil_form.is_valid():
             if (len(usuario_dni) == 0) and (len(usuario_email) == 0):
@@ -41,5 +43,6 @@ def PreRegisterAdmin(request):
     template = loader.get_template('formularioAdm.html')
     ctx = { 'mensaje': mensaje,
             'paises' : countries,
+            'datos' : datos
     }   
     return HttpResponse(template.render(ctx,request))
