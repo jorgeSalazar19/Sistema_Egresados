@@ -9,10 +9,12 @@ from domain.models import Admin
 
 def LoginAdmin(request):
     error = (False, "")
+    dato_username = []
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         usuario = Admin.objects.filter(dni=username)
+        dato_username = request.POST
         if len(usuario) != 0:
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -42,6 +44,7 @@ def LoginAdmin(request):
     template = loader.get_template('login.html')
     ctx = {
         'error': error, 
+        'dato' : dato_username,
     }
     return HttpResponse(template.render(ctx, request))
 

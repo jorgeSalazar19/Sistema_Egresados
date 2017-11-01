@@ -55,7 +55,7 @@
             <form method="POST"> {% csrf_token %}
               <div class="form-group">
                 <label style="color:white;" for="idInput">Código</label>
-                <input type="text" required = "True" name = "username" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
+                <input type="text" required = "True" name = "username" value = "{{dato.username}}" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
               </div>
               <label style="color:white;" class="form-group">Contraseña</label>
                 <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
