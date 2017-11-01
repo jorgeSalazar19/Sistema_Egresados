@@ -1,3 +1,4 @@
+{%load staticfiles%}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,12 +58,15 @@
 
         <div class="row justify-content-center" >
           <div class="col-md-12 ">
+              {% if not pre_registros %}
+                <center><h3 style="padding-top: 100px;">No hay solicitudes pendientes</h3></center>
+              {%endif%}
 
               <ul class="list-group">
 
-                <form method="POST"> {% csrf_token %}
+                
                 {% for pre_registro in pre_registros %}
-
+                <form method="POST"> {% csrf_token %}
                 <li class="list-group-item">
 
                   <div class="container ">
@@ -85,11 +89,12 @@
                           </div>
                         </div>
                       </div>
-                      </form>
+                      
                     </div>
                   </div>
 
                 </li>
+                </form>
                 {% endfor %}
 
               </ul>
@@ -131,8 +136,8 @@
 {% endfor %}
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>.
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src={%static "js/jquery.js"%}></script>
+    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </body>
