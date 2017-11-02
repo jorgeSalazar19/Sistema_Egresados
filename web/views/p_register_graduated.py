@@ -8,6 +8,7 @@ from domain.models import Country , PreRegisterGraduated as PreRegister , Gradua
 
 def PreRegisterGraduated(request):
     mensaje = (False,'')
+    datos = []
     if request.method == 'POST':
         id_pregister = request.POST.get('dni')
         email_preregister = request.POST.get('email')
@@ -15,6 +16,7 @@ def PreRegisterGraduated(request):
         usuario_email = PreRegister.objects.filter(email=email_preregister)
         usuario_graduated = Graduated.objects.filter(dni=id_pregister)
         perfil_form = RegisterFormGraduated(data=request.POST)
+        datos = request.POST
         if perfil_form.is_valid():
             if len(usuario_dni) == 0 and len(usuario_email) == 0:
                 if len(usuario_graduated) == 0:
@@ -33,7 +35,11 @@ def PreRegisterGraduated(request):
                 mensaje = (True , 'EL preregistro ya fue realizado')
         else:
             print(perfil_form.errors)
-            mensaje = (True , 'ocurrio un error en el registro')
+            errors = perfil_form.get_errors()
+            message_e = []
+            for error in errors:
+                message_e.append(str(perfil_form.errors[error]))
+            mensaje = (True , message_e)
 
     template = loader.get_template('formularioEgresado.html')
     careers = Career.objects.all()
@@ -42,6 +48,7 @@ def PreRegisterGraduated(request):
             'mensaje' : mensaje,
             'carreras' : careers,
             'paises' : countries,
+            'datos' : datos,
     }   
     return HttpResponse(template.render(ctx,request))
 

@@ -103,7 +103,9 @@
             </center>
       </form>
       {% if mensaje.0 %}
-          <span>{{mensaje.1}}</span>    
+          {% for error in mensaje.1  %}
+              <h4>{{error}}</h4>
+          {% endfor %}  
       {% endif %}
       </div>
     </section>

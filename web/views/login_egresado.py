@@ -7,10 +7,12 @@ from domain.models import Graduated
 
 def LoginEgresado(request):
     error = (False, "")
+    dato_username = []
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         usuario = Graduated.objects.filter(dni=username)
+        dato_username = request.POST
         if len(usuario) != 0:
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -32,13 +34,14 @@ def LoginEgresado(request):
                     return redirect("/dashboard_root?username="+username)
 
                 else:
-                    error = (True , "No existe el usuario " + username)
+                    error = (True , "Contraseña no valida " )
 
             else:
                 error = (True, "No existe el usuario " + username)
 
     template = loader.get_template('login.html')
     ctx = { 'error': error,
+            'dato' : dato_username,
     }   
     return HttpResponse(template.render(ctx,request))
 
