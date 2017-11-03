@@ -37,6 +37,7 @@
         background-color:#3a906d;
         border-color: #3a906d;
       }
+      ul {list-style:none}
 
     </style>
   <body>
@@ -113,17 +114,33 @@
                 </div>
               </div>
             <center>
-              <button type="button" class="btn btn-primary colorbtn"  onclick="location.href='/';">Cancelar</button>
-              <button type="submit" class="btn btn-primary colorbtn">Enviar</button>
+              <button type="button" class="btn btn-success colorbtn"  onclick="location.href='/';">Cancelar</button>
+              <button type="submit" class="btn btn-success colorbtn" id="botonEnviar">Enviar</button>
             </center>
         </form>
       {% if mensaje.0 %}
-          {% for error in mensaje.1  %}
-              <h4>{{error}}</h4>
-          {% endfor %}  
-      {% endif %}
-      </div>
+          <input id="txt_name" style="display: none" value="{{mensaje.0}}">
 
+          <div class="modal fade" id="server_msg_modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Error en el formulario</h4>
+                </div>
+                <div class="modal-body">
+                  <center>
+                    {% for error in mensaje.1  %}
+                        <h6>{{error}}</h6>
+                    {% endfor %}
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
+
+      </div>
     </section>
 
 
@@ -133,6 +150,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src= {% static "js/regularExpresions.js" %}></script>
-
+    <script type="text/javascript" src={% static "js/form_egr.js" %}></script>
+ 
  </body>
 </html>
