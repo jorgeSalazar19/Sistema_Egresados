@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-    var $regexname=/^([a-zA-Z]{3,16})$/;
+    var $regexname=/^(([A-ZÁÉÍÓÚ a-zñáéíóú]{1}[a-zñáéíóú A-ZÁÉÍÓÚ ]+[\s]*)+)?$/;
     $('.NAME').on('keypress keydown keyup',function(){
              if (!$(this).val().match($regexname)) {
               // there is a mismatch, hence show the error message
@@ -15,7 +15,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    var $regexDni=/^([0-9]{5,12})$/;
+    var $regexDni=/^([\d]{10})?$/;
     $('.DNI').on('keypress keydown keyup',function(){
              if (!$(this).val().match($regexDni)) {
               // there is a mismatch, hence show the error message
@@ -30,7 +30,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    var $regexEmail=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var $regexEmail=/^([\w]+@{1}[\w]+(\.[\w]+)*\.[a-z]{2,3})?$/;
     $('.EMAIL').on('keypress keydown keyup',function(){
              if (!$(this).val().match($regexEmail)) {
               // there is a mismatch, hence show the error message
@@ -45,7 +45,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    var $regexEmail=/^([0-9]{10})?$/;
+    var $regexEmail=/^([3]{1}[0|1|2]{1}[\d]{8})?$/;
     $('.TEL').on('keypress keydown keyup',function(){
              if (!$(this).val().match($regexEmail)) {
               // there is a mismatch, hence show the error message
@@ -55,21 +55,6 @@ $(document).ready(function(){
            else{
                 // else, do not display message
                 $('#tel').addClass('hidden');
-               }
-         });
-});
-
-$(document).ready(function(){
-    var $regexEmail=/^([0-9]{10})?$/;
-    $('.BIRTH').on('keypress keydown keyup',function(){
-             if (!$(this).val().match($regexEmail)) {
-              // there is a mismatch, hence show the error message
-                 $('#birth').removeClass('hidden');
-                 $('#birth').show();
-             }
-           else{
-                // else, do not display message
-                $('#birth').addClass('hidden');
                }
          });
 });

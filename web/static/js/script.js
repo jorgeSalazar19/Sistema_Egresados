@@ -159,3 +159,7 @@ $('body').on('click', 'button#admInR', function() {
 $('body').on('click', 'button#egresadoIngR', function() {
     $(location).attr('href','login_egresado');
 });
+
+
+
+
