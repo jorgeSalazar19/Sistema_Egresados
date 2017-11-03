@@ -4,16 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Pre Registro Administrador</title> 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href= {% static "css/style.css" %}>
-<!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   
 </head>
     <style type="text/css">
       .caja{
-        background-color: transparent;
         padding-bottom: 50px; 
         padding-top: 50px;
       }
@@ -37,41 +33,40 @@
       .hidden {
            visibility:hidden;
       }
+      .colorbtn{
+        background-color:#3a906d;
+        border-color: #3a906d;
+      }
 
     </style>
   <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-              <a class="nav-link" href="/">SISTEMA DE EGRESADOS UTP <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <header>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <div><a class="navbar-brand" href="/">SISTEMA DE EGRESADOS UTP</a></div>
+      </nav>
+  </header>
 
 
 <section class="container-fluid box" >      
       <div class="row justify-content-center caja">
-        
-      <form method = "POST" > {% csrf_token %}
-          <div class="col-sm-12 col-md-12 col-lg-12 borde">
+        <form method="POST"  class="col-sm-12 col-md-8 col-lg-5 borde">
+            {% csrf_token %}          
             <span>Nombre</span><br>
             <div class="input-group">
 
-              <input type="text" required = "True" name = "first_name" class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
-              <input type="text" required = "True" name = "last_name" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "first_name" value = "{{datos.first_name}}"class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "last_name" value="{{datos.last_name}}" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="name">Ingrese un nombre válido</span><br>
 
             <span>Identificación</span><br>
             <div class="input-group">
-              <input type="text" required = "True" name = "dni" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "dni" value="{{datos.dni}}" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="dni">Ingrese un DNI válido</span><br>
 
             <span>Correo electrónico</span><br>
             <div class="input-group">
-              <input type="email" required = "True" name = "email" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
+              <input type="email" required = "True" name = "email" value="{{datos.email}}" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="email">Ingrese un email válido</span><br>
 
 
@@ -98,27 +93,30 @@
             <span>Teléfono</span><br>
             <div class="input-group">
 
-              <input type="text" required = "True" name = "cellphone" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "cellphone" value="{{datos.cellphone}}" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
             </div><span class="emsg hidden" id="tel">Ingrese un teléfono válido</span>
 
             <br>
             <center>
-            <button type="button" style="background-color:#3a906d; border-radius:4px; padding:6px 6px;color:white; border-width:0px; cursor:pointer;" onclick="location.href='/';">Cancelar</button>
-            <button type="submit" style="background-color:#3a906d; border-width:0px; cursor:pointer;color:white;" class="btn btn-primary btn-sm">Enviar</button>
+            <button type="button" class="btn btn-primary colorbtn" onclick="location.href='/';">Cancelar</button>
+            <button type="submit" class="btn btn-primary colorbtn" >Enviar</button>
             </center>
-        </div>
       </form>
       {% if mensaje.0 %}
-          <span>{{mensaje.1}}</span>    
+          {% for error in mensaje.1  %}
+              <h4>{{error}}</h4>
+          {% endfor %}  
       {% endif %}
       </div>
     </section>
 
 
-    <script src={%static "js/jquery.js"%}></script>
-    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script type="text/javascript" src= {% static "js/regularExpresions.js" %}></script>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src= {% static "js/regularExpresions.js" %}></script>
+ 
 </body>
 </html>

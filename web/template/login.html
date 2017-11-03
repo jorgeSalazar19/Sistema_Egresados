@@ -31,15 +31,11 @@
   </style>
   <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse"> 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-          <li class="nav-item ">
-              <a class="nav-link" href="/">SISTEMA DE EGRESADOS UTP <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <header>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <div><a class="navbar-brand" href="/">SISTEMA DE EGRESADOS UTP</a></div>
+      </nav>
+  </header>
 
 
   <section class="container-fluid">
@@ -55,7 +51,7 @@
             <form method="POST"> {% csrf_token %}
               <div class="form-group">
                 <label style="color:white;" for="idInput">Código</label>
-                <input type="text" required = "True" name = "username" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
+                <input type="text" required = "True" name = "username" value = "{{dato.username}}" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
               </div>
               <label style="color:white;" class="form-group">Contraseña</label>
                 <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
