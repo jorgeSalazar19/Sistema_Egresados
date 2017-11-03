@@ -1,4 +1,3 @@
-#proyecto
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -68,8 +67,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'egresadosutp_db',
-        'USER': 'postgres',
-        'PASSWORD': '@Err0r404_LINUX',
+        'USER': 'jorge',
+        'PASSWORD': 'jorge97',
         'HOST': 'localhost',
         'PORT': '5432',
     }
