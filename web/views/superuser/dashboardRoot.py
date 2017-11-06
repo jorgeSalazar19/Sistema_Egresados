@@ -21,7 +21,7 @@ def DashboardRoot(request):
 
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
-            template = loader.get_template('DashBoardRoot.html')
+            template = loader.get_template('Root/DashBoardRoot.html')
             ctx = { 'mensaje': mensaje,
             'usuario' : usuario,
             }   

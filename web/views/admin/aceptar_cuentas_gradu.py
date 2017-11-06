@@ -20,7 +20,7 @@ def AceptarCuentas(request):
 
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
-            template = loader.get_template('aceptarCuentas.html')
+            template = loader.get_template('Admin/aceptarCuentas.html')
             pre_registros = PreRegisterGraduated.objects.all()
             ctx = { 'mensaje': mensaje,
                     'pre_registros': pre_registros,
@@ -50,7 +50,7 @@ def AceptarCuentas(request):
         if action == "Eliminar":
             preregister.delete()
 
-    template = loader.get_template('aceptarCuentas.html')
+    template = loader.get_template('Admin/aceptarCuentas.html')
     pre_registros = PreRegisterGraduated.objects.all()
     ctx = { 'mensaje': mensaje,
             'pre_registros': pre_registros,

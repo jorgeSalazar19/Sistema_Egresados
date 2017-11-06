@@ -30,19 +30,19 @@ def PasswordReset(request):
         else:
             mensaje = (True,'El correo no esta en nuestra base de datos')
 
-    tempĺate = loader.get_template('IngresoCorreo.html')
+    tempĺate = loader.get_template('ResetPassword/IngresoCorreo.html')
     ctx = { 'mensaje': mensaje,
             'email': email,
     }   
     return HttpResponse(tempĺate.render(ctx,request))
 
 def PasswordResetDone(request):
-    template = loader.get_template('InformacionCorreo.html')
+    template = loader.get_template('ResetPassword/InformacionCorreo.html')
     ctx = {}
     return HttpResponse(template.render(ctx,request))
 
 def PasswordResetConfirm(request, uidb64 , token):
-    template = loader.get_template('ConfirmarContraseña.html')
+    template = loader.get_template('ResetPassword/ConfirmarContraseña.html')
     ctx = {}
     if request.method == 'GET':
         try:
@@ -55,7 +55,7 @@ def PasswordResetConfirm(request, uidb64 , token):
             return HttpResponse(template.render(ctx,request))
         else:
             print("entra")
-            template = loader.get_template('MensajeLinkInvalido.html')
+            template = loader.get_template('ResetPassword/MensajeLinkInvalido.html')
             ctx = {}
             return HttpResponse(template.render(ctx,request))
 
@@ -78,13 +78,13 @@ def PasswordResetConfirm(request, uidb64 , token):
 
 
 def PasswordResetComplete(request):
-    template = loader.get_template('ConfirmacionCambioC.html')
+    template = loader.get_template('ResetPassword/ConfirmacionCambioC.html')
     ctx = {}
     return HttpResponse(template.render(ctx,request))
 
 def SendMail(from_email,to_list,current_site,user,UserT):
     subject, from_email, to = 'Sistema Egresados -- Recuperación Contraseña',from_email, to_list
-    message = render_to_string('FormatoCorreo.html' , {
+    message = render_to_string('ResetPassword/FormatoCorreo.html' , {
             'user' : user,
             'domain' : current_site.domain,
             'uid' : urlsafe_base64_encode(force_bytes(user.pk)),

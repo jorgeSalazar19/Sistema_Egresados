@@ -18,7 +18,7 @@ def DashboardAdmin(request):
 
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
-            template = loader.get_template('DashBoardAdmin.html')
+            template = loader.get_template('Admin/DashBoardAdmin.html')
             pre_registros = PreRegisterGraduated.objects.all()
             ctx = { 'mensaje': mensaje,
             'pre_registros': pre_registros,
