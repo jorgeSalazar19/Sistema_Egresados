@@ -63,6 +63,12 @@
               {% if not pre_registros %}
                 <center><h3 style="padding-top: 100px;">No hay solicitudes pendientes</h3></center>
               {%endif%}
+
+              {% if mensaje.0 %}
+
+                <h1>{{mensaje.1}}</h1>
+                
+              {% endif %}
               <ul class="list-group ">
                 {% for pre_registro in pre_registros %}
 

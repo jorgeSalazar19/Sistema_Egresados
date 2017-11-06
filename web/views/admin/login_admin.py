@@ -49,7 +49,7 @@ def LoginAdmin(request):
     return HttpResponse(template.render(ctx, request))
 
 def NewPasswordA(request):
-    error = ""
+    error = (True,"")
     dni = request.GET.get('dni')
     usuario = Admin.objects.get(dni=dni)
 
@@ -64,7 +64,7 @@ def NewPasswordA(request):
             usuario.user.save()
             return redirect("/dashboard_admin")
         else:
-            error = "Las contraseñas no coinciden"
+            error = (True,"Las contraseñas no coinciden")
 
 
     template = loader.get_template('ChangePassword.html')
