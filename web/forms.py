@@ -7,6 +7,8 @@ import re
 from django import forms
 from datetime import datetime, date, time, timedelta
 from dateutil.relativedelta import relativedelta
+from django.contrib.auth.models import User
+from django import forms
 
 LIMITE = (date.today() - relativedelta(years=100))
 
@@ -113,3 +115,31 @@ class RegisterFormAdmin(ModelForm):
 
     def get_errors(self):
         return LISTA_ERROR_ADMIN
+
+class FormEmail(forms.ModelForm):
+    class Meta:
+        model = User
+        exclude = [
+                'username',
+                'first_name',
+                'last_name',
+                'email',
+                'password',
+                'groups',
+                'user_permissions',
+                'is_staff',
+                'is_active',
+                'is_superuser',
+                'last_login',
+                'date_joined'
+        ]
+    email = forms.EmailField(label='Correo' , widget=forms.TextInput(attrs={'id':'my_id','class':'my_class','placeholder':'Ingrese su email'}))
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        email_exist = User.objects.filter(email=email)
+        if re.match(patron_email,email) is None:
+            raise forms.ValidationError("El correo no es valido")
+        if len(email_exist) == 0:
+            raise forms.ValidationError("El correo no esta en nuestra base datos")
+

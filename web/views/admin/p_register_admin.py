@@ -39,7 +39,7 @@ def PreRegisterAdmin(request):
             mensaje = (True , message_e)
 
     countries = Country.objects.all().order_by('name')
-    template = loader.get_template('formularioAdm.html')
+    template = loader.get_template('Admin/formularioAdm.html')
     ctx = { 'mensaje': mensaje,
             'paises' : countries,
             'datos' : datos

@@ -7,6 +7,7 @@
   <title>Activación Cuentas</title> 
 
   
+      <link rel="stylesheet" href="css/style.css">
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   
@@ -42,13 +43,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link " href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/aceptar_cuentas_admin?username={{usuario.username}}">Cuentas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+              <a class="nav-link" href="/dashboard_root?username={{usuario.username}}">Perfil</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -58,25 +59,33 @@
       </nav>
 
       <section class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-12">
+
+        <div class="row justify-content-center" >
+          <div class="col-md-12 ">
               {% if not pre_registros %}
                 <center><h3 style="padding-top: 100px;">No hay solicitudes pendientes</h3></center>
               {%endif%}
-              <ul class="list-group ">
-                {% for pre_registro in pre_registros %}
 
+              {% if mensaje.0 %}
+                <h1>{{mensaje.1}}</h1>
+                
+              {% endif %}
+              <ul class="list-group">
+
+                
+                {% for pre_registro in pre_registros %}
                 <form method="POST"> {% csrf_token %}
                 <li class="list-group-item">
 
-                  <div class="container">
-                    <div class="row justify-content-center">                      
+                  <div class="container ">
+                    <div class="row justify-content-center">
+                    
                       <div class="col align-self-center">
                         <div class="row">
-                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center  ">
+                          <div class="col-sm-8 col-md-7 col-lg-8 align-self-center ">                            
                               <h5>{{pre_registro.first_name}} {{pre_registro.last_name}}</h5>
-                              <label>{{pre_registro.career.name}}</label><br>
-                              <label>{{pre_registro.dni}}</label>
+                              <label>{{pre_registro.dni}}</label><br>
+                              <label>{{pre_registro.cellphone}}</label>
 
                           </div>
                           <div class="col-sm-4 col-md-5 col-lg-4 align-self-center ">
@@ -88,13 +97,14 @@
                           </div>
                         </div>
                       </div>
-                    
+                      
                     </div>
                   </div>
 
                 </li>
-                </form> 
-                  {% endfor %}
+                </form>
+                {% endfor %}
+
               </ul>
           </div>
         </div>
@@ -112,21 +122,17 @@
         </button>
       </div>
       <div class="modal-body">
-
         <left>
           <h6>Dni: {{pre_registro.dni}}</h6>
           <h6>País: {{pre_registro.country.name}}</h6>
-          <h6>Fecha Nacimiento: {{pre_registro.birthday}}</h6>
           {% if usuario.genre == "male" %}
               <h6>Género: Masculino</h6>
           {% endif %}
           {% if usuario.genre == "female" %}
               <h6>Género: Femenino</h6>
           {% endif %}
-          <h6>Carrera Graduación: {{pre_registro.career.name}}</h6>
-          <h6>Año Graduación: {{pre_registro.graduation_year}}</h6>
+          <h6>Teléfono: {{pre_registro.cellphone}}</h6>
         </left>
-
 
       </div>
       <div class="modal-footer">
@@ -138,11 +144,9 @@
 {% endfor %}
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-
     <script src={%static "js/jquery.js"%}></script>
     <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

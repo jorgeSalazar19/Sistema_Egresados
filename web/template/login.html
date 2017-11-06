@@ -1,43 +1,9 @@
+{% extends "Bases/BaseLogin.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-  <title>Ingresar</title> 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-
-  <style>
-    .box{
-      background: url({% static "/img/21-login.jpg" %});
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      box-shadow: inset 0px 0px 100px black;
-    }
-    .contenido
-    {
-      background-color: transparent;
-      height: 55vh;
-      border-radius: 10px;
-
-      box-shadow: 0px 0px 60px black;
-    }
-
-  </style>
-  <body>
-
-  <header>
-      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-        <div><a class="navbar-brand" href="/">SISTEMA DE EGRESADOS UTP</a></div>
-      </nav>
-  </header>
 
 
+{% block contenido_login %}
+  
   <section class="container-fluid">
     <div class="row justify-content-center box">
       <div class="col-sm-8 col-md-6 col-lg-5 align-self-center contenido">
@@ -57,7 +23,7 @@
                 <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
               </div>
               <center>
-                <button type="button" style="background-color: #3a906d; border-width:0px;" class="btn btn-primary">Olvidé mi contraseña</button>
+                <button type="button" style="background-color: #3a906d; border-width:0px;" class="btn btn-primary" onclick="location.href='/reset/password_reset';">Olvidé mi contraseña</button>
                 <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d; border-width:0px;">Entrar</button>
                 {% if error.0 %}
                 <br><br>
@@ -74,9 +40,4 @@
     </div>
   </section>
 
-
-    <script src={%static "js/jquery.js"%}></script>
-    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
-</html>
+{% endblock contenido_login %}

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django_forms_bootstrap',
     'django.contrib.staticfiles',
     'domain',
     'web',

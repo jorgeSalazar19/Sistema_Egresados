@@ -41,7 +41,7 @@ def PreRegisterGraduated(request):
                 message_e.append(str(perfil_form.errors[error]))
             mensaje = (True , message_e)
 
-    template = loader.get_template('formularioEgresado.html')
+    template = loader.get_template('Egresado/formularioEgresado.html')
     careers = Career.objects.all()
     countries = Country.objects.all().order_by('name')
     ctx = {
