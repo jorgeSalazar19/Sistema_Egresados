@@ -98,24 +98,22 @@
       		<div id="actividades" class="col-lg-10 col-md-10">
 				<div class="card-columns">
 				  <div class="card">
-				    <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+				    <img class="card-img-top img-fluid" src={% static "img/1.png" %} alt="Card image cap">
 				    <div class="card-block">
 				      <h4 class="card-title">Card title that wraps to a new line</h4>
 				      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
 				    </div>
 				  </div>
-				  <div class="card p-3">
-				    <blockquote class="card-block card-blockquote">
+				<div class="card card-inverse card-info mb-3 text-center">
+				  <div class="card-block">
+				    <blockquote class="card-blockquote">
 				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-				      <footer>
-				        <small class="text-muted">
-				          Someone famous in <cite title="Source Title">Source Title</cite>
-				        </small>
-				      </footer>
+				      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
 				    </blockquote>
 				  </div>
+				</div>
 				  <div class="card">
-				    <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+				    <img class="card-img-top img-fluid" src={% static "img/caminito_utp.jpg" %} alt="Card image cap">
 				    <div class="card-block">
 				      <h4 class="card-title">Card title</h4>
 				      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -140,7 +138,7 @@
 				    </div>
 				  </div>
 				  <div class="card">
-				    <img class="card-img img-fluid" src="..." alt="Card image">
+				    <h6>Hola mundo</h6>
 				  </div>
 				  <div class="card p-3 text-right">
 				    <blockquote class="card-blockquote">
@@ -152,27 +150,30 @@
 				      </footer>
 				    </blockquote>
 				  </div>
-				  <div class="card">
+				 <div class="card card-inverse card-danger text-center">
+					  <div class="card-block">
+					    <blockquote class="card-blockquote">
+					      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+					    </blockquote>
+					  </div>
+					</div>
+			  	<div class="card">
 				    <div class="card-block">
 				      <h4 class="card-title">Card title</h4>
 				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
 				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				    </div>
 				  </div>
-				  				  <div class="card">
-				    <div class="card-block">
-				      <h4 class="card-title">Card title</h4>
-				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				    </div>
-				  </div>
-				  				  <div class="card">
-				    <div class="card-block">
-				      <h4 class="card-title">Card title</h4>
-				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				    </div>
-				  </div>
+
+					<div class="card card-inverse card-success mb-3 text-center">
+					  <div class="card-block">
+					    <blockquote class="card-blockquote">
+					      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+					      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+					    </blockquote>
+					  </div>
+					</div>
 				  				  <div class="card">
 				    <div class="card-block">
 				      <h4 class="card-title">Card title</h4>
@@ -185,7 +186,7 @@
 
 			<!--PANEL DE AMIGOS-->
 			<div class="col-lg-2 col-md-2">
-				<center><label>Amigos</label></center><hr>
+				<center><b><label>Amigos</label></b></center><hr>
 				<div id="amigos">
 
 					<div class="container-fluid ">
@@ -265,7 +266,7 @@
 
 				</div>
 
-				<center><label style="padding-top: 20px;">Sugerencias</label></center><hr>
+				<center><b><label style="padding-top: 20px;">Sugerencias</label></b></center><hr>
 				<div id="solicitudes">
 
 					<div class="container-fluid ">
@@ -307,6 +308,7 @@
 					</div>
 
 				</div>
+				<center><label style="padding-top: 30px; font-size: 14px;">&copy; AsoEgresados UTP</label></center>
 			</div>
 		</div>
       </section>
