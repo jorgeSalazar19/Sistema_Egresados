@@ -74,4 +74,9 @@ urlpatterns = [
         view= PasswordResetComplete,
         name = 'password_reset_complete'
     ),
+
+    url(regex=r'^edit_info_adm/$',
+        view= EditInfoAdm,
+        name = 'edit_info_adm'
+    ),
 ]

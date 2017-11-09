@@ -2,6 +2,7 @@ from .admin.dashboardAdmin import DashboardAdmin
 from .admin.aceptar_cuentas_gradu import AceptarCuentas
 from .admin.login_admin import LoginAdmin , NewPasswordA
 from .admin.p_register_admin import PreRegisterAdmin
+from .admin.edit_info_adm import EditInfoAdm
 
 from .graduated.dashboardEgresado import DashboardEgresado
 from .graduated.login_egresado import LoginEgresado , NewPasswordG

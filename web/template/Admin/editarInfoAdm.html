@@ -1,10 +1,10 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Perfil</title> 
   
-      <link rel="stylesheet" href="css/style.css">
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   
@@ -35,25 +35,28 @@
 </style>
   <body>
 
-
-      <nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-inverse bg-inverse">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand">!</a>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
-              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="#">Cuentas <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">Perfil</a>
+              <a class="nav-link" href="#">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
@@ -62,9 +65,10 @@
       <section class="container">
         <div class="row  box">
           <div class="col-md-12 ">
+          <form method="POST">{% csrf_token %}
             <div class="row"> 
-              <div class="col-sm-5 col-md-5 col-lg-3 borde">
-                <img class="circular" src="varios/perfil.jpg">
+              <div class="col-sm-5 col-md-5 col-lg-3">
+                <img class="circular" src={% static "varios/perfil.jpg" %}>
 
                   <div class="form-group">
                     <label for="exampleInputFile">Subir</label>
@@ -120,6 +124,7 @@
                 </center>
               </div>
             </div>
+          </form>
           </div>
         </div>
       </section>
