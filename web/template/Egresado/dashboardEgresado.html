@@ -8,6 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
 
 
@@ -45,11 +48,11 @@
 	}
 	#amigos{
 	  overflow-y: scroll;
-	  height: 30vh;
+	  height: 40vh;
 	}
 	#solicitudes{
 	  overflow-y: scroll;
-	  height: 30vh;
+	  height: 20vh;
 	}
 	#actividades{
 	  overflow-y: scroll;
@@ -57,8 +60,12 @@
 	}
     .circular{
       border-radius: 50%;
-      width: 50px;
-      height: 50px;
+      width: 35px;
+      height: 35px;
+  	}
+
+  	.borde{
+  		border: solid;
   	}
   </style>
   <body>
@@ -74,6 +81,12 @@
               <a class="nav-link " href="#">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
+              <a class="nav-link " href="#">Amigos<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
             </li>
           </ul>
@@ -83,7 +96,6 @@
       <section class="container-fluid" style="padding-top: 70px;">
       	<div class="row">
       		<div id="actividades" class="col-lg-10 col-md-10">
-      		<center><label>Actividades</label></center><hr>
 				<div class="card-columns">
 				  <div class="card">
 				    <img class="card-img-top img-fluid" src="..." alt="Card image cap">
@@ -174,60 +186,126 @@
 			<!--PANEL DE AMIGOS-->
 			<div class="col-lg-2 col-md-2">
 				<center><label>Amigos</label></center><hr>
-				<div id="amigos" >
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
+				<div id="amigos">
+
+					<div class="container-fluid ">
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>								
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+							</div>
+						</div>
+
 					</div>
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>						
 
 				</div>
 
-				<center><label style="padding-top: 20px;">Solicitudes</label></center><hr>
+				<center><label style="padding-top: 20px;">Sugerencias</label></center><hr>
 				<div id="solicitudes">
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
+
+					<div class="container-fluid ">
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+							</div>
+						</div><hr>
+
+						<div class="row ">
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+							<div class="col-lg-6 align-self-center ">
+								<h6>Camila</h6> 
+							</div>
+							<div class="col-lg-3 align-self-center ">
+								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+							</div>
+						</div>
 					</div>
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
-					<div>
-						<img class="circular" src={% static "varios/perfil.jpg" %}>
-						<span>  Diana</span> 
-					</div>	
+
 				</div>
 			</div>
 		</div>
