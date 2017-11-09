@@ -1,10 +1,241 @@
+{% load staticfiles %}
 <!DOCTYPE html>
-<html>
-<head>
-	<title>dashboardEgresado</title>
-</head>
-<body>
-    <h1>Hola Bienvenido</h1>
-    <a href="/logout">cerrar sesion</a>
-</body>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+
+
+  <style>
+	@media (min-width: 34em) {
+	    .card-columns {
+	        -webkit-column-count: 2;
+	        -moz-column-count: 2;
+	        column-count: 1;
+	    }
+	}
+
+	@media (min-width: 48em) {
+	    .card-columns {
+	        -webkit-column-count: 3;
+	        -moz-column-count: 3;
+	        column-count: 1;
+	    }
+	}
+
+	@media (min-width: 62em) {
+	    .card-columns {
+	        -webkit-column-count: 4;
+	        -moz-column-count: 4;
+	        column-count: 2;
+	    }
+	}
+
+	@media (min-width: 75em) {
+	    .card-columns {
+	        -webkit-column-count: 5;
+	        -moz-column-count: 5;
+	        column-count: 2;
+	    }
+	}
+	#amigos{
+	  overflow-y: scroll;
+	  height: 30vh;
+	}
+	#solicitudes{
+	  overflow-y: scroll;
+	  height: 30vh;
+	}
+	#actividades{
+	  overflow-y: scroll;
+	  height: 85vh;
+	}
+    .circular{
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+  	}
+  </style>
+  <body>
+      <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary ">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">&nbsp;</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link " href="#">Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="container-fluid" style="padding-top: 70px;">
+      	<div class="row">
+      		<div id="actividades" class="col-lg-10 col-md-10">
+      		<center><label>Actividades</label></center><hr>
+				<div class="card-columns">
+				  <div class="card">
+				    <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title that wraps to a new line</h4>
+				      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+				    </div>
+				  </div>
+				  <div class="card p-3">
+				    <blockquote class="card-block card-blockquote">
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				      <footer>
+				        <small class="text-muted">
+				          Someone famous in <cite title="Source Title">Source Title</cite>
+				        </small>
+				      </footer>
+				    </blockquote>
+				  </div>
+				  <div class="card">
+				    <img class="card-img-top img-fluid" src="..." alt="Card image cap">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				  <div class="card card-inverse card-primary p-3 text-center">
+				    <blockquote class="card-blockquote">
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+				      <footer>
+				        <small>
+				          Someone famous in <cite title="Source Title">Source Title</cite>
+				        </small>
+				      </footer>
+				    </blockquote>
+				  </div>
+				  <div class="card text-center">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <img class="card-img img-fluid" src="..." alt="Card image">
+				  </div>
+				  <div class="card p-3 text-right">
+				    <blockquote class="card-blockquote">
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+				      <footer>
+				        <small class="text-muted">
+				          Someone famous in <cite title="Source Title">Source Title</cite>
+				        </small>
+				      </footer>
+				    </blockquote>
+				  </div>
+				  <div class="card">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				  				  <div class="card">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				  				  <div class="card">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				  				  <div class="card">
+				    <div class="card-block">
+				      <h4 class="card-title">Card title</h4>
+				      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+				      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				    </div>
+				  </div>
+				</div>
+			</div>
+
+			<!--PANEL DE AMIGOS-->
+			<div class="col-lg-2 col-md-2">
+				<center><label>Amigos</label></center><hr>
+				<div id="amigos" >
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>						
+
+				</div>
+
+				<center><label style="padding-top: 20px;">Solicitudes</label></center><hr>
+				<div id="solicitudes">
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+					<div>
+						<img class="circular" src={% static "varios/perfil.jpg" %}>
+						<span>  Diana</span> 
+					</div>	
+				</div>
+			</div>
+		</div>
+      </section>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
 </html>
+
