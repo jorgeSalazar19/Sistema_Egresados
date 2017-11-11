@@ -56,3 +56,7 @@ class RegisterFormAdmin(ModelForm):
 
     def get_errors(self):
         return LISTA_ERROR_ADMIN
+
+    def clean_errors(self):
+        for i in range(len(LISTA_ERROR_ADMIN)):
+            LISTA_ERROR_ADMIN.pop()

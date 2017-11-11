@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 
 def AceptarCuentasAdmin(request):
     mensaje = (False , "")
-
+    usuario = []
     if request.method == 'GET':
         username = request.GET.get('username')
         usuario = User.objects.filter(username=username)
@@ -33,6 +33,8 @@ def AceptarCuentasAdmin(request):
             return redirect('/login_admin')
 
     if request.method == 'POST':
+        username = request.GET.get('username')
+        usuario = User.objects.filter(username=username)
         Action_button = request.POST.get('tipo')
         id_pregister , action = Action_button.split()
         preregister = PreRegisterAdmin.objects.get(id=id_pregister)
@@ -57,6 +59,7 @@ def AceptarCuentasAdmin(request):
     pre_registros = PreRegisterAdmin.objects.all()
     ctx = { 'mensaje': mensaje,
     'pre_registros' : pre_registros,
+    'usuario' : usuario,
     }   
     return HttpResponse(template.render(ctx,request))
 
