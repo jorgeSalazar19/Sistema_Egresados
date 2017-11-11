@@ -85,8 +85,14 @@ urlpatterns = [
         name = 'edit_info_adm'
     ),
 
-        url(regex=r'^register_done/$',
+    url(regex=r'^register_done/$',
         view= RegisterDone,
         name = 'register_done'
+    ),
+
+
+    url(regex=r'^create_activity/$',
+        view= CreateActivity,
+        name = 'create_activity'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

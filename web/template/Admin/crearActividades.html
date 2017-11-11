@@ -1,0 +1,24 @@
+{% extends "Bases/BaseAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_admin %}
+    <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+        <select name = "category" required = "True">
+          {% for category in categories  %}
+            <option value="{{category.id}}">{{category.name}}</option>
+          {% endfor %}
+        </select><br>
+         <input type="file" id="exampleInputFile" name="image_activity"><br>
+        <input type="text" name="name" placeholder="nombre de la actividad" required="True"><br>
+        <input type="text" name="description" placeholder="descripcion de la actividad" required="True"><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+{% if mensaje.0 %}
+{% for error in mensaje.1  %}
+    
+    <h5>{{error}}</h5>
+    
+  {% endfor %}  
+{% endif %}
+{% endblock contenido_admin %}
