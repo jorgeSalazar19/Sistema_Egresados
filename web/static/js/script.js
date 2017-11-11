@@ -5,7 +5,11 @@ $(function(){
     content : '<button type="button" class="btn btn-danger btn-sm" id="admReg" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoReg" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 
@@ -23,10 +27,13 @@ $(function(){
     content : '<button type="button" class="btn btn-danger btn-sm" id="admReg2" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoReg2" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
-
 $('body').on('click', 'button#admReg2', function() {
     $(location).attr('href','pre_registro_admin');
 });
@@ -41,7 +48,11 @@ $(function(){
     content : '<button type="button" class="btn btn-danger btn-sm" id="admReg3" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoReg3" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 $('body').on('click', 'button#admReg3', function() {
@@ -60,7 +71,11 @@ $(function(){
     content : '<center><button type="button" class="btn btn-danger btn-sm" id="admRegH" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button><br><br><button type="button" id="egresadoRegH" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button></center>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 
@@ -77,10 +92,14 @@ $(function(){
       html: true,
       content : '<button type="button" class="btn btn-danger btn-sm" id="admIng" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoIng" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
     })
-    $('html').click(function() {
-      $('#close').popover('hide');
+  $('html').click(function() {
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
     });
   });
+});
 $('body').on('click', 'button#admIng', function() {
     $(location).attr('href','login_admin');
 });
@@ -94,10 +113,14 @@ $(function(){
       html: true,
       content : '<button type="button" class="btn btn-danger btn-sm" id="admIng2" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoIng2" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
     })
-    $('html').click(function() {
-      $('#close').popover('hide');
+  $('html').click(function() {
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
     });
   });
+});
 $('body').on('click', 'button#admIng2', function() {
     $(location).attr('href','login_admin');
 });
@@ -112,7 +135,11 @@ $(function(){
     content : '<center><button type="button" class="btn btn-danger btn-sm" id="admIn3" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button><br><br> <button type="button" id="egresadoIng3" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button></center>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 
@@ -131,7 +158,11 @@ $(function(){
     content : '<button type="button" class="btn btn-danger btn-sm" id="admRegR" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoRegR" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 
@@ -149,7 +180,11 @@ $(function(){
     content : '<button type="button" class="btn btn-danger btn-sm" id="admInR" style=" background-color: #3a906d; border-color: #3a906d" >Administrador</button> <button type="button" id="egresadoIngR" style=" background-color: #3a906d; border-color: #3a906d" class="btn btn-success btn-sm">Egresado</button>'
   })
   $('html').click(function() {
-    $('#close').popover('hide');
+    $('#close').popover()
+    .click(function(e){
+      e.preventDefault();
+      $(this).focus();
+    });
   });
 });
 
@@ -160,6 +195,11 @@ $('body').on('click', 'button#egresadoIngR', function() {
     $(location).attr('href','login_egresado');
 });
 
+$(function(){
+     // Find any date inputs and override their functionality
+     $('input[type="date"]').datepicker();
+});
+        
 
 
 

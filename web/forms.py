@@ -2,6 +2,7 @@
 from django.forms import ModelForm 
 from django.contrib.auth.models import User
 from domain.models import PreRegisterGraduated , PreRegisterAdmin
+from domain.models import Admin
 from django.core.validators import RegexValidator
 import re
 from django import forms
@@ -142,4 +143,18 @@ class FormEmail(forms.ModelForm):
             raise forms.ValidationError("El correo no es valido")
         if len(email_exist) == 0:
             raise forms.ValidationError("El correo no esta en nuestra base datos")
+
+
+class UploadImageForm(forms.ModelForm):
+
+    class Meta:
+        model = Admin
+        exclude = [
+                    'dni',
+                    'country',
+                    'genre',
+                    'cellphone',
+                    'first_login',
+                    'user'
+        ]
 

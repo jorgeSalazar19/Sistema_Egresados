@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django_forms_bootstrap',
     'django.contrib.staticfiles',
     'domain',
     'web',
@@ -121,12 +120,17 @@ DATABASES['default'].update(db_from_env)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 STATIC_URL = '/static/'
+<<<<<<< HEAD
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (  
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+=======
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'web/static/media')
+>>>>>>> versiones
 
 #Email settings 
 EMAIL_HOST = 'smtp.gmail.com'
