@@ -26,7 +26,7 @@
                 <div class="form-group row">
                   <label for="example-email-input" class="col-2 col-form-label">Email</label>
                   <div class="col-10">
-                    <input class="form-control" type="email" value="" id="example-email-input">
+                    <input class="form-control" type="email" name="email" value="{{usuario.user.email}}" id="example-email-input">
                   </div>
                 </div>
 
@@ -34,7 +34,8 @@
                 <div class="form-group row">
                   <label for="pais-input" class="col-2 col-form-label">País</label>
                     <div class="col-10">
-                      <select class="form-control" name = "country" id="pais-input">
+                      <select class="form-control" value ="" name = "country" id="pais-input">
+                        <option value="{{usuario.country.id}}">{{usuario.country.name}}</option>
                         {% for country in paises  %}
                           <option value="{{country.id}}">{{country.name}}</option>
                         {% endfor %}
@@ -44,7 +45,7 @@
                 <div class="form-group row">
                   <label for="example-number-input" class="col-2 col-form-label">Teléfono</label>
                   <div class="col-10">
-                    <input class="form-control" type="tel" value="" id="example-number-input">
+                    <input class="form-control" type="tel" name="cellphone" value="{{usuario.cellphone}}" id="example-number-input">
                   </div>
                 </div><br>
                 <center>

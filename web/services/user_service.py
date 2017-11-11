@@ -44,7 +44,8 @@ class UserService:
                             birthday = self.user_data['birthday'],
                             genre = self.user_data['genre'],
                             career = career,
-                            graduation_year = self.user_data['graduation_year']
+                            graduation_year = self.user_data['graduation_year'],
+                            profile_picture = None
                         )
     def _create_admin(self):
         country = Country.objects.get(id=self.user_data['country_id'])

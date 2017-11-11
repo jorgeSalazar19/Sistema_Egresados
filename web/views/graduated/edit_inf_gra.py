@@ -1,10 +1,9 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader
-from domain.models import Admin
-from domain.models import Country
+from domain.models import Graduated
 
-def EditInfoAdm(request):
+def EditInfoGra(request):
     mensaje = (False,'')
 
     if request.method == 'GET':
@@ -16,33 +15,15 @@ def EditInfoAdm(request):
             template = loader.get_template('Admin/editarInfoAdm.html')
 
     if request.method == 'POST':
-        dni = request.GET.get('dni')
-        usuario = Admin.objects.filter(dni=dni)
-        usuario = usuario[0]
         
-        email = request.POST.get('email')
-        country = request.POST.get('country')
-        cellphone = request.POST.get('cellphone')
-        print(country)
-
-        if len(email) != 0:
-            usuario.user.email = email
-            usuario.user.save()
-        
-        if len(country) != 0:
-            country = Country.objects.get(id=country)
-            usuario.country = country
-            usuario.save()
-
-        if len(cellphone) != 0:
-            usuario.cellphone = cellphone
-            usuario.save() 
-
         if len(request.FILES) != 0:
             profile_picture =  request.FILES['profile_picture']
         else:
             profile_picture = None
 
+        dni = request.GET.get('dni')
+        usuario = Admin.objects.filter(dni=dni)
+        usuario = usuario[0]
         if profile_picture is not None:
             usuario.profile_picture.delete()
             usuario.profile_picture = profile_picture
@@ -51,11 +32,9 @@ def EditInfoAdm(request):
         else:
             mensaje = (True, 'No se cargo')
 
-    paises = Country.objects.all().order_by('name')
     template = loader.get_template('Admin/editarInfoAdm.html')
     ctx = { 
         'mensaje' : mensaje,
-        'usuario' : usuario,
-        'paises' : paises,
+        'usuario' : usuario
     }
     return HttpResponse(template.render(ctx,request))
