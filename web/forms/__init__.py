@@ -1,0 +1,2 @@
+from .register_form_graduated import RegisterFormGraduated
+from .register_form_admin import RegisterFormAdmin

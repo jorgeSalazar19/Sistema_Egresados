@@ -53,7 +53,8 @@ class UserService:
                             dni = self.user_data['dni'],
                             country = country,
                             genre = self.user_data['genre'],
-                            cellphone = self.user_data['cellphone']
+                            cellphone = self.user_data['cellphone'],
+                            profile_picture = None
                         )
 
     def _delete_preregister_graduated(self):

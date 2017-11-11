@@ -26,9 +26,8 @@ def PreRegisterGraduated(request):
                     dni = perfil_form.cleaned_data['dni']
                     birthday = perfil_form.cleaned_data['birthday']
                     graduation_year = perfil_form.cleaned_data['graduation_year']
-
                     perfil_form.save()
-                    mensaje = (True , 'El registro se realizo correctamente')
+                    return redirect('/register_done')
                 else:
                     mensaje = (True , 'El Usuario ya es un Egresado')
             else:
@@ -36,10 +35,13 @@ def PreRegisterGraduated(request):
         else:
             print(perfil_form.errors)
             errors = perfil_form.get_errors()
+            print(errors)
             message_e = []
             for error in errors:
                 message_e.append(str(perfil_form.errors[error]))
             mensaje = (True , message_e)
+            errors = perfil_form.clean_errors()
+
 
     template = loader.get_template('Egresado/formularioEgresado.html')
     careers = Career.objects.all()

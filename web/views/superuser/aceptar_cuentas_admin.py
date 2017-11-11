@@ -47,6 +47,7 @@ def AceptarCuentasAdmin(request):
                 current_site = get_current_site(request)
                 SendMail(from_email,to_list,user_data['temporal_password'],current_site)
             except Exception as e:
+                print (e)
                 mensaje = (True , str(e))
 
         if action == "Eliminar":
@@ -61,7 +62,7 @@ def AceptarCuentasAdmin(request):
 
 def SendMail(fromEmail,to_list,t_password,current_site):
     subject, from_email, to = 'Sistema Egresados -- Contraseña', fromEmail, to_list
-    message = render_to_string('FormatoPasswordAdmin.html', {
+    message = render_to_string('FormatosCorreo/FormatoPasswordAdmin.html', {
         'domain' : current_site.domain,
         'password' : t_password
         })

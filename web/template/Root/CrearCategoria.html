@@ -1,0 +1,12 @@
+{% extends "Bases/BaseRoot.html" %}
+{% load staticfiles %}
+
+{% block contenido_root %}
+
+<form method="POST"> {% csrf_token %}
+    <input type="text" placeholder="Nombre de categoria" name="name_category" required="True"><br>
+    <textarea type="text" placeholder="Descripcion de la categoria" name="description_category" required="True"></textarea><br>
+    <button type="submit" >Enviar</button>
+</form>
+
+{% endblock contenido_root %}

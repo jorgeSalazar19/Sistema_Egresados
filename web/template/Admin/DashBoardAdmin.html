@@ -1,42 +1,7 @@
+{% extends "Bases/BaseAdmin.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
 
-  <title>DashBoard Admin / {{usuario.user.first_name}}</title> 
-
-<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  
-</head>
-<style type="text/css">
-  .borde{
-
-    border: 2px solid black; 
-  }
-  .box{
-    padding-top: 100px;
-  }
-  .circular{
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-  }
-  ul{
-    list-style:none
-  }
-  a:hover{
-    text-decoration: none;
-  }
-  #reciente{
-    overflow-y: scroll;
-    height: 200px;
-  }
-</style>
-  <body>
-
-
+{% block contenido_admin %}
       <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -54,6 +19,9 @@
             <li class="nav-item active">
               <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
             </li>
@@ -61,14 +29,20 @@
         </div>
       </nav>
 
-
-      <section class="container">
+        <section class="container">
         <div class="row box">
           <div class="col-md-12 ">
-            <div class="row"> 
+            <div class="row">
+            {% if not usuario.profile_picture  %}
               <div class="col-sm-5 col-md-5 col-lg-3 ">
-                <img class="circular" src={% static "varios/perfil.jpg" %}>
+                <img class="circular" src="">
               </div>
+            {% else %}
+             <div class="col-sm-5 col-md-5 col-lg-3 ">
+                <img class="circular" src="{{usuario.profile_picture.url}}">
+              </div>
+            {% endif %} 
+             
               <div class="col-sm-7 col-md-7 col-lg-9 ">
 
                 <h1 align="center">Bienvenido Administrador</h5><br>
@@ -108,12 +82,6 @@
         </div>
       </section>
 
+{% endblock contenido_admin %}
 
-<!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src={%static "js/jquery.js"%}></script>
-    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-</body>
-
-</html>

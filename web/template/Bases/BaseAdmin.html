@@ -1,0 +1,56 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <title>DashBoard Admin / {{usuario.user.first_name}}</title> 
+
+<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  
+</head>
+<style type="text/css">
+  .borde{
+
+    border: 2px solid black; 
+  }
+  .box{
+    padding-top: 100px;
+  }
+  .circular{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+  }
+  ul{
+    list-style:none
+  }
+  a:hover{
+    text-decoration: none;
+  }
+  #reciente{
+    overflow-y: scroll;
+    height: 200px;
+  }
+  .file-custom::after {
+      content: attr(data-content-value);
+  }
+</style>
+  <body>
+
+
+
+
+{% block contenido_admin %}
+  
+{% endblock contenido_admin %}
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src={%static "js/jquery.js"%}></script>
+    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+</body>
+</html>
