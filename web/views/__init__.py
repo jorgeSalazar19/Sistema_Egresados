@@ -7,6 +7,7 @@ from .admin.edit_info_adm import EditInfoAdm
 from .graduated.dashboardEgresado import DashboardEgresado
 from .graduated.login_egresado import LoginEgresado , NewPasswordG
 from .graduated.p_register_graduated import PreRegisterGraduated
+from .graduated.register_done import RegisterDone
 
 from .superuser.dashboardRoot import DashboardRoot
 from .superuser.aceptar_cuentas_admin import AceptarCuentasAdmin

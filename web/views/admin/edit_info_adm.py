@@ -1,7 +1,6 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader
-from web.forms import UploadImageForm
 from domain.models import Admin
 
 def EditInfoAdm(request):
@@ -16,10 +15,12 @@ def EditInfoAdm(request):
             template = loader.get_template('Admin/editarInfoAdm.html')
 
     if request.method == 'POST':
+        
         if len(request.FILES) != 0:
             profile_picture =  request.FILES['profile_picture']
         else:
             profile_picture = None
+
         dni = request.GET.get('dni')
         usuario = Admin.objects.filter(dni=dni)
         usuario = usuario[0]

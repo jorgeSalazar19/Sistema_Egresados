@@ -1,4 +1,3 @@
-
 from django.forms import ModelForm 
 from django.contrib.auth.models import User
 from domain.models import PreRegisterGraduated , PreRegisterAdmin
@@ -68,7 +67,7 @@ class RegisterFormGraduated(ModelForm):
     def clean_graduation_year(self):
         birthday = self.cleaned_data.get('birthday')
         graduation_year = self.cleaned_data.get('graduation_year')
-        if graduation_year < (birthday + relativedelta(years=18)):
+        if graduation_year < (birthday + relativedelta(years=18)) or graduation_year > date.today():
             if 'graduation_year' not in LISTA_ERROR_GRADUATED:
                 LISTA_ERROR_GRADUATED.append('graduation_year')
             raise forms.ValidationError("Tienes un error en el campo fecha graduacion")
@@ -77,84 +76,6 @@ class RegisterFormGraduated(ModelForm):
     def get_errors(self):
         return LISTA_ERROR_GRADUATED
 
-LISTA_ERROR_ADMIN=[]
-class RegisterFormAdmin(ModelForm):
-    class Meta:
-        model = PreRegisterAdmin
-        fields=['first_name','last_name','email','dni','country','genre','cellphone']
-    def clean_first_name(self):
-        first_name = self.cleaned_data.get('first_name')
-        if re.match(patron_nombre_apellido,first_name) is None:
-            if 'first_name' not in LISTA_ERROR_ADMIN:
-                LISTA_ERROR_ADMIN.append('first_name')
-            raise forms.ValidationError("Tienes un error en el campo nombre")
-        return first_name
-
-    def clean_last_name(self):
-        last_name = self.cleaned_data.get('last_name')
-        if re.match(patron_nombre_apellido,last_name) is None:
-            if 'last_name' not in LISTA_ERROR_ADMIN:
-                LISTA_ERROR_ADMIN.append('last_name')
-            raise forms.ValidationError("Tienes un error en el campo apellido")
-        return last_name
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if re.match(patron_email,email) is None:
-            if 'email' not in LISTA_ERROR_ADMIN:
-                LISTA_ERROR_ADMIN.append('email')
-            raise forms.ValidationError("Tienes un error en el campo email")
-        return email
-
-    def clean_dni(self):
-        dni = self.cleaned_data.get('dni')
-        if re.match(patron_dni,dni) is None:
-            if 'dni' not in LISTA_ERROR_ADMIN:
-                LISTA_ERROR_ADMIN.append('dni')
-            raise forms.ValidationError("Tienes un error en el campo dni")
-        return dni
-
-    def get_errors(self):
-        return LISTA_ERROR_ADMIN
-
-class FormEmail(forms.ModelForm):
-    class Meta:
-        model = User
-        exclude = [
-                'username',
-                'first_name',
-                'last_name',
-                'email',
-                'password',
-                'groups',
-                'user_permissions',
-                'is_staff',
-                'is_active',
-                'is_superuser',
-                'last_login',
-                'date_joined'
-        ]
-    email = forms.EmailField(label='Correo' , widget=forms.TextInput(attrs={'id':'my_id','class':'my_class','placeholder':'Ingrese su email'}))
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        email_exist = User.objects.filter(email=email)
-        if re.match(patron_email,email) is None:
-            raise forms.ValidationError("El correo no es valido")
-        if len(email_exist) == 0:
-            raise forms.ValidationError("El correo no esta en nuestra base datos")
-
-
-class UploadImageForm(forms.ModelForm):
-
-    class Meta:
-        model = Admin
-        exclude = [
-                    'dni',
-                    'country',
-                    'genre',
-                    'cellphone',
-                    'first_login',
-                    'user'
-        ]
-
+    def clean_errors(self):
+        for i in range(len(LISTA_ERROR_GRADUATED)):
+            LISTA_ERROR_GRADUATED.pop()

@@ -2,7 +2,6 @@ from django.conf.urls import url , include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views 
 from .views import *
-from .forms import FormEmail
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -84,5 +83,10 @@ urlpatterns = [
     url(regex=r'^edit_info_adm/$',
         view= EditInfoAdm,
         name = 'edit_info_adm'
+    ),
+
+        url(regex=r'^register_done/$',
+        view= RegisterDone,
+        name = 'register_done'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
