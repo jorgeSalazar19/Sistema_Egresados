@@ -72,8 +72,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'egresadosutp_db',
 
-        'USER': 'jorge',
-        'PASSWORD': 'jorge97',
+        'USER': 'postgres',
+        'PASSWORD': '@Err0r404_LINUX',
         'HOST': 'localhost',
         'PORT': '5432',
     }
