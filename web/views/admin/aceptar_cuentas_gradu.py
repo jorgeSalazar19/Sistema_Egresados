@@ -60,7 +60,7 @@ def AceptarCuentas(request):
     
 def SendMail(fromEmail,to_list,t_password,current_site):
     subject, from_email, to = 'Sistema Egresados -- Contraseña', fromEmail, to_list
-    message = render_to_string('FormatoPassword.html', {
+    message = render_to_string('FormatosCorreo/FormatoPassword.html', {
         'domain' : current_site.domain,
         'password' : t_password
         })

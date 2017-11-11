@@ -5,10 +5,17 @@
         <section class="container">
         <div class="row box">
           <div class="col-md-12 ">
-            <div class="row"> 
+            <div class="row">
+            {% if not usuario.profile_picture  %}
               <div class="col-sm-5 col-md-5 col-lg-3 ">
+                <img class="circular" src="">
+              </div>
+            {% else %}
+             <div class="col-sm-5 col-md-5 col-lg-3 ">
                 <img class="circular" src="{{usuario.profile_picture.url}}">
               </div>
+            {% endif %} 
+             
               <div class="col-sm-7 col-md-7 col-lg-9 ">
 
                 <h1 align="center">Bienvenido Administrador</h5><br>
