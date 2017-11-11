@@ -4,9 +4,19 @@
 {% block contenido_root %}
 
 <form method="POST"> {% csrf_token %}
-    <input type="text" placeholder="Nombre de categoria" name="name_category" required="True"><br>
-    <textarea type="text" placeholder="Descripcion de la categoria" name="description_category" required="True"></textarea><br>
+    <input type="text" placeholder="Nombre de categoria" name="name" required="True"><br>
+    <textarea type="text" placeholder="Descripcion de la categoria" name="description" required="True"></textarea><br>
     <button type="submit" >Enviar</button>
 </form>
+
+{% if mensaje.0 %}
+
+	{% for error in mensaje.1  %}
+
+		<h5>{{error}}</h5>
+		
+	{% endfor %}
+	
+{% endif %}
 
 {% endblock contenido_root %}
