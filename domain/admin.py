@@ -7,7 +7,8 @@ from domain.models import (
 	Career ,  
 	PreRegisterAdmin , 
 	Country,
-	Admin
+	Admin,
+	Activity
 )
 @admin.register(Graduated)
 class GraduatedAdmin(admin.ModelAdmin):
@@ -20,6 +21,11 @@ class AdminAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Activity)
+class ActivityAdmin(admin.ModelAdmin):
+    pass    
+
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     pass

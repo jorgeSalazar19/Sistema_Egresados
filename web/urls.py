@@ -2,7 +2,8 @@ from django.conf.urls import url , include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views 
 from .views import *
-from .forms import FormEmail
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
 	url(r'^$', Index),
@@ -50,6 +51,10 @@ urlpatterns = [
     url(regex=r'^aceptar_cuentas_admin/$',
         view=AceptarCuentasAdmin, 
         name="aceptar_cuentas_admin"),
+
+    url(regex=r'^crear_categorias/$',
+        view=CreateCategory, 
+        name="crear_categorias"),
     
     url(regex=r'^logout/$',
         view=closeSession, 
@@ -74,4 +79,20 @@ urlpatterns = [
         view= PasswordResetComplete,
         name = 'password_reset_complete'
     ),
-]
+
+    url(regex=r'^edit_info_adm/$',
+        view= EditInfoAdm,
+        name = 'edit_info_adm'
+    ),
+
+    url(regex=r'^register_done/$',
+        view= RegisterDone,
+        name = 'register_done'
+    ),
+
+
+    url(regex=r'^create_activity/$',
+        view= CreateActivity,
+        name = 'create_activity'
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

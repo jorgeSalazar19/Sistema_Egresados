@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 
 def AceptarCuentasAdmin(request):
     mensaje = (False , "")
-
+    usuario = []
     if request.method == 'GET':
         username = request.GET.get('username')
         usuario = User.objects.filter(username=username)
@@ -33,6 +33,8 @@ def AceptarCuentasAdmin(request):
             return redirect('/login_admin')
 
     if request.method == 'POST':
+        username = request.GET.get('username')
+        usuario = User.objects.filter(username=username)
         Action_button = request.POST.get('tipo')
         id_pregister , action = Action_button.split()
         preregister = PreRegisterAdmin.objects.get(id=id_pregister)
@@ -47,6 +49,7 @@ def AceptarCuentasAdmin(request):
                 current_site = get_current_site(request)
                 SendMail(from_email,to_list,user_data['temporal_password'],current_site)
             except Exception as e:
+                print (e)
                 mensaje = (True , str(e))
 
         if action == "Eliminar":
@@ -56,12 +59,13 @@ def AceptarCuentasAdmin(request):
     pre_registros = PreRegisterAdmin.objects.all()
     ctx = { 'mensaje': mensaje,
     'pre_registros' : pre_registros,
+    'usuario' : usuario,
     }   
     return HttpResponse(template.render(ctx,request))
 
 def SendMail(fromEmail,to_list,t_password,current_site):
     subject, from_email, to = 'Sistema Egresados -- Contraseña', fromEmail, to_list
-    message = render_to_string('FormatoPasswordAdmin.html', {
+    message = render_to_string('FormatosCorreo/FormatoPasswordAdmin.html', {
         'domain' : current_site.domain,
         'password' : t_password
         })

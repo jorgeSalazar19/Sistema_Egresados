@@ -14,10 +14,11 @@ class Admin(models.Model):
         verbose_name_plural = u"Admins"
 
     user = models.ForeignKey(User)
+    profile_picture = models.ImageField(default=True , upload_to='profile_pictures', null=True)
     dni = models.CharField(max_length=15, null=False , primary_key=True)
     country = models.ForeignKey(Country)
     genre = models.CharField(choices=GENRE, max_length=10)
-    cellphone = models.BigIntegerField()
+    cellphone = models.BigIntegerField(null=True)
     first_login = models.IntegerField(default=0)
 
 
