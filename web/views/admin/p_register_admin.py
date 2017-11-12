@@ -24,8 +24,12 @@ def PreRegisterAdmin(request):
         if perfil_form.is_valid():
             if (len(usuario_dni) == 0) and (len(usuario_email) == 0):
                 if len(usuario_admin) == 0:
+                    name = perfil_form.cleaned_data['first_name']
+                    last_name = perfil_form.cleaned_data['last_name']
+                    email = perfil_form.cleaned_data['email']
+                    dni = perfil_form.cleaned_data['dni']
                     perfil_form.save()
-                    mensaje = (True , 'Registro Exitoso')
+                    return redirect('/register_done')
                 else:
                     mensaje = (True , 'El Usuario ya es un administrador')
             else:
@@ -37,6 +41,7 @@ def PreRegisterAdmin(request):
             for error in errors:
                 message_e.append(str(perfil_form.errors[error]))
             mensaje = (True , message_e)
+            errors = perfil_form.clean_errors()
 
     countries = Country.objects.all().order_by('name')
     template = loader.get_template('Admin/formularioAdm.html')

@@ -19,6 +19,7 @@ class Graduated(models.Model):
 
     user = models.ForeignKey(User)
     dni = models.CharField(max_length=15, null=False , primary_key=True)
+    profile_picture = models.ImageField(default=True , upload_to='profile_pictures', null=True)
     country = models.ForeignKey(Country)
     birthday = models.DateField()
     genre = models.CharField(choices=GENRE, max_length=10)

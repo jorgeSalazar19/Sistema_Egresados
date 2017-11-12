@@ -54,7 +54,6 @@ def PasswordResetConfirm(request, uidb64 , token):
         if user is not None and account_activation_token.check_token(user, token):
             return HttpResponse(template.render(ctx,request))
         else:
-            print("entra")
             template = loader.get_template('ResetPassword/MensajeLinkInvalido.html')
             ctx = {}
             return HttpResponse(template.render(ctx,request))

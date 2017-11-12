@@ -1,38 +1,7 @@
+{% extends "Bases/BaseAdmin.html" %}
 {%load staticfiles%}
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
 
-  <title>Activación Cuentas</title> 
-
-  
-<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  
-</head>
-<style type="text/css">
-  .borde{
-
-    border: 2px solid black; 
-  }
-  #box{
-    height: 90vh;
-  }
-  .circular{
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    display: inline-block;
-  }
-  .circular2{
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-  }
-</style>
-  <body>
-
+{% block contenido_admin %}
       <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -42,13 +11,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link " href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="#">Actividades <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/create_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -57,7 +29,7 @@
         </div>
       </nav>
 
-      <section class="container">
+      <section class="container" >
         <div class="row justify-content-center">
           <div class="col-md-12">
               {% if not pre_registros %}
@@ -142,13 +114,6 @@
   </div>
 </div>
 {% endfor %}
+  
+{% endblock contenido_admin %}
 
-<!-- jQuery first, then Tether, then Bootstrap JS. -->
-
-    <script src={%static "js/jquery.js"%}></script>
-    <script src={%static "js/tether/dist/js/tether.min.js"%}></script>
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
-</body>
-</html>

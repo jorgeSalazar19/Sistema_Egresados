@@ -44,7 +44,8 @@ class UserService:
                             birthday = self.user_data['birthday'],
                             genre = self.user_data['genre'],
                             career = career,
-                            graduation_year = self.user_data['graduation_year']
+                            graduation_year = self.user_data['graduation_year'],
+                            profile_picture = None
                         )
     def _create_admin(self):
         country = Country.objects.get(id=self.user_data['country_id'])
@@ -53,7 +54,8 @@ class UserService:
                             dni = self.user_data['dni'],
                             country = country,
                             genre = self.user_data['genre'],
-                            cellphone = self.user_data['cellphone']
+                            cellphone = self.user_data['cellphone'],
+                            profile_picture = None
                         )
 
     def _delete_preregister_graduated(self):
