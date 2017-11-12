@@ -55,6 +55,14 @@ urlpatterns = [
     url(regex=r'^crear_categorias/$',
         view=CreateCategory, 
         name="crear_categorias"),
+
+    url(regex=r'^lista_categorias/$',
+        view=ListCategory, 
+        name="lista_categorias"),
+
+    url(regex=r'^delete_categorias/$',
+        view=DeleteCategory, 
+        name="delete_categorias"),
     
     url(regex=r'^logout/$',
         view=closeSession, 

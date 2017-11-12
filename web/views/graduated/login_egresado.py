@@ -17,7 +17,7 @@ def LoginEgresado(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("/dashboard_egresado?dni="+username)
+                return redirect("/dashboard_egresado?username="+username)
             else:
                 error = (True, "Contraseña no valida")
         else:

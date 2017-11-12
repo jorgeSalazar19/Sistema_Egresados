@@ -13,6 +13,8 @@ from .graduated.register_done import RegisterDone
 from .superuser.dashboardRoot import DashboardRoot
 from .superuser.aceptar_cuentas_admin import AceptarCuentasAdmin
 from .superuser.create_category import CreateCategory
+from .superuser.lista_categories import ListCategory
+from .superuser.delete_categories import DeleteCategory
 
 from .index import Index
 from .logout import closeSession

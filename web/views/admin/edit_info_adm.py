@@ -14,6 +14,8 @@ def EditInfoAdm(request):
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
             template = loader.get_template('Admin/editarInfoAdm.html')
+        else:
+            return redirect('/login_admin')
 
     if request.method == 'POST':
         dni = request.GET.get('dni')

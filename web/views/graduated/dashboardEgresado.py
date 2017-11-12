@@ -8,10 +8,11 @@ from django.contrib.auth.models import User
 
 
 def DashboardEgresado(request):
-    dni = request.GET.get('dni')
+    dni = request.GET.get('username')
     password = request.GET.get('password')
     mensaje = (False,'')
     template = loader.get_template('Egresado/dashboardEgresado.html')
+    print(dni)
     usuario = Graduated.objects.get(dni=dni) 
     categorias = usuario.preferences.all()
     categorias_A = []*len(categorias)

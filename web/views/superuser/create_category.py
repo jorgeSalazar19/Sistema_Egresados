@@ -8,10 +8,16 @@ from django.contrib.auth.models import User
 
 def CreateCategory(request):
     mensaje = (False,'')
+    usuario = []
     if request.method == 'GET':
         username = request.GET.get('username')
         usuario = User.objects.filter(username=username)
-        usuario = usuario[0]
+        if len(usuario) != 0 and request.user.is_authenticated():
+            usuario = usuario[0]
+        else:
+            return redirect('/')
+
+
 
     if request.method == 'POST':
         username = request.GET.get('username')
