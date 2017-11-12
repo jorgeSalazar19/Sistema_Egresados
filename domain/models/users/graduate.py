@@ -25,8 +25,8 @@ class Graduated(models.Model):
     genre = models.CharField(choices=GENRE, max_length=10)
     career = models.ForeignKey(Career)
     graduation_year = models.DateField()
-    categories  = models.ManyToManyField(Category)
-    first_login = models.IntegerField(default=0)
+    preferences = models.ManyToManyField(Category)
+    first_login = models.IntegerField(default=0 , null=True)
 
 
     def __str__(self):

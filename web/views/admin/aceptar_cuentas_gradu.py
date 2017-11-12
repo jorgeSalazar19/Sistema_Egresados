@@ -14,6 +14,7 @@ from django.conf import settings
 
 def AceptarCuentas(request):
     mensaje = (False,'')
+    usuario = []
     if request.method == 'GET':
         dni = request.GET.get('dni')
         usuario = Admin.objects.filter(dni=dni)
@@ -33,6 +34,9 @@ def AceptarCuentas(request):
     if request.method == 'POST':
         Action_button = request.POST.get('tipo')
         id_pregister , action = Action_button.split()
+        dni = request.GET.get('dni')
+        usuario = Admin.objects.filter(dni=dni)
+        usuario = usuario[0]
         preregister = PreRegisterGraduated.objects.get(id=id_pregister)
         if action == "Aceptar":
             user_data = preregister.__dict__
@@ -54,6 +58,7 @@ def AceptarCuentas(request):
     pre_registros = PreRegisterGraduated.objects.all()
     ctx = { 'mensaje': mensaje,
             'pre_registros': pre_registros,
+            'usuario' : usuario,
     }   
     return HttpResponse(template.render(ctx,request))
 

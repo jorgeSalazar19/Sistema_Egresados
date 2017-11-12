@@ -20,7 +20,7 @@ urlpatterns = [
         view=LoginEgresado, 
         name="login_egresado"),
     
-    url(regex=r'^new_passwordg/$',
+    url(regex=r'^dashboard_egresado/new_passwordg/$',
         view=NewPasswordG, 
         name="new_passwordg"),
     
@@ -95,4 +95,11 @@ urlpatterns = [
         view= CreateActivity,
         name = 'create_activity'
     ),
+
+    url(regex=r'^dashboard_egresado/preferences_graduated/$',
+        view= PreferencesGraduated,
+        name = 'preferences_graduated'
+    ),
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
