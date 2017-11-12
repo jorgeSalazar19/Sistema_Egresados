@@ -40,21 +40,4 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Categories',
             },
         ),
-        migrations.CreateModel(
-            name='Graduated',
-            fields=[
-                ('dni', models.CharField(max_length=15, primary_key=True, serialize=False)),
-                ('country', models.CharField(choices=[('colombia', 'Colombia')], max_length=30)),
-                ('birthday', models.DateField()),
-                ('genre', models.CharField(choices=[('male', 'Hombre'), ('female', 'Mujer')], max_length=10)),
-                ('graduation_year', models.DateField()),
-                ('career', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='domain.Career')),
-                ('categories', models.ManyToManyField(to='domain.Category')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'verbose_name': 'Graduated',
-                'verbose_name_plural': 'Graduates',
-            },
-        ),
     ]

@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django_forms_bootstrap',
     'django.contrib.staticfiles',
     'domain',
     'web',
@@ -70,8 +69,7 @@ WSGI_APPLICATION = 'Sistema_Egresados.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'egresadosutp_db',
-
+        'NAME': 'sistemaegresados_db',
         'USER': 'jorge',
         'PASSWORD': 'jorge97',
         'HOST': 'localhost',
@@ -121,11 +119,15 @@ DATABASES['default'].update(db_from_env)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 STATIC_URL = '/static/'
+
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (  
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'web/static/media')
 
 
 #Email settings 
@@ -138,7 +140,6 @@ EMAIL_USE_TLS = True
 #sesion settings
 SESSION_COOKIE_AGE = 300 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-
 
 
 
