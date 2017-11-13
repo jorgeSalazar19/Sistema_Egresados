@@ -12,7 +12,6 @@ def DashboardEgresado(request):
     password = request.GET.get('password')
     mensaje = (False,'')
     template = loader.get_template('Egresado/dashboardEgresado.html')
-    print(dni)
     usuario = Graduated.objects.get(dni=dni) 
     categorias = usuario.preferences.all()
     categorias_A = []*len(categorias)
@@ -28,8 +27,10 @@ def DashboardEgresado(request):
 
     ctx = { 'mensaje': mensaje,
             'actividades':actividades_egresado,
+            'usuario' : usuario,
             } 
     usuario = Graduated.objects.filter(dni=dni)
+
     if len(usuario) == 0 or not request.user.is_authenticated():
         print(dni)
         print(password)

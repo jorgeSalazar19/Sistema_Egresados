@@ -109,5 +109,11 @@ urlpatterns = [
         name = 'preferences_graduated'
     ),
 
+        url(regex=r'^dashboard_egresado/circulo_amigos/$',
+        view= CirculoAmigos,
+        name = 'circulo_amigos'
+    ),
+
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

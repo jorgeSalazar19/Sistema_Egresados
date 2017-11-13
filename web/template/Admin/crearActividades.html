@@ -40,6 +40,12 @@
         <button type="submit">Enviar</button>
     </form>
 
+{% if mensaje_o.0 %}
+
+    <h5>{{mensaje_o.1}}</h5>
+  
+{% endif %}
+
 {% if mensaje.0 %}
 {% for error in mensaje.1  %}
     
