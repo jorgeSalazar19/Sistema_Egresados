@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('domain', '0010_graduated_fisrt_login'),
+        ('domain', '0009_auto_20171111_1929'),
     ]
 
     operations = [
