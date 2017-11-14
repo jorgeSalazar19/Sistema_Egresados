@@ -1,0 +1,84 @@
+{% extends "Bases/BaseFormAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_form %}
+
+<section class="container-fluid box" >      
+      <div class="row justify-content-center caja">
+        <form method="POST"  class="col-sm-12 col-md-8 col-lg-5 borde">
+            {% csrf_token %}          
+            <span>Nombre</span><br>
+            <div class="input-group">
+
+              <input type="text" required = "True" name = "first_name" value = "{{datos.first_name}}"class="form-control NAME" placeholder="Nombre" aria-describedby="basic-addon1">
+              <input type="text" required = "True" name = "last_name" value="{{datos.last_name}}" class="form-control NAME" placeholder="Apellido" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="name">Ingrese un nombre válido</span><br>
+
+            <span>Identificación</span><br>
+            <div class="input-group">
+              <input type="text" required = "True" name = "dni" value="{{datos.dni}}" class="form-control DNI" placeholder="id" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="dni">Ingrese un DNI válido</span><br>
+
+            <span>Correo electrónico</span><br>
+            <div class="input-group">
+              <input type="email" required = "True" name = "email" value="{{datos.email}}" class="form-control EMAIL" placeholder="email" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="email">Ingrese un email válido</span><br>
+
+
+            <span >Genero</span><br>
+            <div class="form-group row">
+              <div class="col-10">
+                <select class="form-control" name = "genre" required = "True">
+                  <option value = "male">Masculino</option>
+                  <option value = "female">Femenino</option>
+                  <option value = "other">Otro</option>
+                </select>
+              </div>
+            </div>
+            <span>País</span><br>
+              <div class="form-group row">
+                <div class="col-10">
+                  <select class="form-control" name = "country" required = "True">
+                  {% for country in paises  %}
+                    <option value="{{country.id}}">{{country.name}}</option>
+                  {% endfor %}
+                  </select>
+                </div>
+              </div>
+            <span>Teléfono</span><br>
+            <div class="input-group">
+
+              <input type="text" required = "True" name = "cellphone" value="{{datos.cellphone}}" class="form-control TEL" placeholder="Número de teléfono" aria-describedby="basic-addon1">
+            </div><span class="emsg hidden" id="tel">Ingrese un teléfono válido</span>
+
+            <br>
+            <center>
+            <button type="button" class="btn btn-primary colorbtn" onclick="location.href='/';">Cancelar</button>
+            <button type="submit" class="btn btn-primary colorbtn" >Enviar</button>
+            </center>
+      </form>
+      {% if mensaje.0 %}
+          <input id="valor" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                    {% for error in mensaje.1  %}
+                        <h6>{{error}}</h6>
+                    {% endfor %}
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
+      </div>
+    </section>
+  
+{% endblock contenido_form %}
+
