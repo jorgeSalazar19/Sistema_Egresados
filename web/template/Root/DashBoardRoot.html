@@ -1,0 +1,41 @@
+{% extends "Bases/BaseRoot.html" %}
+{% load staticfiles %}
+
+{% block contenido_root %}
+<section class="container">
+  <div class="row box">
+    <div class="col-md-12 ">
+      <div class="row"> 
+        <div class="col-sm-5 col-md-5 col-lg-3 ">
+          <img class="circular" src={% static "varios/logo2.png" %}>
+        </div>
+        <div class="col-sm-7 col-md-7 col-lg-9 ">
+
+          <h1 align="center">Bienvenido Super Administrador</h1><br>
+          <h5>Nombre de usuario: {{usuario.username}}</h5>
+          <h5>Correo Electrónico: {{usuario.email}}</h5>
+
+        </div>
+      </div>
+      <div class="row box">
+        <div class="col">
+          <h5>Actividad reciente</h5><hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9" id="reciente">  
+         
+        </div>
+        <div class="col-md-3">  
+          <ul style="">
+            <li><a href="/crear_categorias?username={{usuario.username}}">Crear categorías</a></li>
+            <li><a href="/aceptar_cuentas_admin?username={{usuario.username}}">Gestión de cuentas</a></li>
+            <li><a href="">Editar información</a></li>
+            <li><a href="/logout">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  {% endblock contenido_root %}

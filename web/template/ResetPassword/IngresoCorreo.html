@@ -1,0 +1,38 @@
+{% extends "Bases/BaseLogin.html" %}
+{% load staticfiles %}
+
+{% block contenido_login %}
+
+ <section class="container-fluid">
+    <div class="row justify-content-center box">
+      <div class="col-sm-8 col-md-6 col-lg-5 align-self-center contenido">
+        <div class="row justify-content-center" style="height: 55vh;">
+          <div class="col-sm-12 col-md-12 col-lg-10 align-self-center">
+            <center>
+               <div>
+                <h3 style="color:white;">Recuperación de contraseña</h3>          
+              </div>
+            </center>
+            <form method="POST"> {% csrf_token %}
+              <div class="form-group">
+                <label style="color:white;" class="my_class" id="my_id" for="{{field.name}}">Correo</label><br>
+                <input type="text" required = "True" name="correo" class="form-control" id="my_id" placeholder="Ingrese el correo">
+              </div>
+              <center>
+                <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d; border-width:0px;">Enviar</button>
+                <br><br>
+                {% if mensaje.0 %}
+                    <div class="alert " style="background-color: #3a906d; border-width:0px;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h5 style="color:white;">{{mensaje.1}}</h5>
+                {% endif %}
+                </div>
+              </center>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+	
+{% endblock contenido_login %}

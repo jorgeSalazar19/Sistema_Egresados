@@ -1,0 +1,56 @@
+{% extends "Bases/BaseAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_admin %}
+      <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">!</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/create_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+        <select name = "category" required = "True">
+          {% for category in categories  %}
+            <option value="{{category.id}}">{{category.name}}</option>
+          {% endfor %}
+        </select><br>
+         <input type="file" id="exampleInputFile" name="image_activity"><br>
+        <input type="text" name="name" placeholder="nombre de la actividad" required="True"><br>
+        <input type="text" name="description" placeholder="descripcion de la actividad" required="True"><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+{% if mensaje_o.0 %}
+
+    <h5>{{mensaje_o.1}}</h5>
+  
+{% endif %}
+
+{% if mensaje.0 %}
+{% for error in mensaje.1  %}
+    
+    <h5>{{error}}</h5>
+    
+  {% endfor %}  
+{% endif %}
+{% endblock contenido_admin %}
