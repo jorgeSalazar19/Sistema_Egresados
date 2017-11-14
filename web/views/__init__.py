@@ -5,7 +5,9 @@ from .admin.p_register_admin import PreRegisterAdmin
 from .admin.edit_info_adm import EditInfoAdm
 from .admin.create_activity import CreateActivity
 
-from .graduated.dashboardEgresado import DashboardEgresado , NewPasswordG , PreferencesGraduated
+from .graduated.dashboardEgresado import DashboardEgresado 
+from .graduated.new_password import NewPasswordG
+from .graduated.preferences_graduated import PreferencesGraduated
 from .graduated.login_egresado import LoginEgresado 
 from .graduated.p_register_graduated import PreRegisterGraduated
 from .graduated.register_done import RegisterDone

@@ -14,7 +14,7 @@ def LoginEgresado(request):
         usuario = Graduated.objects.filter(dni=username)
         dato_username = request.POST
         if len(usuario) != 0:
-            user = authenticate(username=username, password=password)
+            user = authenticate(request=request, username=username, password=password)
             if user is not None:
                 login(request, user)
                 return redirect("/dashboard_egresado?username="+username)
