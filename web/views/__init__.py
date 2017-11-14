@@ -5,14 +5,19 @@ from .admin.p_register_admin import PreRegisterAdmin
 from .admin.edit_info_adm import EditInfoAdm
 from .admin.create_activity import CreateActivity
 
-from .graduated.dashboardEgresado import DashboardEgresado
-from .graduated.login_egresado import LoginEgresado , NewPasswordG
+from .graduated.dashboardEgresado import DashboardEgresado 
+from .graduated.new_password import NewPasswordG
+from .graduated.preferences_graduated import PreferencesGraduated
+from .graduated.login_egresado import LoginEgresado 
 from .graduated.p_register_graduated import PreRegisterGraduated
 from .graduated.register_done import RegisterDone
+from .graduated.circulo_amigos import CirculoAmigos
 
 from .superuser.dashboardRoot import DashboardRoot
 from .superuser.aceptar_cuentas_admin import AceptarCuentasAdmin
 from .superuser.create_category import CreateCategory
+from .superuser.lista_categories import ListCategory
+from .superuser.delete_categories import DeleteCategory
 
 from .index import Index
 from .logout import closeSession

@@ -27,6 +27,7 @@
       </nav>
   </header>
 
+    <form method="POST"> {% csrf_token %}
     <section class="container space" >
       <div class="row">
         <div class="col-lg-12">
@@ -37,87 +38,18 @@
       <div class="row" style=" padding-top: 20px;">  
         <div class="col-lg-6" id="preferencias">          
           <ul class="list-group">
-            <li class="list-group-item">
+          {% for categoria in categorias  %}
 
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-                        <li class="list-group-item">
-
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox" value="">
-                  Ciencia
-                </label>
-              </div>
-
-            </li>
-
+              <li class="list-group-item">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input multiple="multiple" class="form-check-input" type="checkbox" name="categorias" id="categorias" value="{{categoria.id}}">
+                      {{categoria.name}}
+                    </label>
+                  </div>
+              </li>
+            
+          {% endfor %}
           </ul>
         </div>
         <div class="col-lg-6 align-self-center">
@@ -137,13 +69,20 @@
             <div class="row">
               <div class="col">
                 <br>
-                <center><button class="btn btn-primary">Continuar</button></center>
+                <center><button type="submit" class="btn btn-primary">Continuar</button></center>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    </form>
+
+    {% if mensaje.0 %}
+
+      <h5>{{mensaje.1}}</h5>
+      
+    {% endif %}
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

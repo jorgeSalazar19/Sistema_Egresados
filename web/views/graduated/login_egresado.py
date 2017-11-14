@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth import login , authenticate 
 from django.contrib.auth.models import User
-from domain.models import Graduated
+from domain.models import Graduated , Category
 
 def LoginEgresado(request):
     error = (False, "")
@@ -14,14 +14,10 @@ def LoginEgresado(request):
         usuario = Graduated.objects.filter(dni=username)
         dato_username = request.POST
         if len(usuario) != 0:
-            user = authenticate(username=username, password=password)
+            user = authenticate(request=request, username=username, password=password)
             if user is not None:
-                usuario = usuario[0]
                 login(request, user)
-                if usuario.first_login == 0:
-                    return redirect("/new_passwordg?dni="+username)
-                else:
-                    return redirect("/dashboard_egresado")
+                return redirect("/dashboard_egresado?username="+username)
             else:
                 error = (True, "Contraseña no valida")
         else:
@@ -45,26 +41,4 @@ def LoginEgresado(request):
     }   
     return HttpResponse(template.render(ctx,request))
 
-def NewPasswordG(request):
-    error = ""
-    dni = request.GET.get('dni')
-    usuario = Graduated.objects.get(dni=dni)
 
-    if request.method == "POST":
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-
-        if password == password2:
-            usuario.first_login = 1
-            usuario.save()
-            usuario.user.set_password(password)
-            usuario.user.save()
-            return redirect("/dashboard_egresado")
-        else:
-            error = "Las contraseñas no coinciden"
-
-
-    template = loader.get_template('ChangePassword.html')
-    ctx = { 'error': error,
-    }   
-    return HttpResponse(template.render(ctx,request))

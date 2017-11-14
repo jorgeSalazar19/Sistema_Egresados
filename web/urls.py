@@ -20,7 +20,7 @@ urlpatterns = [
         view=LoginEgresado, 
         name="login_egresado"),
     
-    url(regex=r'^new_passwordg/$',
+    url(regex=r'^dashboard_egresado/new_passwordg/$',
         view=NewPasswordG, 
         name="new_passwordg"),
     
@@ -55,6 +55,14 @@ urlpatterns = [
     url(regex=r'^crear_categorias/$',
         view=CreateCategory, 
         name="crear_categorias"),
+
+    url(regex=r'^lista_categorias/$',
+        view=ListCategory, 
+        name="lista_categorias"),
+
+    url(regex=r'^delete_categorias/$',
+        view=DeleteCategory, 
+        name="delete_categorias"),
     
     url(regex=r'^logout/$',
         view=closeSession, 
@@ -95,4 +103,17 @@ urlpatterns = [
         view= CreateActivity,
         name = 'create_activity'
     ),
+
+    url(regex=r'^dashboard_egresado/preferences_graduated/$',
+        view= PreferencesGraduated,
+        name = 'preferences_graduated'
+    ),
+
+        url(regex=r'^dashboard_egresado/circulo_amigos/$',
+        view= CirculoAmigos,
+        name = 'circulo_amigos'
+    ),
+
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
