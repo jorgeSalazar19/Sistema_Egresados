@@ -14,7 +14,7 @@
               <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="/create_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/list_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
@@ -71,9 +71,9 @@
               </div>
               <div class="col-md-3">  
                 <ul style="">
-                  <li><a href="">Crear actividad</a></li>
+                  <li><a href="/list_activity?dni={{usuario.dni}}">Actividades</a></li>
                   <li><a href="/aceptar_cuentas?dni={{usuario.dni}}">Gestión de cuentas</a></li>
-                  <li><a href="">Editar información</a></li>
+                  <li><a href="/edit_info_adm/?dni={{usuario.dni}}">Editar información</a></li>
                   <li><a href="/logout">Cerrar sesión</a></li>
                 </ul>
               </div>

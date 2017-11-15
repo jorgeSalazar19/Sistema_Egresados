@@ -83,7 +83,7 @@
               <a class="nav-link " href="#">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/dashboard_egresado/circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
@@ -113,125 +113,40 @@
 			<div class="col-lg-2 col-md-3 hidden-sm-down">
 				<center><b><label>Amigos</label></b></center><hr>
 				<div id="amigos">
-
+				{% for amigo in amigos  %}
 					<div class="container-fluid ">
 						<div class="row ">
 							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
+								<img class="circular" src="{{amigo.profile_picture.url}}">
 							</div>
 							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
+								<h6>{{amigo.user.first_name}} {{amigo.user.last_name}}</h6> 
 							</div>
 							<div class="col-lg-3 col-md-3 align-self-center ">
 								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>								
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div>
-
+						</div><hr>	
 					</div>
-
+				{% endfor %}
 				</div>
 
 				<center><b><label style="padding-top: 20px;">Sugerencias</label></b></center><hr>
 				<div id="solicitudes">
-
+				{% for sugerencia in sugerencias  %}
 					<div class="container-fluid ">
 						<div class="row ">
 							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
+								<img class="circular" src="{{sugerencia.profile_picture.url}}" >
 							</div>
 							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
+								<h6>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h6> 
 							</div>
 							<div class="col-lg-3 align-self-center ">
 								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
 							</div>
 						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 align-self-center ">
-								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 align-self-center ">
-								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-							</div>
-						</div>
 					</div>
-
+				{% endfor %}
 				</div>
 				<center><label style="padding-top: 30px; font-size: 14px;">&copy; AsoEgresados UTP</label></center>
 			</div>

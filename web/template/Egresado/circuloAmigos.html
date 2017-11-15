@@ -64,15 +64,16 @@
           <center><h6>Amigos</h6></center><br>
           <div id="amigos">
              <ul class="list-group">
+            {% for amigo in amigos  %}
               <li class="list-group-item">
                 <section class="container">
                   <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
-                      <center><img class="circular" src="../../static/varios/perfil.jpg"></center>
+                  <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                      <center><img class="circular" src="{{amigo.profile_picture.url}}"></center>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
-                      <center><h5>Diana González</h5>
-                      <span>Ingeniería de Sistemas</span></center>
+                      <center><h5>{{amigo.user.first_name}} {{amigo.user.last_name}}</h5>
+                      <span>{{amigo.career.name}}</span></center>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-3 align-self-center">
                       <center><a href="#"><i class="fa fa-2x fa-envelope" aria-hidden="true"></i></a></center>
@@ -80,15 +81,7 @@
                   </div>
                 </section>
               </li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+              {% endfor %}
             </ul>
           </div>
        </div>
@@ -96,38 +89,32 @@
          <center><h6>Sugerencias</h6></center><br>
            <div id="sugerencias" >
              <ul class="list-group">
+             {% for sugerencia in sugerencias %}
               <li class="list-group-item">
                 <section class="container">
                   <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
-                      <center><img class="circular" src="../../static/varios/perfil.jpg"></center>
+                      <center><img class="circular" src="{{sugerencia.profile_picture.url}}"></center>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
-                      <center><h5>Dahiana Pulgarín</h5>
-                      <span>Ingeniería Eléctrica</span></center>
+                      <center><h5>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h5>
+                      <span>{{sugerencia.career}}</span></center>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-3 align-self-center">
                       <center><a href="#"><i class="fa fa-2x fa-heart" aria-hidden="true"></i></a></center>
                     </div>
                   </div>
-                </section></li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
+                </section>
+              </li>               
+             {% endfor %}
             </ul>
-          </div>
-          <div><br>
-            <center><p>Envía mensajes a tus amigos, mantente en contactos con tus compañeros de clase. </p><small> &copy; AsoEgresados UTP</small></center>
           </div>
        </div>
      </div>
    </section>
+    <div><br>
+        <center><p>Envía mensajes a tus amigos, mantente en contactos con tus compañeros de clase. </p><small> &copy; AsoEgresados UTP</small></center>
+    </div>
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

@@ -8,6 +8,7 @@ def PreferencesGraduated(request):
     mensaje = (False,'')
     dni = request.GET.get('dni')
     usuario = Graduated.objects.get(dni=dni)
+    
     if request.method == 'POST':
         ids_categoria = request.POST.getlist('categorias')    
         categorias = []*len(ids_categoria)

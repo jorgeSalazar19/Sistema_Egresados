@@ -98,10 +98,19 @@ urlpatterns = [
         name = 'register_done'
     ),
 
+    url(regex=r'^list_activity/$',
+        view= ListActivity,
+        name = 'list_activity'
+    ),
 
     url(regex=r'^create_activity/$',
         view= CreateActivity,
         name = 'create_activity'
+    ),
+
+    url(regex=r'^edit_activity/$',
+        view= EditActivity,
+        name = 'edit_activity'
     ),
 
     url(regex=r'^dashboard_egresado/preferences_graduated/$',

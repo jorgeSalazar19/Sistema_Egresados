@@ -4,6 +4,8 @@ from .admin.login_admin import LoginAdmin , NewPasswordA
 from .admin.p_register_admin import PreRegisterAdmin
 from .admin.edit_info_adm import EditInfoAdm
 from .admin.create_activity import CreateActivity
+from .admin.list_activities import ListActivity
+from .admin.edit_activity import EditActivity
 
 from .graduated.dashboardEgresado import DashboardEgresado 
 from .graduated.new_password import NewPasswordG

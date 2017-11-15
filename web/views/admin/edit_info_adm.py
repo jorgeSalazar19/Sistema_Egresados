@@ -25,7 +25,6 @@ def EditInfoAdm(request):
         email = request.POST.get('email')
         country = request.POST.get('country')
         cellphone = request.POST.get('cellphone')
-        print(country)
 
         if len(email) != 0:
             usuario.user.email = email
