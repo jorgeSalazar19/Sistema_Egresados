@@ -7,9 +7,17 @@ from dateutil.relativedelta import relativedelta
 def CirculoAmigos(request):
 
     mensaje = (True , "")
+    usuario_agregar = None
     username = request.GET.get('username')
     usuario = Graduated.objects.filter(dni=username)
+    dni_sugerencia = request.GET.get('dni')
     usuario_f = Graduated.objects.get(dni=username)
+
+    if dni_sugerencia is not None:
+        usuario_agregar = Graduated.objects.get(dni__exact=dni_sugerencia)
+
+    if usuario_agregar is not None:
+        usuario_f.friends.add(usuario_agregar)
 
     
     graduation_year_user = usuario_f.graduation_year
