@@ -12,7 +12,6 @@ $(document).ready(function(){
 
 });
 
-
 $(document).ready(function(){
     var $regexEmail=/^([\w]+@{1}[\w]+(\.[\w]+)*\.[a-z]{2,3})?$/;
     $('.EMAIL2').on('keypress keydown keyup',function(){

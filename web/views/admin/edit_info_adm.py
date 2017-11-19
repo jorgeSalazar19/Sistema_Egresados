@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from domain.models import Admin
 from domain.models import Country
+
 from django.core.validators import RegexValidator
 import re
 
@@ -14,6 +15,7 @@ patron_telefono = re.compile('[3]{1}[0|1|2]{1}[\d]{8}')
 def EditInfoAdm(request):
     error = (False , '')
 
+
     if request.method == 'GET':
         dni = request.GET.get('dni')
         usuario = Admin.objects.filter(dni=dni)
@@ -24,7 +26,9 @@ def EditInfoAdm(request):
         else:
             return redirect('/login_admin')
 
+
     mensajes_error = []
+
     if request.method == 'POST':
         dni = request.GET.get('dni')
         usuario = Admin.objects.filter(dni=dni)

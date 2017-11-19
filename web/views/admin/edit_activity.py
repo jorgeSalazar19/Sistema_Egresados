@@ -8,7 +8,9 @@ def EditActivity(request):
     mensaje = (False,'')
     dni = request.GET.get('dni')
     id_categoria = request.GET.get('id')
+
     actividad = Activity.objects.get(id__exact=id_categoria)
+
     usuario = []
 
     if request.method == 'GET':
@@ -54,7 +56,6 @@ def EditActivity(request):
         else:
             mensaje = (True, 'No se cargo')
 
-    
     print (actividad)
     template = loader.get_template('Admin/editarActividad.html')
     ctx = { 

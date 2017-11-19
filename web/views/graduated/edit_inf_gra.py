@@ -40,7 +40,6 @@ def EditInfoGra(request):
             country = Country.objects.get(id__exact=id_country)
             usuario.country = country
             usuario.save()
-
         if len(request.FILES) != 0:
             profile_picture =  request.FILES['profile_picture']
         else:
