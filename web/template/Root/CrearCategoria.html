@@ -19,14 +19,14 @@
       <form method="POST"> {% csrf_token %}
         <div class="form-group">
           <label for="categoryInput">Nombre: </label>
-          <input type="text" class="form-control" id="categoryInput"  placeholder="Nombre de categoria" name="name"  required="True">
+          <input type="text" class="form-control" id="categoryInput" value="{{datos.name}}" placeholder="Nombre de categoria" name="name"  required="True">
           <small id="categoryHelp" class="form-text text-muted">Ingrese el nombre de la categoría</small>
         </div>
 
 
         <div class="form-group">
           <label for="exampleTextarea">Descripción: </label>
-          <textarea type="text"  placeholder="Descripcion de la categoria" class="form-control" id="exampleTextarea" rows="3" name="description" required="True"></textarea>
+          <textarea type="text"  placeholder="Descripcion de la categoria" class="form-control" id="exampleTextarea" rows="3" name="description" required="True">{{datos.description}}</textarea>
           <small id="descHelp" class="form-text text-muted">Ingrese una descripción de la categoría</small>
         </div>
         <center>

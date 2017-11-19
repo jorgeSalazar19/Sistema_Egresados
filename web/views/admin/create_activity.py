@@ -46,7 +46,7 @@ def CreateActivity(request):
                     mensaje_only = (True,"Actividad ya existe")
             if len(error) == 0: 
                 form_activity.save()
-                mensaje_only = (True , "Actividad guardada full")
+                mensaje_only = (True , "Actividad guardada")
                 egresados = Graduated.objects.all()
                 to_list = []
                 for egresado in egresados:
