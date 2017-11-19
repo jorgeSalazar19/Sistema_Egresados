@@ -138,5 +138,11 @@ urlpatterns = [
         name = 'profile_graduated'
     ),
 
+    url(regex=r'^success_category/$',
+        view= SuccessCategory,
+        name = 'success_category'
+    ),
+
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
