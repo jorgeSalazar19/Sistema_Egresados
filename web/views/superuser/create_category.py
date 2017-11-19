@@ -41,7 +41,7 @@ def CreateCategory(request):
             if len(error) == 0: 
                 form_category.save()
                 mensaje_only = (True , "Categoria guardada full")
-                return redirect('success_category?username='+username)
+                return redirect('/success_category?username='+username)
         else:
             errors = form_category.get_errors()
             message_e = []
