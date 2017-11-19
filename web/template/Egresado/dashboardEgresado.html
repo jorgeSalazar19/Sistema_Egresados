@@ -92,13 +92,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link " href="#">Inicio<span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/dashboard_egresado?username={{usuario.dni}}">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link " href="/dashboard_egresado/circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/dashboard_egresado/profile_graduated?username={{usuario.dni}}">Perfil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="/dashboard_egresado/edit_info_gra?username={{usuario.dni}}">Cuenta<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -137,7 +140,7 @@
 								<h6>{{amigo.user.first_name}} {{amigo.user.last_name}}</h6> 
 							</div>
 							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+								<a href="/dashboard_egresado/send_email?username={{usuario.dni}}&dni={{amigo.dni}}"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 							</div>
 						</div><hr>	
 					</div>

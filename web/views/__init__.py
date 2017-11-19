@@ -14,6 +14,9 @@ from .graduated.login_egresado import LoginEgresado
 from .graduated.p_register_graduated import PreRegisterGraduated
 from .graduated.register_done import RegisterDone
 from .graduated.circulo_amigos import CirculoAmigos
+from .graduated.edit_inf_gra import EditInfoGra
+from .graduated.send_email import SendEmail
+from .graduated.profile_graduated import ProfileGraduated
 
 from .superuser.dashboardRoot import DashboardRoot
 from .superuser.aceptar_cuentas_admin import AceptarCuentasAdmin

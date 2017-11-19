@@ -123,6 +123,21 @@ urlpatterns = [
         name = 'circulo_amigos'
     ),
 
+    url(regex=r'^dashboard_egresado/edit_info_gra/$',
+        view= EditInfoGra,
+        name = 'edit_info_gra'
+    ),
+
+    url(regex=r'^dashboard_egresado/send_email/$',
+        view= SendEmail,
+        name = 'send_email'
+    ),
+
+    url(regex=r'^dashboard_egresado/profile_graduated/$',
+        view= ProfileGraduated,
+        name = 'profile_graduated'
+    ),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

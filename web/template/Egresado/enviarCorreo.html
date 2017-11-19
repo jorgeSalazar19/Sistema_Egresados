@@ -1,0 +1,73 @@
+{% extends "Bases/BaseEgresado.html" %}
+{%load staticfiles%}
+
+{% block contenido_egresado %}
+      <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary ">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">&nbsp;</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link " href="/dashboard_egresado?username={{usuario.dni}}">Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link active" href="circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="/dashboard_egresado/edit_info_gra?username={{usuario.dni}}">Cuenta<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <form method="POST">{% csrf_token %}
+    <section class="container" style="padding-top: 130px; padding-bottom: 50px;">
+
+        <div class="row">
+          <div class="col-md-12">
+            <center>  
+              <h4>
+                Enviar Correo    
+              </h4><hr><br>
+            </center>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ">
+            <div class="form-group">
+              <input type="text" class="form-control" name="asunto" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Asunto: ">
+            </div>
+         
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ">
+            <div class="form-group">
+                <textarea class="form-control" name="mensaje" id="exampleTextarea" rows="8" placeholder="Mensaje"></textarea>
+              </div>
+         
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <center>
+              <br>
+              <button type="button" class="btn btn-danger" onclick="location.href='/dashboard_egresado/?username={{usuario.dni}}';">Cancelar</button>
+              <button type="submit" class="btn btn-primary" onclick="">Enviar</button>
+            </center>
+          </div>
+        </div>
+      </section>
+      </form>
+{% endblock contenido_egresado %}
