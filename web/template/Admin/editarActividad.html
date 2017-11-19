@@ -65,5 +65,13 @@
               </form>
           </div>
         </div>
+
+        {% if mensaje.0 %}
+
+            {% for mensaje in mensaje.1  %}
+                    <h4>{{mensaje}}</h4>              
+            {% endfor %}
+          
+        {% endif %}
       </section>
 {% endblock contenido_admin %}

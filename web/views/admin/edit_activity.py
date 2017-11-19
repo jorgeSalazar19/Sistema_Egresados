@@ -3,6 +3,10 @@ from django.http import HttpResponse
 from django.template import loader
 
 from domain.models import Admin , Activity
+import re
+
+patron_nombre = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+)')
+patron_descripcion = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+[\s]*)+')
 
 def EditActivity(request):
     mensaje = (False,'')
@@ -31,13 +35,24 @@ def EditActivity(request):
         name = request.POST.get('name')
         description = request.POST.get('description')
 
-        if len(name) != 0:
+        mensajes_e = [] 
+        if len(name) != 0 and re.match(patron_nombre, name) is not None:
             actividad.name = name
             actividad.save()
 
-        if len(description) != 0:
+        else:
+            error = "Tienes un error en el campo nombre de actividad"
+            mensajes_e.append(error)
+            mensaje = (True , mensajes_e)
+
+        if len(description) != 0 and re.match(patron_descripcion,description) is not None:
             actividad.description = description
             actividad.save()
+
+        else:
+            error = "Tienes un error en el campo descripción de actividad"
+            mensajes_e.append(error)
+            mensaje = (True , mensajes_e)
 
         if len(request.FILES) != 0:
             image_activity =  request.FILES['image_activity']
@@ -53,10 +68,7 @@ def EditActivity(request):
             actividad.image_activity = image_activity
             actividad.save()
             mensaje = (True ,'Imagen cargada correctamente')
-        else:
-            mensaje = (True, 'No se cargo')
 
-    print (actividad)
     template = loader.get_template('Admin/editarActividad.html')
     ctx = { 
         'mensaje' : mensaje,
