@@ -25,6 +25,7 @@ from .superuser.aceptar_cuentas_admin import AceptarCuentasAdmin
 from .superuser.create_category import CreateCategory
 from .superuser.lista_categories import ListCategory
 from .superuser.delete_categories import DeleteCategory
+from .superuser.success_category import SuccessCategory
 
 from .index import Index
 from .logout import closeSession
