@@ -44,7 +44,7 @@ def PreRegisterGraduated(request):
 
 
     template = loader.get_template('Egresado/formularioEgresado.html')
-    careers = Career.objects.all()
+    careers = Career.objects.all().order_by('name')
     countries = Country.objects.all().order_by('name')
     ctx = {
             'mensaje' : mensaje,

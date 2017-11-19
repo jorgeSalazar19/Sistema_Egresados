@@ -11,12 +11,20 @@ from dateutil.relativedelta import relativedelta
 def DashboardEgresado(request):
 
     dni = request.GET.get('username')
+    dni_sugerencia = request.GET.get('dni')
     password = request.GET.get('password')
     mensaje = (False,'')
     template = loader.get_template('Egresado/dashboardEgresado.html')
     usuario = Graduated.objects.get(dni=dni) 
     categorias = usuario.preferences.all()
     categorias_A = []*len(categorias)
+    usuario_agregar = None
+
+    if dni_sugerencia is not None:
+        usuario_agregar = Graduated.objects.get(dni__exact=dni_sugerencia)
+
+    if usuario_agregar is not None:
+        usuario.friends.add(usuario_agregar)
 
     for category in categorias:
         categorias_A.append(category)

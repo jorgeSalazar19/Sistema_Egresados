@@ -5,7 +5,7 @@ class Career(models.Model):
         verbose_name = u"Career"
         verbose_name_plural = u"Careers"
 
-    name = models.CharField(max_length=60)
+    name = models.CharField(max_length=200)
     description = models.TextField()
 
     def __str__(self):
