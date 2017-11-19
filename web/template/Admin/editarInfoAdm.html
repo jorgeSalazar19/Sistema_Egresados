@@ -1,0 +1,107 @@
+{% extends "Bases/BaseAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_admin %}
+      <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">!</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/list_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+  <section class="container">
+        <div class="row  box">
+          <div class="col-md-12 ">
+          <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
+            <div class="row"> 
+              <div class="col-sm-5 col-md-5 col-lg-3">
+              {% if not usuario.profile_picture  %}
+                    <img class="circular" src="">
+              {% else %}
+                    <img class="circular" src="{{usuario.profile_picture.url}}">
+              {% endif %} 
+                  <div class="form-group">
+                    <label for="exampleInputFile">Subir</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" name="profile_picture" aria-describedby="fileHelp">
+                    <small id="fileHelp" class="form-text text-muted">Seleccionar archivo para cambiar foto de perfil</small>
+                  </div>
+
+              </div>
+              <div class="col-sm-7 col-md-7 col-lg-9 ">
+                <h3>Administrador : {{usuario.user.first_name}} {{usuario.user.last_name}}</h3><hr><br>
+
+                <div class="form-group row">
+                  <label for="example-email-input" class="col-2 col-form-label">Email</label>
+                  <div class="col-10">
+                    <input class="form-control EMAIL2" type="email" name="email" value="{{usuario.user.email}}" id="example-email-input">
+                  </div><span class="emsg hidden" id="email2">Ingrese un email válido</span>
+                </div>
+
+
+                <div class="form-group row">
+                  <label for="pais-input" class="col-2 col-form-label">País</label>
+                    <div class="col-10">
+                      <select class="form-control" value ="" name = "country" id="pais-input">
+                        <option value="{{usuario.country.id}}">{{usuario.country.name}}</option>
+                        {% for country in paises  %}
+                          <option value="{{country.id}}">{{country.name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="example-number-input" class="col-2 col-form-label">Teléfono</label>
+                  <div class="col-10">
+                    <input class="form-control" type="tel" name="cellphone" value="{{usuario.cellphone}}" id="example-number-input">
+                  </div>
+                </div><br>
+                <center>
+                  <button type="button" data-trigger="focus" class="btn btn-primary" onclick="location.href='/dashboard_admin/?dni={{usuario.dni}}';">Volver</button>
+                  <button type="submit" data-trigger="focus" class="btn btn-primary" >Guardar</button>
+                </center>
+              </div>
+            </div>
+          </form>
+          {% if mensaje.0 %}
+          <input id="valor2" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modal2">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal2" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                    <h3>{{mensaje.1}}</h3>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>            
+          {% endif %}
+          </div>
+        </div>
+      </section>
+{% endblock contenido_admin %}
+

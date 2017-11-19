@@ -1,0 +1,43 @@
+{% extends "Bases/BaseLogin.html" %}
+{% load staticfiles %}
+
+
+{% block contenido_login %}
+  
+  <section class="container-fluid">
+    <div class="row justify-content-center box">
+      <div class="col-sm-8 col-md-6 col-lg-5 align-self-center contenido">
+        <div class="row justify-content-center" style="height: 55vh;">
+          <div class="col-sm-12 col-md-12 col-lg-10 align-self-center">
+            <center>
+               <div>
+                <h3 style="color:white;">Inicio de sesión</h3>          
+              </div>
+            </center>
+            <form method="POST"> {% csrf_token %}
+              <div class="form-group">
+                <label style="color:white;" for="idInput">Código</label>
+                <input type="text" required = "True" name = "username" value = "{{dato.username}}" class="form-control" id="idInput" aria-describedby="emailHelp" placeholder="Ingrese su número de identificación">
+              </div>
+              <label style="color:white;" class="form-group">Contraseña</label>
+                <input type="password" required = "True" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña">
+              </div>
+              <center>
+                <button type="button" style="background-color: #3a906d; border-width:0px;" class="btn btn-primary" onclick="location.href='/reset/password_reset';">Olvidé mi contraseña</button>
+                <button type="submit" class="btn btn-primary" style="align-self: center; background-color: #3a906d; border-width:0px;">Entrar</button>
+                {% if error.0 %}
+                <br><br>
+                  <div class="alert " style="background-color: #3a906d; border-width:0px;">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <h5 style="color:white;">{{error.1}}</h5>
+                </div>
+                {% endif %}
+              </center>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock contenido_login %}

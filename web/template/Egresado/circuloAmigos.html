@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <style>
+    #amigos{
+      overflow-y: scroll;
+      height: 60vh;
+
+    }
+    #sugerencias{
+      overflow-y: scroll;
+      height: 40vh;
+    }
+   .circular{
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+    }
+  </style>
+
+  <body>
+    <nav class="navbar navbar-toggleable-sm navbar-inverse bg-primary ">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand">&nbsp;</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link " href="/dashboard_egresado?username={{usuario.dni}}">Inicio<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="/dashboard_egresado/circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+   <section class="container">
+      <div class="row" style="padding-top: 40px;">
+        <div class="col-lg-12">
+          <center><h4>Círculos de Amigos</h4></center><hr><br>
+        </div>
+      </div>
+
+     <div class="row" >        
+       <div class="col-lg-6" style="padding-bottom: 20px;">
+          <center><h6>Amigos</h6></center><br>
+          <div id="amigos">
+             <ul class="list-group">
+            {% for amigo in amigos  %}
+              <li class="list-group-item">
+                <section class="container">
+                  <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                      <center><img class="circular" src="{{amigo.profile_picture.url}}"></center>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
+                      <center><h5>{{amigo.user.first_name}} {{amigo.user.last_name}}</h5>
+                      <span>{{amigo.career.name}}</span></center>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 align-self-center">
+                      <center><a href="#"><i class="fa fa-2x fa-envelope" aria-hidden="true"></i></a></center>
+                    </div>
+                  </div>
+                </section>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+       </div>
+       <div class="col-lg-6">
+         <center><h6>Sugerencias</h6></center><br>
+           <div id="sugerencias" >
+             <ul class="list-group">
+             {% for sugerencia in sugerencias %}
+              <li class="list-group-item">
+                <section class="container">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                      <center><img class="circular" src="{{sugerencia.profile_picture.url}}"></center>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
+                      <center><h5>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h5>
+                      <span>{{sugerencia.career}}</span></center>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 align-self-center">
+                      <center><a href="#"><i class="fa fa-2x fa-heart" aria-hidden="true"></i></a></center>
+                    </div>
+                  </div>
+                </section>
+              </li>               
+             {% endfor %}
+            </ul>
+          </div>
+       </div>
+     </div>
+   </section>
+    <div><br>
+        <center><p>Envía mensajes a tus amigos, mantente en contactos con tus compañeros de clase. </p><small> &copy; AsoEgresados UTP</small></center>
+    </div>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
