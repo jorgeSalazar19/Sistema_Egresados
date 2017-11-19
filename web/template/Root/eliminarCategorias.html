@@ -28,15 +28,8 @@
               </section>
               </li>
               {% endfor %}
-            </form>
-
-            
+            </form>            
           </ul>
-          {% if mensaje.0 %}
-
-              <h5>{{mensaje.1}}</h5>
-            
-          {% endif %}
         </div>
       </div>
     </div>
@@ -46,5 +39,26 @@
       </div>
     </div>
   </section>
+
+      {% if mensaje.0 %}
+          <input id="valorCategory" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modalCategory">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+
+                        <h6>{{mensaje.1}}</h6>
+
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
 
 {% endblock category_root %}
