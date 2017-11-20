@@ -10,6 +10,7 @@ def CreateCategory(request):
     mensaje = (False,'')
     mensaje_only = (False , "")
     usuario = []
+    datos = []
     if request.method == 'GET':
         username = request.GET.get('username')
         usuario = User.objects.filter(username=username)
@@ -27,6 +28,7 @@ def CreateCategory(request):
         name_category = request.POST.get('name')
         categorias = Category.objects.all()
         form_category = CreateFormCategory(data=request.POST)
+        datos = request.POST
 
         error = []
         if form_category.is_valid():
@@ -39,6 +41,7 @@ def CreateCategory(request):
             if len(error) == 0: 
                 form_category.save()
                 mensaje_only = (True , "Categoria guardada full")
+                return redirect('/success_category?username='+username)
         else:
             errors = form_category.get_errors()
             message_e = []
@@ -55,5 +58,6 @@ def CreateCategory(request):
             'mensaje' : mensaje,
             'usuario' : usuario,
             'mensaje_o' : mensaje_only,
+            'datos' : datos,
     }
     return HttpResponse(template.render(ctx,request))

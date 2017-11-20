@@ -3,43 +3,62 @@
 
 {% block category_root %}
 
+
   <section class="container" style="padding-top: 70px; padding-bottom: 20px;">
     <div class="row">
       <div class="col-lg-12">
         <center><h3>Eliminar Categorías</h3></center><hr><br>
         <div id="elminar">
           <ul class="list-group">
-            <li class="list-group-item">
+            
+
             <form method="POST"> {% csrf_token %}
+            {% for categoria in categorias  %}
+              <li class="list-group-item">
               <section class="container">
-                <div class="row">
-                {% for categoria in categorias  %}
+                <div class="row">                
                   <div class="col-lg-10 align-self-center">
                     <h6>{{categoria.name}}</h6>
                     <p>{{categoria.description}}</p>
                   </div>
                   <div class="col-lg-2 align-self-center">
                     <button type="submit" value="{{categoria.id}} Eliminar" name="tipo" class="btn btn-danger">Eliminar</button>
-                  </div>
-                  {% endfor %}
+                  </div>                  
                 </div>
               </section>
-            </form>
-            </li>
+              </li>
+              {% endfor %}
+            </form>            
           </ul>
-          {% if mensaje.0 %}
-
-              <h5>{{mensaje.1}}</h5>
-            
-          {% endif %}
         </div>
       </div>
     </div>
     <div class="row" style="padding-top: 30px;">
       <div class="col-lg-12">
-        <center><button class="btn btn-primary" onclick="location.href='/lista_categorias?username={{usuario.username}}';">Cancelar</button></center>
+        <center><button class="btn btn-primary" onclick="location.href='/lista_categorias?username={{usuario.username}}';">Volver</button></center>
       </div>
     </div>
   </section>
+
+      {% if mensaje.0 %}
+          <input id="valorCategory" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modalCategory">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+
+                        <h6>{{mensaje.1}}</h6>
+
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
 
 {% endblock category_root %}

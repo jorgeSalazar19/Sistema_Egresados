@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from domain.models import Graduated
 from django.contrib.auth.models import User
+from django.contrib.auth import login ,  authenticate
 
 def NewPasswordG(request):
     error = ""
@@ -19,6 +20,8 @@ def NewPasswordG(request):
             usuario.save()
             usuario.user.set_password(password)
             usuario.user.save()
+            user = authenticate(request=request, username=dni, password=password)
+            login(request , user)
             print(request.user.is_authenticated())
             return redirect("/dashboard_egresado/preferences_graduated?dni="+dni)
         else:

@@ -3,20 +3,25 @@
 
 {% block contenido_admin %}
       <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand">!</a>
+
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
               <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="/create_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+
+
+            <li class="nav-item active ">
+              <a class="nav-link" href="/list_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item ">
+
               <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
             </li>
             <li class="nav-item">
@@ -28,29 +33,79 @@
           </ul>
         </div>
       </nav>
-    <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
-        <select name = "category" required = "True">
-          {% for category in categories  %}
-            <option value="{{category.id}}">{{category.name}}</option>
-          {% endfor %}
-        </select><br>
-         <input type="file" id="exampleInputFile" name="image_activity"><br>
-        <input type="text" name="name" placeholder="nombre de la actividad" required="True"><br>
-        <input type="text" name="description" placeholder="descripcion de la actividad" required="True"><br>
-        <button type="submit">Enviar</button>
-    </form>
 
-{% if mensaje_o.0 %}
 
-    <h5>{{mensaje_o.1}}</h5>
-  
-{% endif %}
+    <section class="container" style="padding-top: 70px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <center><h3>Crear Actividad</h3></center><hr><br>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 align-self-center">
+            <form method="POST" enctype="multipart/form-data" >{% csrf_token %}
 
-{% if mensaje.0 %}
-{% for error in mensaje.1  %}
-    
-    <h5>{{error}}</h5>
-    
-  {% endfor %}  
-{% endif %}
+                <div class="form-group">
+                  <label for="cat">Categoría</label>
+                  <select class="form-control" id="cat" name = "category" required = "True">
+                    {% for category in categories  %}
+                      <option value="{{category.id}}">{{category.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="imageActivity">Imagen</label>
+                  <input type="file" class="form-control" id="imageActivity" name="image_activity">
+                  <small class="form-text text-muted">Seleccione una imagen para la actividad</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="nameActivity">Nombre</label>
+                  <input type="text" name="name"  class="form-control" id="nameActivity" aria-describedby="emailHelp" placeholder="Nombre de la actividad" required="True">
+                  <small class="form-text text-muted">Ingrese un nombre para la actividad</small>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="exampleTextarea">Descripción</label>
+                  <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Descripcion de la actividad" required="True" name="description" type="text"></textarea>
+                </div>
+
+                <center>
+                  <button type="button" class="btn btn-danger" onclick="location.href='/list_activity?dni={{usuario.dni}}';">Cancelar</button>
+
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+                </center>
+            </form>
+        </div>
+      </div>
+    </section>
+
+      {% if mensaje_o.0 %}
+          <h5>{{mensaje_o.1}}</h5>        
+      {% endif %}
+
+      {% if mensaje.0 %}
+          <input id="valorCreation" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modalCreation">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                   {% for error in mensaje.1  %}                      
+                      <h6>{{error}}</h6>                      
+                    {% endfor %}
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
+
+
 {% endblock contenido_admin %}

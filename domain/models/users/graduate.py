@@ -26,6 +26,7 @@ class Graduated(models.Model):
     career = models.ForeignKey(Career)
     graduation_year = models.DateField()
     preferences = models.ManyToManyField(Category)
+    friends = models.ManyToManyField("Graduated")
     first_login = models.IntegerField(default=0 , null=True)
 
 

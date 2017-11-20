@@ -44,9 +44,10 @@ def CreateActivity(request):
                 if (str(actividad.name).lower()) == (str(name_activity).lower()):
                     error.append(actividad)
                     mensaje_only = (True,"Actividad ya existe")
+                    
             if len(error) == 0: 
                 form_activity.save()
-                mensaje_only = (True , "Actividad guardada full")
+                mensaje_only = (True , "Actividad guardada")
                 egresados = Graduated.objects.all()
                 to_list = []
                 for egresado in egresados:
@@ -59,10 +60,15 @@ def CreateActivity(request):
                 to_list.append(settings.EMAIL_HOST_USER)
                 from_email = settings.EMAIL_HOST_USER
                 current_site = get_current_site(request)
-                SendMail(from_email,to_list,current_site,actividad)
+                SendMail(from_email,to_list,current_site,name_activity)
+                return redirect('/success_activity?dni='+dni)
         else:
             errors = form_activity.get_errors()
             message_e = []
+            print(len(request.FILES))
+            if len(request.FILES) == 0:
+                error = "Por favor selecciona una imagen."
+                message_e.append(error)
             for error in errors:
                 message_e.append(str(form_activity.errors[error]))
             mensaje = (True , message_e)

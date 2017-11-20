@@ -1,0 +1,81 @@
+{% extends "Bases/BaseAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_admin %}
+
+      <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">!</a>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/list_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary" style="padding-top: 70px;">
+        <div><a class="navbar-brand" href="/create_activity?dni={{usuario.dni}}">Crear Actividad</a></div>
+      </nav>
+
+
+    <form method="POST"> {% csrf_token %}
+    <section class="container" style="padding-top: 20px;">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <!--AQUI VIENE EL FOR-->
+          {% for actividad in actividades  %}
+          <div class="card" style="padding-bottom: 40px;">
+          <section class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <center>
+                  <img class="card-img-top img-fluid tamañoMaximo" src= "{{actividad.image_activity.url}}" alt="Card image cap" style="padding-top: 30px;">
+                </center>
+                <div class="card-block">
+                  <h4 class="card-title">Nombre : {{actividad.name}}</h4>
+                  <p class="card-text">Descripción : {{actividad.description}}</p>
+                  <p class="card-text"><small class="text-muted">Categoria : {{actividad.category.name}}</small></p>
+                </div>
+              </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-12 align-self-center">
+                <center>
+                  <button  type="submit" value="{{actividad.id}} Eliminar" name="tipo" class="btn btn-danger">Eliminar</button>                  
+                  <button type="button" onclick="location.href='/edit_activity?id={{actividad.id}}&dni={{usuario.dni}}';" class="btn btn-success">Editar</button>
+                </center>
+                </div>
+              </div> 
+          </section>
+          </div>
+          {% endfor %}
+          <!--END FOR-->
+
+        </div>
+      </div>
+    </section>
+    </form>
+
+
+
+    
+{% endblock contenido_admin %}

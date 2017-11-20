@@ -98,10 +98,19 @@ urlpatterns = [
         name = 'register_done'
     ),
 
+    url(regex=r'^list_activity/$',
+        view= ListActivity,
+        name = 'list_activity'
+    ),
 
     url(regex=r'^create_activity/$',
         view= CreateActivity,
         name = 'create_activity'
+    ),
+
+    url(regex=r'^edit_activity/$',
+        view= EditActivity,
+        name = 'edit_activity'
     ),
 
     url(regex=r'^dashboard_egresado/preferences_graduated/$',
@@ -112,6 +121,31 @@ urlpatterns = [
         url(regex=r'^dashboard_egresado/circulo_amigos/$',
         view= CirculoAmigos,
         name = 'circulo_amigos'
+    ),
+
+    url(regex=r'^dashboard_egresado/edit_info_gra/$',
+        view= EditInfoGra,
+        name = 'edit_info_gra'
+    ),
+
+    url(regex=r'^dashboard_egresado/send_email/$',
+        view= SendEmail,
+        name = 'send_email'
+    ),
+
+    url(regex=r'^dashboard_egresado/profile_graduated/$',
+        view= ProfileGraduated,
+        name = 'profile_graduated'
+    ),
+
+    url(regex=r'^success_category/$',
+        view= SuccessCategory,
+        name = 'success_category'
+    ),
+
+    url(regex=r'^success_activity/$',
+        view= SuccessActivity,
+        name = 'success_activity'
     ),
 
 

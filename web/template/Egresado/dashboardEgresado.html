@@ -69,6 +69,19 @@
   	.borde{
   		border: solid;
   	}
+
+  .tamañoMaximo{
+    display:block;
+    width:100%;
+    max-width:500px
+  }
+  .corazon{
+      border-radius: 100%;
+      width: 50px;
+      height: 50px;
+  }
+
+
   </style>
   <body>
       <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary ">
@@ -80,13 +93,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link " href="#">Inicio<span class="sr-only">(current)</span></a>
+
+              <a class="nav-link " href="/dashboard_egresado?username={{usuario.dni}}">Inicio<span class="sr-only">(current)</span></a>
+
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/dashboard_egresado/circulo_amigos?username={{usuario.dni}}">Amigos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="#">Perfil<span class="sr-only">(current)</span></a>
+
+              <a class="nav-link " href="/dashboard_egresado/profile_graduated?username={{usuario.dni}}">Perfil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="/dashboard_egresado/edit_info_gra?username={{usuario.dni}}">Cuenta<span class="sr-only">(current)</span></a>
+
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -102,136 +122,61 @@
 				<div class="card-columns">
 				{% for actividad in actividades %}
 				<div class="card">
-				    <img class="card-img-top img-fluid" src="{{actividad.image_activity.url}}" alt="Card image cap">
+
+				    <img class="card-img-top img-fluid tamañoMaximo"  src="{{actividad.image_activity.url}}" alt="Card image cap">
+
 				    <div class="card-block">
 				      <h4 class="card-title">{{actividad.name}}</h4>
 				      <p class="card-text">{{actividad.description}}</p>
 				    </div>
 				  </div>
 				{% endfor %}
+
+				</div>
+			</div>
+
 			<!--PANEL DE AMIGOS-->
 			<div class="col-lg-2 col-md-3 hidden-sm-down">
 				<center><b><label>Amigos</label></b></center><hr>
 				<div id="amigos">
-
+				{% for amigo in amigos  %}
 					<div class="container-fluid ">
 						<div class="row ">
 							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
+								<img class="circular" src="{{amigo.profile_picture.url}}">
 							</div>
 							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
+								<h6>{{amigo.user.first_name}} {{amigo.user.last_name}}</h6> 
 							</div>
 							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
 
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
+								<a href="/dashboard_egresado/send_email?username={{usuario.dni}}&dni={{amigo.dni}}"><i class="fa fa-envelope" aria-hidden="true"></i></a>
 
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
 							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>								
-
-						<div class="row ">
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 col-md-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 col-md-3 align-self-center ">
-								<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-							</div>
-						</div>
-
+						</div><hr>	
 					</div>
-
+				{% endfor %}
 				</div>
 
 				<center><b><label style="padding-top: 20px;">Sugerencias</label></b></center><hr>
 				<div id="solicitudes">
-
+				{% for sugerencia in sugerencias  %}
 					<div class="container-fluid ">
 						<div class="row ">
 							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
+								<img class="circular" src="{{sugerencia.profile_picture.url}}" >
 							</div>
 							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
+								<h6>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h6> 
 							</div>
 							<div class="col-lg-3 align-self-center ">
-								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+
+								<a href="/dashboard_egresado?username={{usuario.dni}}&dni={{sugerencia.dni}}"><i class="fa fa-heart" aria-hidden="true"></i></a>
+
 							</div>
 						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 align-self-center ">
-								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-							</div>
-						</div><hr>
-
-						<div class="row ">
-							<div class="col-lg-3 align-self-center ">
-								<img class="circular" src={% static "varios/perfil.jpg" %}>
-							</div>
-							<div class="col-lg-6 align-self-center ">
-								<h6>Camila</h6> 
-							</div>
-							<div class="col-lg-3 align-self-center ">
-								<a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
-							</div>
-						</div>
 					</div>
-
+				{% endfor %}
 				</div>
 				<center><label style="padding-top: 30px; font-size: 14px;">&copy; AsoEgresados UTP</label></center>
 			</div>

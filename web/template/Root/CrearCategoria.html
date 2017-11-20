@@ -19,19 +19,20 @@
       <form method="POST"> {% csrf_token %}
         <div class="form-group">
           <label for="categoryInput">Nombre: </label>
-          <input type="text" class="form-control" id="categoryInput"  placeholder="Nombre de categoria" name="name"  required="True">
+          <input type="text" class="form-control" id="categoryInput" value="{{datos.name}}" placeholder="Nombre de categoria" name="name"  required="True">
           <small id="categoryHelp" class="form-text text-muted">Ingrese el nombre de la categoría</small>
         </div>
 
 
         <div class="form-group">
           <label for="exampleTextarea">Descripción: </label>
-          <textarea type="text"  placeholder="Descripcion de la categoria" class="form-control" id="exampleTextarea" rows="3" name="description" required="True"></textarea>
+          <textarea type="text"  placeholder="Descripcion de la categoria" class="form-control" id="exampleTextarea" rows="3" name="description" required="True">{{datos.description}}</textarea>
           <small id="descHelp" class="form-text text-muted">Ingrese una descripción de la categoría</small>
         </div>
         <center>
           <button type="button" class="btn btn-danger" onclick="location.href='/lista_categorias?username={{usuario.username}}';" >Cancelar</button>
-          <button type="submit" class="btn btn-primary">Enviar</button>
+
+          <button type="submit" class="btn btn-primary" onclick="location.href='/success_category?username={{usuario.username}}';" >Enviar</button>
         </center>
       </form>
     </div>
@@ -39,20 +40,47 @@
 </section>
 
 
-{% if mensaje_o.0 %}
+      {% if mensaje_o.0 %}
+          <input id="valorMsgSuccess" style="display: none" value="{{mensaje.0}}">
 
-    <h3>{{mensaje_o.1}}</h3>
-  
-{% endif %}
+          <div class="modal fade" id="modalMsgSuccess">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                    <h3>{{mensaje_o.1}}</h3>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
 
-{% if mensaje.0 %}
 
-	{% for error in mensaje.1  %}
+      {% if mensaje.0 %}
+          <input id="valorMsg" style="display: none" value="{{mensaje.0}}">
 
-		<h5>{{error}}</h5>
-		
-	{% endfor %}
-	
-{% endif %}
+          <div class="modal fade" id="modalMsg">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                    {% for error in mensaje.1  %}
+                        <h6>{{error}}</h6>
+                    {% endfor %}
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>        
+      {% endif %}
+
+
 
 {% endblock category_root %}

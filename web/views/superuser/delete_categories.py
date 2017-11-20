@@ -21,6 +21,7 @@ def DeleteCategory(request):
     if request.method == 'POST':
         username = request.GET.get('username')
         usuario = User.objects.filter(username=username)
+        usuario = usuario[0]
         Action_button = request.POST.get('tipo')
         id_category , action = Action_button.split()
         category = Category.objects.get(id=id_category)

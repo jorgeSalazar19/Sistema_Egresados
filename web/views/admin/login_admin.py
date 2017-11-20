@@ -62,7 +62,10 @@ def NewPasswordA(request):
             usuario.save()
             usuario.user.set_password(password)
             usuario.user.save()
-            return redirect("/dashboard_admin")
+            user = authenticate(username=dni, password=password)
+            login(request,user)
+            print(request.user.is_authenticated())
+            return redirect("/dashboard_admin?dni="+dni)
         else:
             error = (True,"Las contraseñas no coinciden")
 
