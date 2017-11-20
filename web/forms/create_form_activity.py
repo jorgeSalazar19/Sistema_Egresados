@@ -18,7 +18,7 @@ class CreateFormActivity(ModelForm):
         if re.match(patron_nombre,name) is None:
             if 'name' not in LISTA_ERROR_ACTIVITY:
                 LISTA_ERROR_ACTIVITY.append('name')
-            raise forms.ValidationError("Tienes un error en el campo nombre de categoria")
+            raise forms.ValidationError("Tienes un error en el campo nombre de actividad.")
         return name
 
     def clean_description(self):
@@ -26,7 +26,7 @@ class CreateFormActivity(ModelForm):
     	if re.match(patron_descripcion,description) is None:
     		if 'description' not in LISTA_ERROR_ACTIVITY:
     			LISTA_ERROR_ACTIVITY.append('description')
-    		raise forms.ValidationError("Tienes un error en el campo descripción")
+    		raise forms.ValidationError("Tienes un error en el campo descripción de actividad.")
     	return description
 
     def get_errors(self):

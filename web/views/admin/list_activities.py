@@ -18,11 +18,16 @@ def ListActivity(request):
             return redirect('/login_admin')
 
     if request.method == 'POST':
+        dni = request.GET.get('dni')
+        usuario = Admin.objects.filter(dni=dni)
+        usuario = usuario[0]
         Action_button = request.POST.get('tipo')
         id_activity , action = Action_button.split()
 
         if action == "Eliminar":
             actividad = Activity.objects.filter(id__exact=id_activity)
+            actividad = actividad[0]
+            actividad.image_activity.delete()
             actividad.delete()
 
     actividades = Activity.objects.all().order_by('name')

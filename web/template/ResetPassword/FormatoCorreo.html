@@ -2,6 +2,6 @@ Solicitaste reestablecimiento de contraseña
 Click en el siguiente link para crear una nueva contraseña
 {% block reset_link %}
 
-https://{{ domain }}{% url 'web:password_reset_confirm' uidb64=uid  token=token%}
+http://{{ domain }}{% url 'web:password_reset_confirm' uidb64=uid  token=token%}
 {% endblock reset_link %}
 Tu nombre de usuario es: {{user.get_username}}
