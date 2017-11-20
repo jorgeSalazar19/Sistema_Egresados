@@ -76,6 +76,26 @@
     </form>
 
 
+    {% if mensaje.0 %}
+          <input id="valorDelete" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modalDelete">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                        <h6>{{mensaje.1}}</h6>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>  
+    {% endif %}
+
+
 
     
 {% endblock contenido_admin %}

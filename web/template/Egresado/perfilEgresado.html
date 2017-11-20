@@ -57,13 +57,17 @@
               </div>
               <div class="col-lg-6">
                 <center><h6>Preferencias</h6><hr></center>
-                {% for preferencia in categoria_g  %}
-                <div id="categorias">
-                  <ul class="list-group">
-                    <li class="list-group-item ">{{preferencia}}</li>
-                  </ul>
-                </div>
-                {% endfor %}
+                
+
+                  <div id="categorias">
+                    <ul class="list-group">
+                      {% for preferencia in categoria_g  %}
+                      <li class="list-group-item ">{{preferencia}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                
               </div>
             </div>
             <div class="row" style="padding-top: 40px;">

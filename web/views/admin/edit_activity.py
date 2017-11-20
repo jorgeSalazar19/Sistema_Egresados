@@ -69,6 +69,8 @@ def EditActivity(request):
             actividad.save()
             mensaje = (True ,'Imagen cargada correctamente')
 
+        return redirect('/success_edition?dni='+dni)
+
     template = loader.get_template('Admin/editarActividad.html')
     ctx = { 
         'mensaje' : mensaje,

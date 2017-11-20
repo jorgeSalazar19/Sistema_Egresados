@@ -50,7 +50,7 @@
 	}
 	#amigos{
 	  overflow-y: scroll;
-	  height: 40vh;
+	  height: 35vh;
 	}
 	#solicitudes{
 	  overflow-y: scroll;
@@ -118,7 +118,7 @@
       <section class="container-fluid" style="padding-top: 70px; ">
 
       	<div class="row">
-      		<div id="actividades" class="col-lg-10 col-md-9">
+      		<div id="actividades" class="col-lg-9 col-md-9">
 				<div class="card-columns">
 				{% for actividad in actividades %}
 				<div class="card">
@@ -136,7 +136,7 @@
 			</div>
 
 			<!--PANEL DE AMIGOS-->
-			<div class="col-lg-2 col-md-3 hidden-sm-down">
+			<div class="col-lg-3 col-md-3 hidden-sm-down">
 				<center><b><label>Amigos</label></b></center><hr>
 				<div id="amigos">
 				{% for amigo in amigos  %}

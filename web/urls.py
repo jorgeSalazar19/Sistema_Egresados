@@ -148,6 +148,18 @@ urlpatterns = [
         name = 'success_activity'
     ),
 
+    url(regex=r'^success_edition/$',
+        view= SuccessEdition,
+        name = 'success_edition'
+    ),
 
+    url(regex=r'^success_profile_edition/$',
+        view= SuccessProfileEdition,
+        name = 'success_profile_edition'
+    ),
 
+    url(regex=r'^success_profile_edition_graduated/$',
+        view= SuccessProfileEditionGraduated,
+        name = 'success_profile_edition_graduated'
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

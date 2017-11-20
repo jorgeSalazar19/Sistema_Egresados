@@ -67,6 +67,8 @@ def EditInfoAdm(request):
             usuario.save()
             mensaje = (True ,'Imagen cargada correctamente')
 
+        return redirect('/success_profile_edition?dni='+dni)
+
     print(error)
     paises = Country.objects.all().order_by('name')
     template = loader.get_template('Admin/editarInfoAdm.html')

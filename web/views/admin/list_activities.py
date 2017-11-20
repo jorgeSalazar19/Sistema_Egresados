@@ -28,7 +28,10 @@ def ListActivity(request):
             actividad = Activity.objects.filter(id__exact=id_activity)
             actividad = actividad[0]
             actividad.image_activity.delete()
+            mensaje = (True , "la actividad "+"'"+actividad.name+"'"+ " fue eliminada con exito" )
+
             actividad.delete()
+
 
     actividades = Activity.objects.all().order_by('name')
     template = loader.get_template('Admin/listaActividades.html')
@@ -37,4 +40,5 @@ def ListActivity(request):
         'usuario' : usuario,
         'actividades' : actividades,
     }
+    print(mensaje)
     return HttpResponse(template.render(ctx,request))

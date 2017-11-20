@@ -31,6 +31,8 @@ def EditInfoGra(request):
         if len(categorias) != 0:
             usuario.preferences = categorias
             usuario.save()
+        else:
+            mensaje = (True , "Debes seleccionar almenos una categoria para tus preferencias")
 
         if len(email) != 0:
             usuario.user.email = email
@@ -49,9 +51,8 @@ def EditInfoGra(request):
             usuario.profile_picture.delete()
             usuario.profile_picture = profile_picture
             usuario.save()
-            mensaje = (True ,'Imagen cargada correctamente')
-        else:
-            mensaje = (True, 'No se cargo')
+
+        return redirect('/success_profile_edition_graduated?username='+dni)
     paises = Country.objects.all().order_by('name')
     categoria_g = usuario.preferences.all()
     print(categoria_g)
