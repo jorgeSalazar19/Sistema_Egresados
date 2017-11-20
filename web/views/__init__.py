@@ -6,6 +6,7 @@ from .admin.edit_info_adm import EditInfoAdm
 from .admin.create_activity import CreateActivity
 from .admin.list_activities import ListActivity
 from .admin.edit_activity import EditActivity
+from .admin.success_activity import SuccessActivity
 
 from .graduated.dashboardEgresado import DashboardEgresado 
 from .graduated.new_password import NewPasswordG
@@ -26,6 +27,7 @@ from .superuser.create_category import CreateCategory
 from .superuser.lista_categories import ListCategory
 from .superuser.delete_categories import DeleteCategory
 from .superuser.success_category import SuccessCategory
+
 
 from .index import Index
 from .logout import closeSession

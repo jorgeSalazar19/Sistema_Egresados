@@ -143,6 +143,11 @@ urlpatterns = [
         name = 'success_category'
     ),
 
+    url(regex=r'^success_activity/$',
+        view= SuccessActivity,
+        name = 'success_activity'
+    ),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
