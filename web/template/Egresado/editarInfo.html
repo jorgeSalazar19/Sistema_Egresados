@@ -2,6 +2,7 @@
 {%load staticfiles%}
 
 {% block contenido_egresado %}
+      <title>Editar Información</title>
       <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary ">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -20,7 +21,7 @@
               <a class="nav-link " href="/dashboard_egresado/profile_graduated?username={{usuario.dni}}">Perfil<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link " href="#">Cuenta<span class="sr-only">(current)</span></a>
+              <a class="nav-link " href="/dashboard_egresado/edit_info_gra?username={{usuario.dni}}">Cuenta<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -85,7 +86,7 @@
                 </div>
                 <div id="cat">
                   <ul class="list-group">
-                    {% for categoria in categorias  %}
+                  {% for categoria in categorias  %}
                     {% if categoria in categoria_g %}
                           <li class="list-group-item">
                                 <div class="form-check">
