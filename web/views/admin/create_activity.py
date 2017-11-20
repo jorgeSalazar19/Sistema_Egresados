@@ -60,6 +60,7 @@ def CreateActivity(request):
                 from_email = settings.EMAIL_HOST_USER
                 current_site = get_current_site(request)
                 SendMail(from_email,to_list,current_site,actividad)
+                return redirect('/success_activity?dni='+dni)
         else:
             errors = form_activity.get_errors()
             message_e = []
