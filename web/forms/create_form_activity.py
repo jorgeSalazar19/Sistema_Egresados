@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 import re
 from django import forms
 from datetime import datetime
+from datetime import datetime, date, time, timedelta
 
 patron_nombre = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+)')
 patron_descripcion = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+[\s]*)+')
@@ -12,7 +13,7 @@ LISTA_ERROR_ACTIVITY = []
 class CreateFormActivity(ModelForm):
     class Meta:
         model = Activity
-        fields=['category','name','description','image_activity' ]
+        fields=['category','name','description','image_activity', 'time_activity' , 'date_activity']
         exclude=[]
 
     def clean_name(self):
@@ -30,6 +31,13 @@ class CreateFormActivity(ModelForm):
     			LISTA_ERROR_ACTIVITY.append('description')
     		raise forms.ValidationError("Tienes un error en el campo descripción de actividad.")
     	return description
+
+    def clean_date_activity(self):
+        date_activity = self.cleaned_data.get('date_activity')
+        if date_activity < date.today():
+            LISTA_ERROR_ACTIVITY.append('date_activity')
+            raise forms.ValidationError("Tienes un error en el campo fecha de actividad")
+        return date_activity
 
     def get_errors(self):
     	return LISTA_ERROR_ACTIVITY

@@ -13,6 +13,8 @@ class Activity(models.Model):
     image_activity = models.ImageField(upload_to='activity_pictures')
     date_creation = models.DateTimeField()
     last_modification = models.DateTimeField()
+    time_activity = models.TimeField()
+    date_activity = models.DateField()
 
     def __str__(self):
         return self.name

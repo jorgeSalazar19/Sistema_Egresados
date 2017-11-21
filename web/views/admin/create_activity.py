@@ -39,6 +39,7 @@ def CreateActivity(request):
         if form_activity.is_valid():
             name = form_activity.cleaned_data['name']
             description = form_activity.cleaned_data['description']
+            date_activity = form_activity.cleaned_data['date_activity']
 
             error = []
             for actividad in actividades:
