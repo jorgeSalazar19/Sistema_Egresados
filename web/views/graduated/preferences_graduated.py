@@ -7,6 +7,10 @@ from django.contrib.auth.models import User
 def PreferencesGraduated(request):
     mensaje = (False,'')
     dni = request.GET.get('dni')
+
+    if str(request.user) != str(dni) or not request.user.is_authenticated():
+            return redirect('/login_egresado')
+
     usuario = Graduated.objects.get(dni=dni)
     
     if request.method == 'POST':

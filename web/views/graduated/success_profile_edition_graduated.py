@@ -11,11 +11,12 @@ def SuccessProfileEditionGraduated(request):
     if request.method == 'GET':
         username = request.GET.get('username')
         usuario = Graduated.objects.filter(dni=username)
-        if len(usuario) != 0 and request.user.is_authenticated():
+
+        if str(request.user) == str(username) and request.user.is_authenticated():
             usuario = usuario[0]
             template = loader.get_template('Egresado/perfilEditado.html')
         else:
-            return redirect('/login_admin')
+            return redirect('/login_egresado')
 
     template = loader.get_template('Egresado/perfilEditado.html')
     ctx = { 

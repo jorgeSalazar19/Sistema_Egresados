@@ -32,11 +32,16 @@
 
 
       <section class="container" style="padding-top: 130px; padding-bottom: 50px;">
-        <div class="row">          
+        <div class="row">
+        {% if not usuario.profile_picture %}
+          <div class="col-lg-3 align-self-center" >
+            <center><img class="fotoPerfil" src={% static "varios/perfil.jpg" %}></center>
+          </div>
+        {% else %}
           <div class="col-lg-3 align-self-center" >
             <center><img class="fotoPerfil" src="{{usuario.profile_picture.url}}"></center>
-          </div>
-        
+          </div>    
+        {% endif %}          
 
           <div class="col-lg-9">
           <center>

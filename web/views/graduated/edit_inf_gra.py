@@ -5,13 +5,17 @@ from domain.models import Graduated ,  Country , Category
 
 def EditInfoGra(request):
     mensaje = (False,'')
+
     if request.method == 'GET':
         dni = request.GET.get('username')
         usuario = Graduated.objects.filter(dni=dni)
-
-        if len(usuario) != 0 and request.user.is_authenticated():
+        
+        if str(request.user) == str(dni) and request.user.is_authenticated():
             usuario = usuario[0]
             template = loader.get_template('Egresado/editarInfo.html')
+        else:
+            return redirect('/login_egresado')
+
 
     if request.method == 'POST':
         dni = request.GET.get('username')

@@ -4,6 +4,7 @@ from django.template import loader
 from django.contrib.auth import login , authenticate 
 from django.contrib.auth.models import User
 from domain.models import Graduated , Category
+from django.core.urlresolvers import reverse
 
 def LoginEgresado(request):
     error = (False, "")
