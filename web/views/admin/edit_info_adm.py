@@ -18,9 +18,9 @@ def EditInfoAdm(request):
 
     if request.method == 'GET':
         dni = request.GET.get('dni')
-        usuario = Admin.objects.filter(dni=dni)
 
-        if len(usuario) != 0 and request.user.is_authenticated():
+        if str(request.user) == str(dni) and request.user.is_authenticated():
+            usuario = Admin.objects.filter(dni=dni)
             usuario = usuario[0]
             template = loader.get_template('Admin/editarInfoAdm.html')
         else:
@@ -66,6 +66,8 @@ def EditInfoAdm(request):
             usuario.profile_picture = profile_picture
             usuario.save()
             mensaje = (True ,'Imagen cargada correctamente')
+
+        return redirect('/success_profile_edition?dni='+dni)
 
     print(error)
     paises = Country.objects.all().order_by('name')

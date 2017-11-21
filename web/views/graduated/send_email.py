@@ -11,6 +11,11 @@ def SendEmail(request):
     if request.method == 'GET':
         username = request.GET.get('username')
         dni = request.GET.get('dni')
+
+        if str(request.user) != str(username) or not request.user.is_authenticated():
+            return redirect('/login_egresado')
+
+
         usuario = Graduated.objects.filter(dni=username)
         usuario = usuario[0]
         amigo = User.objects.filter(username=dni)
@@ -30,10 +35,11 @@ def SendEmail(request):
         mensaje = request.POST.get('mensaje')
         print(usuario.user.email)
 
-        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado un mensaje' + "\n" + mensaje
+        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado el siguiente mensaje:' + "\n" + mensaje
         email = EmailMessage(asunto, mensaje, 'jorgemsm12316@gmail.com' , [amigo.email])
         email.send(fail_silently=True)
 
+        return redirect('/success_send_mail?username='+username)
 
     template = loader.get_template('Egresado/enviarCorreo.html')
     ctx = {

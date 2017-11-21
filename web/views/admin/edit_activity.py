@@ -4,6 +4,7 @@ from django.template import loader
 
 from domain.models import Admin , Activity
 import re
+from datetime import datetime
 
 patron_nombre = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+)')
 patron_descripcion = re.compile('([A-ZÁÉÍÓÚa-zñáéíóú]{1}[a-zñáéíóúA-ZÁÉÍÓÚ]+[\s]*)+')
@@ -20,8 +21,9 @@ def EditActivity(request):
     if request.method == 'GET':
         dni = request.GET.get('dni')
         id_categoria = request.GET.get('id')
-        usuario = Admin.objects.filter(dni=dni)
-        if len(usuario) != 0 and request.user.is_authenticated():
+
+        if str(request.user) == str(dni) and request.user.is_authenticated():
+            usuario = Admin.objects.filter(dni=dni)
             usuario = usuario[0]
             template = loader.get_template('Admin/editarActividad.html')
         else:
@@ -38,6 +40,7 @@ def EditActivity(request):
         mensajes_e = [] 
         if len(name) != 0 and re.match(patron_nombre, name) is not None:
             actividad.name = name
+            actividad.last_modification = datetime.now()
             actividad.save()
 
         else:
@@ -47,6 +50,7 @@ def EditActivity(request):
 
         if len(description) != 0 and re.match(patron_descripcion,description) is not None:
             actividad.description = description
+            actividad.last_modification = datetime.now()
             actividad.save()
 
         else:
@@ -66,8 +70,11 @@ def EditActivity(request):
         if image_activity is not None:
             actividad.image_activity.delete()
             actividad.image_activity = image_activity
+            actividad.last_modification = datetime.now()
             actividad.save()
             mensaje = (True ,'Imagen cargada correctamente')
+
+        return redirect('/success_edition?dni='+dni)
 
     template = loader.get_template('Admin/editarActividad.html')
     ctx = { 

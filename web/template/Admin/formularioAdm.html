@@ -65,12 +65,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Error en el formulario</h4>
                 </div>
                 <div class="modal-body">
                   <center>
-                    {% for error in mensaje.1  %}
-                        <h6>{{error}}</h6>
-                    {% endfor %}
+                    {% if mensaje.2 %}
+                      <h6>{{mensaje.1}}</h6>
+                    {% else %}
+                      {% for error in mensaje.1  %}
+                          <h6>{{error}}</h6>
+                      {% endfor %}
+                    {% endif %}
                   </center>
                 </div>
               </div>

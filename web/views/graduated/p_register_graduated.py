@@ -7,7 +7,7 @@ from domain.models import Country , PreRegisterGraduated as PreRegister , Gradua
 
 
 def PreRegisterGraduated(request):
-    mensaje = (False,'')
+    mensaje = (False,'' , False)
     datos = []
     if request.method == 'POST':
         id_pregister = request.POST.get('dni')
@@ -24,22 +24,23 @@ def PreRegisterGraduated(request):
                     last_name = perfil_form.cleaned_data['last_name']
                     email = perfil_form.cleaned_data['email']
                     dni = perfil_form.cleaned_data['dni']
-                    birthday = perfil_form.cleaned_data['birthday']
                     graduation_year = perfil_form.cleaned_data['graduation_year']
+                    
+                    
                     perfil_form.save()
                     return redirect('/register_done')
                 else:
-                    mensaje = (True , 'El Usuario ya es un Egresado')
+                    mensaje = (True , 'El Usuario ya es un Egresado' , True)
+                    
             else:
-                mensaje = (True , 'EL preregistro ya fue realizado')
+                mensaje = (True , 'EL preregistro ya fue realizado', True)
         else:
-            print(perfil_form.errors)
             errors = perfil_form.get_errors()
             print(errors)
             message_e = []
             for error in errors:
                 message_e.append(str(perfil_form.errors[error]))
-            mensaje = (True , message_e)
+            mensaje = (True , message_e, False)
             errors = perfil_form.clean_errors()
 
 

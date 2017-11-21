@@ -50,7 +50,7 @@
 	}
 	#amigos{
 	  overflow-y: scroll;
-	  height: 40vh;
+	  height: 35vh;
 	}
 	#solicitudes{
 	  overflow-y: scroll;
@@ -118,7 +118,7 @@
       <section class="container-fluid" style="padding-top: 70px; ">
 
       	<div class="row">
-      		<div id="actividades" class="col-lg-10 col-md-9">
+      		<div id="actividades" class="col-lg-9 col-md-9">
 				<div class="card-columns">
 				{% for actividad in actividades %}
 				<div class="card">
@@ -128,6 +128,10 @@
 				    <div class="card-block">
 				      <h4 class="card-title">{{actividad.name}}</h4>
 				      <p class="card-text">{{actividad.description}}</p>
+				      <p class="card-text"><small class="text-muted">Categoria : {{actividad.category.name}}</small></p>
+				      <p class="card-text"><small class="text-muted">Fecha y Hora de Realización : {{actividad.date_activity}} , {{actividad.time_activity}}</small></p>
+				      <p class="card-text"><small>Fecha Creación: {{actividad.date_creation}}</small></p>
+				      <p class="card-text"><small>Fecha Ultima Modificación: {{actividad.last_modification}}</small></p>
 				    </div>
 				  </div>
 				{% endfor %}
@@ -136,15 +140,22 @@
 			</div>
 
 			<!--PANEL DE AMIGOS-->
-			<div class="col-lg-2 col-md-3 hidden-sm-down">
+			<div class="col-lg-3 col-md-3 hidden-sm-down">
 				<center><b><label>Amigos</label></b></center><hr>
 				<div id="amigos">
 				{% for amigo in amigos  %}
 					<div class="container-fluid ">
 						<div class="row ">
+						{% if not amigo.profile_picture %}
 							<div class="col-lg-3 col-md-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+						{% else %}
+						    <div class="col-lg-3 col-md-3 align-self-center ">
 								<img class="circular" src="{{amigo.profile_picture.url}}">
 							</div>
+
+						{% endif %}
 							<div class="col-lg-6 col-md-6 align-self-center ">
 								<h6>{{amigo.user.first_name}} {{amigo.user.last_name}}</h6> 
 							</div>
@@ -163,9 +174,15 @@
 				{% for sugerencia in sugerencias  %}
 					<div class="container-fluid ">
 						<div class="row ">
+						{% if not sugerencia.profile_picture %}
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %} >
+							</div>
+						{% else %}
 							<div class="col-lg-3 align-self-center ">
 								<img class="circular" src="{{sugerencia.profile_picture.url}}" >
 							</div>
+						{% endif %}
 							<div class="col-lg-6 align-self-center ">
 								<h6>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h6> 
 							</div>
@@ -182,10 +199,33 @@
 			</div>
 		</div>
       </section>
+
+	      {% if mensaje.0 %}
+	        <input id="valorFriend" style="display: none" value="{{mensaje.0}}">
+	          <div class="modal fade" id="modalFriend">
+	            <div class="modal-dialog">
+	              <div class="modal-content">
+	                <div class="modal-header">
+	                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                </div>
+	                <div class="modal-body">
+	                  <center>
+	                  	<h6>{{mensaje.1}}</h6>
+	                  </center>
+	                </div>
+	              </div>
+	            </div>
+	          </div>  
+	       {% endif %}
+
+
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script src={% static "js/addFriend.js" %}></script>
+
   </body>
 </html>
 

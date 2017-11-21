@@ -36,19 +36,21 @@
             <div class="row"> 
               <div class="col-sm-5 col-md-5 col-lg-3">
               {% if not usuario.profile_picture  %}
-                    <img class="circular" src="">
+                    <img class="circular" src={% static "varios/perfil.jpg" %}>
               {% else %}
                     <img class="circular" src="{{usuario.profile_picture.url}}">
               {% endif %} 
-                  <div class="form-group">
-                    <label for="exampleInputFile">Subir</label>
-                    <input type="file" class="form-control-file" id="exampleInputFile" name="profile_picture" aria-describedby="fileHelp">
-                    <small id="fileHelp" class="form-text text-muted">Seleccionar archivo para cambiar foto de perfil</small>
-                  </div>
 
               </div>
               <div class="col-sm-7 col-md-7 col-lg-9 ">
                 <h3>Administrador : {{usuario.user.first_name}} {{usuario.user.last_name}}</h3><hr><br>
+
+                <div>
+                  <div class="form-group">
+                    <input type="file" class="form-control-file" id="exampleInputFile" name="profile_picture" aria-describedby="fileHelp">
+                    <small id="fileHelp" class="form-text text-muted">Seleccionar archivo para cambiar foto de perfil</small>
+                  </div>
+                </div>
 
                 <div class="form-group row">
                   <label for="example-email-input" class="col-2 col-form-label">Email</label>

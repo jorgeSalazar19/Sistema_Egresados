@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.conf import settings
+from datetime import datetime
 
 def CreateActivity(request):
     mensaje = (False,'')
@@ -17,8 +18,9 @@ def CreateActivity(request):
 
     if request.method == 'GET':
         dni = request.GET.get('dni')
-        usuario = Admin.objects.filter(dni=dni)
-        if len(usuario) != 0 and request.user.is_authenticated():
+        
+        if str(request.user) == str(dni) and request.user.is_authenticated():
+            usuario = Admin.objects.filter(dni=dni)
             usuario = usuario[0]
             template = loader.get_template('Admin/crearActividades.html')
         else:
@@ -37,16 +39,19 @@ def CreateActivity(request):
         if form_activity.is_valid():
             name = form_activity.cleaned_data['name']
             description = form_activity.cleaned_data['description']
+            date_activity = form_activity.cleaned_data['date_activity']
 
             error = []
             for actividad in actividades:
-                print (actividad.name , name_activity)
                 if (str(actividad.name).lower()) == (str(name_activity).lower()):
                     error.append(actividad)
                     mensaje_only = (True,"Actividad ya existe")
                     
-            if len(error) == 0: 
-                form_activity.save()
+            if len(error) == 0:
+                new_activity = form_activity.save(commit=False)
+                new_activity.date_creation = datetime.now()
+                new_activity.last_modification = datetime.now()
+                new_activity.save()
                 mensaje_only = (True , "Actividad guardada")
                 egresados = Graduated.objects.all()
                 to_list = []
@@ -63,9 +68,9 @@ def CreateActivity(request):
                 SendMail(from_email,to_list,current_site,name_activity)
                 return redirect('/success_activity?dni='+dni)
         else:
+            print(form_activity.errors)
             errors = form_activity.get_errors()
             message_e = []
-            print(len(request.FILES))
             if len(request.FILES) == 0:
                 error = "Por favor selecciona una imagen."
                 message_e.append(error)

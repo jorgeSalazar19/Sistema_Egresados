@@ -20,11 +20,14 @@ def DashboardEgresado(request):
     categorias_A = []*len(categorias)
     usuario_agregar = None
 
+
     if dni_sugerencia is not None:
         usuario_agregar = Graduated.objects.get(dni__exact=dni_sugerencia)
 
     if usuario_agregar is not None:
         usuario.friends.add(usuario_agregar)
+        mensaje = (True , "Se ha agregado correctamente al usuario " + usuario_agregar.user.first_name +" " + usuario_agregar.user.last_name)
+
 
     for category in categorias:
         categorias_A.append(category)
@@ -50,7 +53,7 @@ def DashboardEgresado(request):
     sugerencias_s = []
     for sugerencia in sugerencias:
         if sugerencia in friends:
-            print("esta")
+            pass
         else:
             sugerencias_s.append(sugerencia)
 
@@ -62,7 +65,7 @@ def DashboardEgresado(request):
             'sugerencias' : sugerencias_s,
         } 
 
-    if len(usuario) == 0 or not request.user.is_authenticated():
+    if str(request.user) != str(dni) or not request.user.is_authenticated():
         return redirect('/login_egresado')
 
     else:

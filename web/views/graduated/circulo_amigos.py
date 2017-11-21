@@ -5,10 +5,13 @@ from domain.models import Graduated
 from dateutil.relativedelta import relativedelta
 
 def CirculoAmigos(request):
-
-    mensaje = (True , "")
-    usuario_agregar = None
     username = request.GET.get('username')
+
+    if str(request.user) != str(username) or not request.user.is_authenticated():
+        return redirect('/login_egresado')
+
+    mensaje = (False , "")
+    usuario_agregar = None
     usuario = Graduated.objects.filter(dni=username)
     dni_sugerencia = request.GET.get('dni')
     usuario_f = Graduated.objects.get(dni=username)
@@ -18,6 +21,7 @@ def CirculoAmigos(request):
 
     if usuario_agregar is not None:
         usuario_f.friends.add(usuario_agregar)
+        mensaje = (True, "Se ha agregado correctamente al usuario "+ usuario_agregar.user.first_name+ " " + usuario_agregar.user.last_name )
 
     
     graduation_year_user = usuario_f.graduation_year

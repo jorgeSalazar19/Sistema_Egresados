@@ -5,13 +5,17 @@ from domain.models import Graduated ,  Country , Category
 
 def EditInfoGra(request):
     mensaje = (False,'')
+
     if request.method == 'GET':
         dni = request.GET.get('username')
         usuario = Graduated.objects.filter(dni=dni)
-
-        if len(usuario) != 0 and request.user.is_authenticated():
+        
+        if str(request.user) == str(dni) and request.user.is_authenticated():
             usuario = usuario[0]
             template = loader.get_template('Egresado/editarInfo.html')
+        else:
+            return redirect('/login_egresado')
+
 
     if request.method == 'POST':
         dni = request.GET.get('username')
@@ -31,6 +35,8 @@ def EditInfoGra(request):
         if len(categorias) != 0:
             usuario.preferences = categorias
             usuario.save()
+        else:
+            mensaje = (True , "Debes seleccionar almenos una categoria para tus preferencias")
 
         if len(email) != 0:
             usuario.user.email = email
@@ -49,9 +55,8 @@ def EditInfoGra(request):
             usuario.profile_picture.delete()
             usuario.profile_picture = profile_picture
             usuario.save()
-            mensaje = (True ,'Imagen cargada correctamente')
-        else:
-            mensaje = (True, 'No se cargo')
+
+        return redirect('/success_profile_edition_graduated?username='+dni)
     paises = Country.objects.all().order_by('name')
     categoria_g = usuario.preferences.all()
     print(categoria_g)

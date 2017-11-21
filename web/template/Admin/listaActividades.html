@@ -54,6 +54,9 @@
                   <h4 class="card-title">Nombre : {{actividad.name}}</h4>
                   <p class="card-text">Descripción : {{actividad.description}}</p>
                   <p class="card-text"><small class="text-muted">Categoria : {{actividad.category.name}}</small></p>
+                  <p class="card-text"><small class="text-muted">Fecha y Hora de Realización : {{actividad.date_activity}} , {{actividad.time_activity}}</small></p>
+                  <p class="card-text"><small class="text-muted">Fecha Creación : {{actividad.date_creation}}</small></p>
+                  <p class="card-text"><small class="text-muted">Fecha Ultima Modificación : {{actividad.last_modification}}</small></p>
                 </div>
               </div>
               </div>
@@ -74,6 +77,26 @@
       </div>
     </section>
     </form>
+
+
+    {% if mensaje.0 %}
+          <input id="valorDelete" style="display: none" value="{{mensaje.0}}">
+
+          <div class="modal fade" id="modalDelete">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <center>
+                        <h6>{{mensaje.1}}</h6>
+                  </center>
+                </div>
+              </div>
+            </div>
+          </div>  
+    {% endif %}
 
 
 

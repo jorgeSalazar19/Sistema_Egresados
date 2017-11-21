@@ -83,9 +83,13 @@
                 </div>
                 <div class="modal-body">
                   <center>
-                    {% for error in mensaje.1  %}
-                        <h6>{{error}}</h6>
-                    {% endfor %}
+                    {% if mensaje.2 %}
+                      <h6>{{mensaje.1}}</h6>
+                    {% else %}
+                      {% for error in mensaje.1  %}
+                          <h6>{{error}}</h6>
+                      {% endfor %}
+                    {% endif %}
                   </center>
                 </div>
               </div>
