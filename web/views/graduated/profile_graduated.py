@@ -7,6 +7,10 @@ def ProfileGraduated(request):
 
     if request.method == 'GET':
         dni = request.GET.get('username')
+        
+        if str(request.user) != str(dni) or not request.user.is_authenticated():
+            return redirect('/login_egresado')
+
         usuario = Graduated.objects.filter(dni=dni)
         usuario = usuario[0]
 

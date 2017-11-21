@@ -17,9 +17,9 @@ def AceptarCuentas(request):
     usuario = []
     if request.method == 'GET':
         dni = request.GET.get('dni')
-        usuario = Admin.objects.filter(dni=dni)
-
-        if len(usuario) != 0 and request.user.is_authenticated():
+        
+        if str(request.user) == str(dni) and request.user.is_authenticated():
+            usuario = Admin.objects.filter(dni=dni)
             usuario = usuario[0]
             template = loader.get_template('Admin/aceptarCuentas.html')
             pre_registros = PreRegisterGraduated.objects.all()

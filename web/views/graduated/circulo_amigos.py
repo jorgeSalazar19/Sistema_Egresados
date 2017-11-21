@@ -5,10 +5,13 @@ from domain.models import Graduated
 from dateutil.relativedelta import relativedelta
 
 def CirculoAmigos(request):
+    username = request.GET.get('username')
+
+    if str(request.user) != str(username) or not request.user.is_authenticated():
+        return redirect('/login_egresado')
 
     mensaje = (True , "")
     usuario_agregar = None
-    username = request.GET.get('username')
     usuario = Graduated.objects.filter(dni=username)
     dni_sugerencia = request.GET.get('dni')
     usuario_f = Graduated.objects.get(dni=username)

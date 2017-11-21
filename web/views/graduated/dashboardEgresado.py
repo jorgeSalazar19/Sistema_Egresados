@@ -20,6 +20,7 @@ def DashboardEgresado(request):
     categorias_A = []*len(categorias)
     usuario_agregar = None
 
+
     if dni_sugerencia is not None:
         usuario_agregar = Graduated.objects.get(dni__exact=dni_sugerencia)
 
@@ -62,7 +63,7 @@ def DashboardEgresado(request):
             'sugerencias' : sugerencias_s,
         } 
 
-    if len(usuario) == 0 or not request.user.is_authenticated():
+    if str(request.user) != str(dni) or not request.user.is_authenticated():
         return redirect('/login_egresado')
 
     else:
