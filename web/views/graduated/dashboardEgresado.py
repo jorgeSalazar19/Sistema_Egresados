@@ -26,6 +26,7 @@ def DashboardEgresado(request):
 
     if usuario_agregar is not None:
         usuario.friends.add(usuario_agregar)
+        mensaje = (True, "Se ha agregado correctamente al usuario "+ usuario_agregar.user.first_name+ " " + usuario_agregar.user.last_name )
 
     for category in categorias:
         categorias_A.append(category)
