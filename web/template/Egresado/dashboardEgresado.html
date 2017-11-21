@@ -142,9 +142,16 @@
 				{% for amigo in amigos  %}
 					<div class="container-fluid ">
 						<div class="row ">
+						{% if not amigo.profile_picture %}
 							<div class="col-lg-3 col-md-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %}>
+							</div>
+						{% else %}
+						    <div class="col-lg-3 col-md-3 align-self-center ">
 								<img class="circular" src="{{amigo.profile_picture.url}}">
 							</div>
+
+						{% endif %}
 							<div class="col-lg-6 col-md-6 align-self-center ">
 								<h6>{{amigo.user.first_name}} {{amigo.user.last_name}}</h6> 
 							</div>
@@ -163,9 +170,15 @@
 				{% for sugerencia in sugerencias  %}
 					<div class="container-fluid ">
 						<div class="row ">
+						{% if not sugerencia.profile_picture %}
+							<div class="col-lg-3 align-self-center ">
+								<img class="circular" src={% static "varios/perfil.jpg" %} >
+							</div>
+						{% else %}
 							<div class="col-lg-3 align-self-center ">
 								<img class="circular" src="{{sugerencia.profile_picture.url}}" >
 							</div>
+						{% endif %}
 							<div class="col-lg-6 align-self-center ">
 								<h6>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h6> 
 							</div>

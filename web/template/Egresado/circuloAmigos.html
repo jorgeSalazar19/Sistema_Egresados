@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -73,9 +74,16 @@
               <li class="list-group-item">
                 <section class="container">
                   <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                  {% if not amigo.profile_picture %}
+                    <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                      <center><img class="circular" src={% static "varios/perfil.jpg" %}></center>
+                    </div>
+                  {% else %}
+                    <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
                       <center><img class="circular" src="{{amigo.profile_picture.url}}"></center>
                     </div>
+                  {% endif %}
+                    
                     <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
                       <center><h5>{{amigo.user.first_name}} {{amigo.user.last_name}}</h5>
                       <span>{{amigo.career.name}}</span></center>
@@ -98,9 +106,15 @@
               <li class="list-group-item">
                 <section class="container">
                   <div class="row">
+                  {% if not sugerencia.profile_picture %}
                     <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
+                      <center><img class="circular" src={% static "varios/perfil.jpg" %}></center>
+                    </div>
+                  {% else %}
+                  <div class="col-lg-3 col-md-3 col-sm-3 align-self-center" >
                       <center><img class="circular" src="{{sugerencia.profile_picture.url}}"></center>
                     </div>
+                  {% endif %}
                     <div class="col-lg-7 col-md-7 col-sm-6 align-self-center">
                       <center><h5>{{sugerencia.user.first_name}} {{sugerencia.user.last_name}}</h5>
                       <span>{{sugerencia.career}}</span></center>
