@@ -162,4 +162,9 @@ urlpatterns = [
         view= SuccessProfileEditionGraduated,
         name = 'success_profile_edition_graduated'
     ),
+
+    url(regex=r'^success_send_mail/$',
+        view= SuccessSendMail,
+        name = 'success_send_mail'
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

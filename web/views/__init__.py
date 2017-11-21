@@ -22,6 +22,7 @@ from .graduated.edit_inf_gra import EditInfoGra
 from .graduated.send_email import SendEmail
 from .graduated.profile_graduated import ProfileGraduated
 from .graduated.success_profile_edition_graduated import SuccessProfileEditionGraduated
+from .graduated.success_send_mail import SuccessSendMail
 
 
 from .superuser.dashboardRoot import DashboardRoot

@@ -39,6 +39,7 @@ def SendEmail(request):
         email = EmailMessage(asunto, mensaje, 'jorgemsm12316@gmail.com' , [amigo.email])
         email.send(fail_silently=True)
 
+        return redirect('/success_send_mail?username='+username)
 
     template = loader.get_template('Egresado/enviarCorreo.html')
     ctx = {

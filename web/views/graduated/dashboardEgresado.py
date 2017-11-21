@@ -28,6 +28,7 @@ def DashboardEgresado(request):
         usuario.friends.add(usuario_agregar)
         mensaje = (True , "Se ha agregado correctamente al usuario " + usuario_agregar.user.first_name +" " + usuario_agregar.user.last_name)
 
+
     for category in categorias:
         categorias_A.append(category)
     actividades = Activity.objects.all()
@@ -52,7 +53,7 @@ def DashboardEgresado(request):
     sugerencias_s = []
     for sugerencia in sugerencias:
         if sugerencia in friends:
-            print("esta")
+            pass
         else:
             sugerencias_s.append(sugerencia)
 

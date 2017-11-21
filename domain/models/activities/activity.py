@@ -1,5 +1,6 @@
 from django.db import models
 from ..categories.categories import Category
+from datetime import datetime
 
 class Activity(models.Model):
     class Meta:
@@ -10,6 +11,8 @@ class Activity(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     image_activity = models.ImageField(upload_to='activity_pictures')
+    date_creation = models.DateTimeField()
+    last_modification = models.DateTimeField()
 
     def __str__(self):
         return self.name
