@@ -24,8 +24,9 @@ def PreRegisterGraduated(request):
                     last_name = perfil_form.cleaned_data['last_name']
                     email = perfil_form.cleaned_data['email']
                     dni = perfil_form.cleaned_data['dni']
-                    birthday = perfil_form.cleaned_data['birthday']
                     graduation_year = perfil_form.cleaned_data['graduation_year']
+                    
+                    
                     perfil_form.save()
                     return redirect('/register_done')
                 else:
@@ -34,7 +35,6 @@ def PreRegisterGraduated(request):
             else:
                 mensaje = (True , 'EL preregistro ya fue realizado', True)
         else:
-            print(perfil_form.errors)
             errors = perfil_form.get_errors()
             print(errors)
             message_e = []

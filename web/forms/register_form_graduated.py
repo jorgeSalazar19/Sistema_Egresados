@@ -55,23 +55,21 @@ class RegisterFormGraduated(ModelForm):
             raise forms.ValidationError("Tienes un error en el campo dni")
         return dni
 
-    def clean_birthday(self):
-        now_date = datetime.now()
-        birthday = self.cleaned_data.get('birthday')
-        if birthday < LIMITE:
-            if 'birthday' not in LISTA_ERROR_GRADUATED:
-                LISTA_ERROR_GRADUATED.append('birthday')
-            raise forms.ValidationError("Tienes un error en el campo fecha de nacimiento")
-        return birthday
-
     def clean_graduation_year(self):
         birthday = self.cleaned_data.get('birthday')
+        print("fecha: ",birthday)
         graduation_year = self.cleaned_data.get('graduation_year')
+
+        if birthday < LIMITE or birthday > date.today():
+            LISTA_ERROR_GRADUATED.append('graduation_year')
+            raise forms.ValidationError("Tienes un error en la fecha de nacimiento")
+
         if graduation_year < (birthday + relativedelta(years=18)) or graduation_year > date.today():
             if 'graduation_year' not in LISTA_ERROR_GRADUATED:
                 LISTA_ERROR_GRADUATED.append('graduation_year')
             raise forms.ValidationError("Tienes un error en el campo fecha graduacion")
         return graduation_year
+
 
     def get_errors(self):
         return LISTA_ERROR_GRADUATED

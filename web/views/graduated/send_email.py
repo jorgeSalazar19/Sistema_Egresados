@@ -35,7 +35,7 @@ def SendEmail(request):
         mensaje = request.POST.get('mensaje')
         print(usuario.user.email)
 
-        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado un mensaje' + "\n" + mensaje
+        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado el siguiente mensaje:' + "\n" + mensaje
         email = EmailMessage(asunto, mensaje, 'jorgemsm12316@gmail.com' , [amigo.email])
         email.send(fail_silently=True)
 
