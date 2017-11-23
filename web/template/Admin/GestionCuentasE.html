@@ -1,0 +1,81 @@
+{% extends "Bases/BaseAdmin.html" %}
+{% load staticfiles %}
+
+{% block contenido_admin %}
+
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">!</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/aceptar_cuentas?dni={{usuario.dni}}">Activar Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/list_activity?dni={{usuario.dni}}">Actividades <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard_admin?dni={{usuario.dni}}">Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/edit_info_adm/?dni={{usuario.dni}}">Cuenta <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/gestion_cuentas_egresados/?dni={{usuario.dni}}">Gestion Cuentas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<form method="POST">{% csrf_token %}
+  <table class="table">
+    <thead align="center">
+      <tr>
+       
+        <th align="center">Nombre de Usuario</th>
+        <th align="center">Username</th>
+        <th align="center">Ultimo Login</th>
+        <th align="center">Fecha de Activación cuenta</th>
+        <th align="center">Estado cuenta</th>
+        <th align="center">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for egresado in egresados  %}
+      <tr>
+        <td>{{egresado.user.first_name}} {{egresado.user.last_name}}</td>
+        <td>{{egresado.user.username}}</td>
+        <td>{{egresado.last_login}}</td>
+        <td>{{egresado.user.date_joined}}</td>
+        {% if egresado.is_active == True %}
+            <td>Habilitada</td>
+        {% else %}
+        	<td>Deshabilitada</td>  	
+        {% endif %}
+        <td>
+        	<button type="submit" class="btn btn-danger" name="accion" value="{{egresado.dni}} Eliminar {{usuario.dni}}">Eliminar</button>
+        	{% if egresado.is_active == True %}
+        		<button type="submit" class="btn btn-primary" name="accion" value="{{egresado.dni}} Deshabilitar {{usuario.dni}}">Deshabilitar</button>	
+        	{% else %}
+        		<button type="submit" class="btn btn-primary" name="accion" value="{{egresado.dni}} Habilitar {{usuario.dni}}">Habilitar</button>
+        	{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</form>
+
+{% if mensaje.0 %}
+
+	<h6>{{mensaje.1}}</h6>
+	
+{% endif %}
+	
+{% endblock contenido_admin %}

@@ -39,7 +39,12 @@ urlpatterns = [
     url(regex=r'^aceptar_cuentas/$',
         view=AceptarCuentas, 
         name="aceptar_cuentas"),
-    
+
+    url(regex=r'^gestion_cuentas_egresados/$',
+        view=AccountManagementE, 
+        name="gestion_cuentas_egresados"),
+
+
     url(regex=r'^dashboard_egresado/$',
         view=DashboardEgresado, 
         name="dashboard_egresado"), 
@@ -47,6 +52,10 @@ urlpatterns = [
     url(regex=r'^dashboard_root/$',
         view=DashboardRoot, 
         name="dashboard_root"),
+
+    url(regex=r'^gestion_cuentas_admin/$',
+        view=AccountManagement, 
+        name="gestion_cuentas_admin"),
     
     url(regex=r'^aceptar_cuentas_admin/$',
         view=AceptarCuentasAdmin, 

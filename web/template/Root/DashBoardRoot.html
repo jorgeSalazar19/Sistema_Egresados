@@ -11,13 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="/aceptar_cuentas_admin?username={{usuario.username}}">Cuentas <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/aceptar_cuentas_admin?username={{usuario.username}}">Activar Cuentas <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="/lista_categorias?username={{usuario.username}}">Categorias<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/dashboard_root?username={{usuario.username}}">Perfil</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/gestion_cuentas_admin?username={{usuario.username}}">Gestion de Cuentas<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
@@ -46,7 +49,10 @@
         <div class="col-lg-12"><center>  
           <ul style="">
             <li><a href="/crear_categorias?username={{usuario.username}}">Crear categorías</a></li>
-            <li><a href="/aceptar_cuentas_admin?username={{usuario.username}}">Gestión de cuentas</a></li>
+            <li class="nav-item ">
+            <a class="nav-link" href="/gestion_cuentas_admin?username={{usuario.username}}">Gestion de Cuentas<span class="sr-only">(current)</span></a>
+           </li>
+            <li><a href="/aceptar_cuentas_admin?username={{usuario.username}}">Activar cuentas</a></li><br>
             <li><a href="/logout">Cerrar sesión</a></li>
           </ul></center>
         </div>

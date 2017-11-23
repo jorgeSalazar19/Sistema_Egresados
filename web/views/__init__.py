@@ -9,6 +9,7 @@ from .admin.edit_activity import EditActivity
 from .admin.success_activity import SuccessActivity
 from .admin.success_edition import SuccessEdition
 from .admin.success_profile_edition import SuccessProfileEdition
+from .admin.gestion_cuentas import AccountManagementE
 
 from .graduated.dashboardEgresado import DashboardEgresado 
 from .graduated.new_password import NewPasswordG
@@ -31,6 +32,7 @@ from .superuser.create_category import CreateCategory
 from .superuser.lista_categories import ListCategory
 from .superuser.delete_categories import DeleteCategory
 from .superuser.success_category import SuccessCategory
+from .superuser.gestion_cuentas import AccountManagement
 
 
 from .index import Index

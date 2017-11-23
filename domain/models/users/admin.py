@@ -20,6 +20,8 @@ class Admin(models.Model):
     genre = models.CharField(choices=GENRE, max_length=10)
     cellphone = models.BigIntegerField(null=True)
     first_login = models.IntegerField(default=0)
+    last_login = models.DateTimeField(null=True)
+    is_active = models.BooleanField(default=True)
 
 
     def __str__(self):

@@ -11,10 +11,10 @@ class Activity(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
     image_activity = models.ImageField(upload_to='activity_pictures')
-    date_creation = models.DateTimeField()
-    last_modification = models.DateTimeField()
-    time_activity = models.TimeField()
-    date_activity = models.DateField()
+    date_creation = models.DateTimeField(null=True)
+    last_modification = models.DateTimeField(null=True)
+    time_activity = models.TimeField(null=True)
+    date_activity = models.DateField(null=True)
 
     def __str__(self):
         return self.name
