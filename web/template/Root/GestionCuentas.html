@@ -1,0 +1,81 @@
+{% extends "Bases/BaseRoot.html" %}
+{% load staticfiles %}
+
+{% block contenido_root %}
+
+<title>Gestion de cuentas</title>
+
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand">!</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/aceptar_cuentas_admin?username={{usuario.username}}">Activar Cuentas <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/lista_categorias?username={{usuario.username}}">Categorias<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard_root?username={{usuario.username}}">Perfil</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/gestion_cuentas_admin?username={{usuario.username}}">Gestion de Cuentas<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<form method="POST">{% csrf_token %}
+  <table class="table">
+    <thead align="center">
+      <tr>
+        <th align="center">#</th>
+        <th align="center">Nombre de Usuario</th>
+        <th align="center">Username</th>
+        <th align="center">Ultimo Login</th>
+        <th align="center">Fecha de Activación cuenta</th>
+        <th align="center">Estado cuenta</th>
+        <th align="center">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for admin in admins  %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{admin.user.first_name}} {{admin.user.last_name}}</td>
+        <td>{{admin.user.username}}</td>
+        <td>{{admin.last_login}}</td>
+        <td>{{admin.user.date_joined}}</td>
+        {% if admin.is_active == True %}
+            <td>Habilitada</td>
+        {% else %}
+        	<td>Deshabilitada</td>  	
+        {% endif %}
+        <td>
+        	<button type="submit" class="btn btn-danger" name="accion" value="{{admin.dni}} Eliminar {{usuario.username}}">Eliminar</button>
+        	{% if admin.is_active == True %}
+        		<button type="submit" class="btn btn-primary" name="accion" value="{{admin.dni}} Deshabilitar {{usuario.username}}">Deshabilitar</button>	
+        	{% else %}
+        		<button type="submit" class="btn btn-primary" name="accion" value="{{admin.dni}} Habilitar {{usuario.username}}">Habilitar</button>
+        	{% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</form>
+
+{% if mensaje.0 %}
+
+	<h6>{{mensaje.1}}</h6>
+	
+{% endif %}
+	
+{% endblock contenido_root %}

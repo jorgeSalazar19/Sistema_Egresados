@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from domain.models import Admin
 
+from datetime import datetime
+
 
 def LoginAdmin(request):
     error = (False, "")
@@ -21,8 +23,12 @@ def LoginAdmin(request):
                 usuario = usuario[0]
                 login(request, user)
                 if usuario.first_login == 0:
+                    usuario.last_login = datetime.now()
+                    usuario.save()
                     return redirect("/new_passworda?dni="+username)
                 else:
+                    usuario.last_login = datetime.now()
+                    usuario.save()
                     return redirect("/dashboard_admin?dni="+username)
             else:
                 error = (True, "Contraseña no valida")

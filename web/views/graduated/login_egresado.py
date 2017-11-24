@@ -5,6 +5,7 @@ from django.contrib.auth import login , authenticate
 from django.contrib.auth.models import User
 from domain.models import Graduated , Category
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 def LoginEgresado(request):
     error = (False, "")
@@ -17,8 +18,14 @@ def LoginEgresado(request):
         if len(usuario) != 0:
             user = authenticate(request=request, username=username, password=password)
             if user is not None:
-                login(request, user)
-                return redirect("/dashboard_egresado?username="+username)
+                usuario = usuario[0]
+                if usuario.is_active == True:
+                    login(request, user)
+                    usuario.last_login = datetime.now()
+                    usuario.save()
+                    return redirect("/dashboard_egresado?username="+username)
+                else:
+                    error = (True , "Tu cuenta ha sido desactivada")
             else:
                 error = (True, "Contraseña no valida")
         else:

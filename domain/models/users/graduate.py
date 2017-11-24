@@ -28,6 +28,8 @@ class Graduated(models.Model):
     preferences = models.ManyToManyField(Category)
     friends = models.ManyToManyField("Graduated")
     first_login = models.IntegerField(default=0 , null=True)
+    last_login = models.DateTimeField(null=True)
+    is_active = models.BooleanField(default=True)
 
 
     def __str__(self):

@@ -12,23 +12,23 @@ def DeleteCategory(request):
     categorias = Category.objects.all()
     if request.method == 'GET':
         username = request.GET.get('username')
+        id_category = request.GET.get('id_categoria')
+        if username != None:
+            username = username
+        if id_category != None:
+            id_categoria = id_category
+        else:
+            id_categoria = 0
         usuario = User.objects.filter(username=username)
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
+            if id_categoria != 0:
+                category = Category.objects.get(id=id_categoria)
+                mensaje = (True,"Categoria "+ category.name +" Eliminada")
+                category.delete()
+                
         else:
             return redirect('/')
-
-    if request.method == 'POST':
-        username = request.GET.get('username')
-        usuario = User.objects.filter(username=username)
-        usuario = usuario[0]
-        Action_button = request.POST.get('tipo')
-        id_category , action = Action_button.split()
-        category = Category.objects.get(id=id_category)
-
-        if action == 'Eliminar':
-            category.delete()
-            mensaje = (True,"Categoria Eliminada")
 
 
     template = loader.get_template('Root/eliminarCategorias.html')
