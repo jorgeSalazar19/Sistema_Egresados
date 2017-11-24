@@ -3,6 +3,14 @@
 
 {% block category_root %}
 
+  <script language="JavaScript">
+  function confirmacion(username , id , name){
+      if (confirm('¿Estas seguro que deseas eliminar la categoria ' +name+ ' ?')){
+         document.location.href = '/delete_categorias?username='+username+'&id_categoria='+id
+      }
+  }
+  </script> 
+
 
   <section class="container" style="padding-top: 70px; padding-bottom: 20px;">
     <div class="row">
@@ -11,9 +19,8 @@
         <div id="elminar">
           <ul class="list-group">
             
-
-            <form method="POST"> {% csrf_token %}
             {% for categoria in categorias  %}
+            <form name="tipof" method="POST" action="/"> {% csrf_token %}
               <li class="list-group-item">
               <section class="container">
                 <div class="row">                
@@ -22,7 +29,7 @@
                     <p>{{categoria.description}}</p>
                   </div>
                   <div class="col-lg-2 align-self-center">
-                    <button type="submit" value="{{categoria.id}} Eliminar" name="tipo" class="btn btn-danger">Eliminar</button>
+                    <button type="button" onclick='confirmacion("{{usuario.username}}" ,"{{categoria.id}}", "{{categoria.name}}")' name="tipo" class="btn btn-danger">Eliminar</button>
                   </div>                  
                 </div>
               </section>
