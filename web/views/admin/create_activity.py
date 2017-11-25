@@ -9,12 +9,13 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.conf import settings
-from datetime import datetime
+from datetime import datetime , date
 
 def CreateActivity(request):
     mensaje = (False,'')
     mensaje_only = (False,"")
     usuario = []
+    datos = 0
 
     if request.method == 'GET':
         dni = request.GET.get('dni')
@@ -35,6 +36,7 @@ def CreateActivity(request):
         actividad = request.POST.get('name')
         form_activity = CreateFormActivity(data=request.POST , files=request.FILES)
         actividades = Activity.objects.all()
+        datos = request.POST
 
         if form_activity.is_valid():
             name = form_activity.cleaned_data['name']
@@ -68,7 +70,6 @@ def CreateActivity(request):
                 SendMail(from_email,to_list,current_site,name_activity)
                 return redirect('/success_activity?dni='+dni)
         else:
-            print(form_activity.errors)
             errors = form_activity.get_errors()
             message_e = []
             if len(request.FILES) == 0:
@@ -82,11 +83,14 @@ def CreateActivity(request):
 
     categories = Category.objects.all().order_by('name')
     template = loader.get_template('Admin/crearActividades.html')
+    fecha = date.today()
     ctx = { 
         'mensaje' : mensaje,
         'usuario' : usuario,
         'categories' : categories,
         'mensaje_o' : mensaje_only,
+        'datos' : datos,
+        'fecha' : fecha,
     }
     return HttpResponse(template.render(ctx,request))
 
