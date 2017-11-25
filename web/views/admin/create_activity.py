@@ -10,6 +10,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.conf import settings
 from datetime import datetime , date
+import time
 
 def CreateActivity(request):
     mensaje = (False,'')
@@ -19,6 +20,8 @@ def CreateActivity(request):
 
     if request.method == 'GET':
         dni = request.GET.get('dni')
+        fecha = (time.strftime("%Y-%m-%d"))
+        hora = (time.strftime("%H:%M:%S")) 
         
         if str(request.user) == str(dni) and request.user.is_authenticated():
             usuario = Admin.objects.filter(dni=dni)
@@ -37,6 +40,9 @@ def CreateActivity(request):
         form_activity = CreateFormActivity(data=request.POST , files=request.FILES)
         actividades = Activity.objects.all()
         datos = request.POST
+        fecha = (datos['date_activity'])
+        hora = (datos['time_activity'])
+        print(hora)
 
         if form_activity.is_valid():
             name = form_activity.cleaned_data['name']
@@ -83,7 +89,7 @@ def CreateActivity(request):
 
     categories = Category.objects.all().order_by('name')
     template = loader.get_template('Admin/crearActividades.html')
-    fecha = date.today()
+    print(fecha)
     ctx = { 
         'mensaje' : mensaje,
         'usuario' : usuario,
@@ -91,6 +97,7 @@ def CreateActivity(request):
         'mensaje_o' : mensaje_only,
         'datos' : datos,
         'fecha' : fecha,
+        'hora' : hora,
     }
     return HttpResponse(template.render(ctx,request))
 
