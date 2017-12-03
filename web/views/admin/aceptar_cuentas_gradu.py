@@ -17,42 +17,36 @@ def AceptarCuentas(request):
     usuario = []
     if request.method == 'GET':
         dni = request.GET.get('dni')
+        id_p = request.GET.get('id')
+        accion = request.GET.get('action')
+        print(dni,id_p,accion)
+
+        if id_p != None:
+            preregister = PreRegisterGraduated.objects.get(id=id_p)
+            if accion == "Aceptar":
+                mensaje = (True , "Usuario creado con exito")
+                user_data = preregister.__dict__
+                user_data['temporal_password'] = get_random_string(length=12)
+                try:
+                    user_service = UserService(user_data)
+                    user_service.register_graduated()
+                    from_email = settings.EMAIL_HOST_USER
+                    to_list = [user_data['email'],settings.EMAIL_HOST_USER]
+                    current_site = get_current_site(request)
+                    SendMail(from_email,to_list,user_data['temporal_password'],current_site)
+                except Exception as e:
+                    mensaje = (True , str(e))
+            
+            if accion == "Eliminar":
+                mensaje = (True , "Usuario eliminado con exito")
+                preregister.delete()
+
         
         if str(request.user) == str(dni) and request.user.is_authenticated():
             usuario = Admin.objects.filter(dni=dni)
             usuario = usuario[0]
-            template = loader.get_template('Admin/aceptarCuentas.html')
-            pre_registros = PreRegisterGraduated.objects.all()
-            ctx = { 'mensaje': mensaje,
-                    'pre_registros': pre_registros,
-                    'usuario' : usuario,
-            }   
-            return HttpResponse(template.render(ctx,request))
         else:
             return redirect('/login_admin')
-
-    if request.method == 'POST':
-        Action_button = request.POST.get('tipo')
-        id_pregister , action = Action_button.split()
-        dni = request.GET.get('dni')
-        usuario = Admin.objects.filter(dni=dni)
-        usuario = usuario[0]
-        preregister = PreRegisterGraduated.objects.get(id=id_pregister)
-        if action == "Aceptar":
-            user_data = preregister.__dict__
-            user_data['temporal_password'] = get_random_string(length=12)
-            try:
-                user_service = UserService(user_data)
-                user_service.register_graduated()
-                from_email = settings.EMAIL_HOST_USER
-                to_list = [user_data['email'],settings.EMAIL_HOST_USER]
-                current_site = get_current_site(request)
-                SendMail(from_email,to_list,user_data['temporal_password'],current_site)
-            except Exception as e:
-                mensaje = (True , str(e))
-            
-        if action == "Eliminar":
-            preregister.delete()
 
     template = loader.get_template('Admin/aceptarCuentas.html')
     pre_registros = PreRegisterGraduated.objects.all()
