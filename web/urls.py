@@ -48,6 +48,10 @@ urlpatterns = [
     url(regex=r'^dashboard_egresado/$',
         view=DashboardEgresado, 
         name="dashboard_egresado"), 
+
+    url(regex=r'^dashboard_egresado/historial/$',
+        view=Historial, 
+        name="historial"),
     
     url(regex=r'^dashboard_root/$',
         view=DashboardRoot, 

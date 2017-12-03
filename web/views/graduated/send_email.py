@@ -42,7 +42,7 @@ def SendEmail(request):
         email.send(fail_silently=True)
 
         email_send = Historial.objects.create(
-                            from_email=from_email,
+                            from_email=usuario.user.email,
                             to_email=amigo.email,
                             subject=asunto,
                             message=mensaje_r,
