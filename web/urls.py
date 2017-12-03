@@ -131,6 +131,11 @@ urlpatterns = [
         name = 'preferences_graduated'
     ),
 
+    url(regex=r'^dashboard_egresado/search_friend/$',
+        view= Search,
+        name = 'search_friend'
+    ),
+
         url(regex=r'^dashboard_egresado/circulo_amigos/$',
         view= CirculoAmigos,
         name = 'circulo_amigos'
