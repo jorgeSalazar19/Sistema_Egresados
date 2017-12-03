@@ -1,10 +1,12 @@
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.template import loader
-from domain.models import Graduated
+from domain.models import Graduated , Historial
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.core.mail import send_mail
+from datetime import date
+from django.conf import settings
 
 def SendEmail(request):
 
@@ -32,12 +34,22 @@ def SendEmail(request):
         amigo = amigo[0]
 
         asunto = request.POST.get('asunto')
-        mensaje = request.POST.get('mensaje')
-        print(usuario.user.email)
+        mensaje_r = request.POST.get('mensaje')
+        from_email = settings.EMAIL_HOST_USER
 
-        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado el siguiente mensaje:' + "\n" + mensaje
-        email = EmailMessage(asunto, mensaje, 'jorgemsm12316@gmail.com' , [amigo.email])
+        mensaje = 'el usuario ' + usuario.user.first_name + " " + usuario.user.last_name + ' ' + 'te ha enviado el siguiente mensaje:' + "\n" + mensaje_r
+        email = EmailMessage(asunto, mensaje, from_email , [amigo.email])
         email.send(fail_silently=True)
+
+        email_send = Historial.objects.create(
+                            from_email=from_email,
+                            to_email=amigo.email,
+                            subject=asunto,
+                            message=mensaje_r,
+                            date_email=date.today()
+
+                                            )
+        email_send.save()
 
         return redirect('/success_send_mail?username='+username)
 

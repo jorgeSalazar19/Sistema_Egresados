@@ -5,6 +5,7 @@ from django.utils import timezone
 from ..categories.categories import Category
 from ..careers.careers import Career
 from ..countries.country import Country
+from ..historial.historial import Historial
 
 GENRE = (
     ('male','Hombre'),
