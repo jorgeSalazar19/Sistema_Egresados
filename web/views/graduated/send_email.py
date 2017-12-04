@@ -43,7 +43,9 @@ def SendEmail(request):
 
         email_send = Historial.objects.create(
                             from_email=usuario.user.email,
+                            from_user=usuario.user.first_name + ' ' + usuario.user.last_name,
                             to_email=amigo.email,
+                            to_user=amigo.first_name + ' ' + amigo.last_name,
                             subject=asunto,
                             message=mensaje_r,
                             date_email=date.today()

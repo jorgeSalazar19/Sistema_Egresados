@@ -6,6 +6,8 @@ class Historial(models.Model):
         verbose_name_plural = u"Historiales"
 
     from_email = models.CharField(max_length=1000)
+    from_user = models.CharField(max_length=1000 , default=True)
+    to_user = models.CharField(max_length=100 , default=True)
     to_email = models.CharField(max_length=1000)
     subject = models.CharField(max_length=1000)
     message = models.CharField(max_length=1000)

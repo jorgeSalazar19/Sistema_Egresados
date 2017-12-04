@@ -14,7 +14,7 @@ def HistorialEmails(request):
         dni = request.GET.get('dni')
         usuario = Graduated.objects.filter(dni__exact=username)
         usuario = usuario[0]
-        historial = Historial.objects.filter(from_email__exact=usuario.user.email)
+        historial = Historial.objects.filter(from_email=usuario.user.email)
 
         if str(request.user) != str(username) or not request.user.is_authenticated():
             return redirect('/login_egresado')
