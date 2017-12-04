@@ -25,8 +25,8 @@ def CirculoAmigos(request):
 
     
     graduation_year_user = usuario_f.graduation_year
-    limite_inferior = graduation_year_user - relativedelta(years=2)
-    limite_superior = graduation_year_user + relativedelta(years=2)
+    limite_inferior = graduation_year_user - relativedelta(years=10)
+    limite_superior = graduation_year_user + relativedelta(years=10)
     career_user = usuario_f.career
     dni_user = usuario_f.dni
 
