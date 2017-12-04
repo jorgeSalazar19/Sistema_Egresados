@@ -9,47 +9,51 @@ def AccountManagement(request):
     mensaje = (False,'')
     usuario = []
     if request.method == 'GET':
+
         username = request.GET.get('username')
-        print(username)
+        dni = request.GET.get('dni')
+        accion = request.GET.get('action')
+
+        print(username,dni,accion)
+
+        if dni != None:
+            admin = Admin.objects.filter(dni__exact=dni)
+            admin = admin[0]
+            egresado = Graduated.objects.filter(dni__exact=dni)
+            if accion == 'Eliminar':
+                mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" eliminado")
+                if len(egresado) == 0:
+                    admin.user.delete()
+                    admin.delete()
+                    
+                else:
+                    admin.user.is_staff = False
+                    admin.user.save()
+                    admin.delete()
+                    
+
+            if accion == 'Deshabilitar':
+                admin = Admin.objects.filter(dni__exact=dni)
+                admin = admin[0]
+                mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" deshabiltado")
+                admin.is_active = False
+                admin.save()
+                
+
+            if accion == 'Habilitar':
+                admin = Admin.objects.filter(dni__exact=dni)
+                admin = admin[0]
+                mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" Habiltado")
+                admin.is_active = True
+                admin.save()
+
+
+        
         usuario = User.objects.filter(username=username)
         if len(usuario) != 0 and request.user.is_authenticated():
             usuario = usuario[0]
         else:
             return redirect('/')
-
-    if request.method == 'POST':
-        
-        accion = request.POST.get('accion')
-        id_admin , accion , username = accion.split(' ')
-        usuario = User.objects.get(username=username)
-        
-        if accion == 'Deshabilitar':
-            admin = Admin.objects.filter(dni__exact=id_admin)
-            admin = admin[0]
-            admin.is_active = False
-            admin.save()
-            mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" deshabilitado")
-
-        if accion == 'Habilitar':
-            admin = Admin.objects.filter(dni__exact=id_admin)
-            admin = admin[0]
-            admin.is_active =True
-            admin.save()
-            mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" habilitado")
-
-        if accion == 'Eliminar':
-            admin = Admin.objects.filter(dni__exact=id_admin)
-            admin = admin[0]
-            mensaje = (True , "Usuario "+ admin.user.first_name +" " + admin.user.last_name +" eliminado")
-            egresado = Graduated.objects.filter(dni__exact=id_admin)
-            if len(egresado) == 0:
-                admin.user.delete()
-                admin.delete()
-            else:
-                admin.user.is_staff = False
-                admin.user.save()
-                admin.delete()
-
 
 
     administradores = Admin.objects.all()

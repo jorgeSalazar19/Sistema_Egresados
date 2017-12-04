@@ -38,6 +38,14 @@
         <div><a class="navbar-brand" href="/create_activity?dni={{usuario.dni}}">Crear Actividad</a></div>
       </nav>
 
+      <script language="JavaScript">
+      function confirmacion(id_a , username , action, name){
+          if (confirm('¿Estas seguro que deseas eliminar la actividad '+ name +'?')){
+             document.location.href = '/list_activity?dni='+username+'&id='+id_a+'&action='+action
+          }
+      }
+      </script>  
+
 
     <form method="POST"> {% csrf_token %}
     <section class="container" style="padding-top: 20px;">
@@ -66,7 +74,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-12 align-self-center">
                 <center>
-                  <button  type="submit" value="{{actividad.id}} Eliminar" name="tipo" class="btn btn-danger">Eliminar</button>                  
+                  <button  type="button" onclick='confirmacion("{{actividad.id}}" , "{{usuario.dni}}" , "Eliminar" , "{{actividad.name}}")' name="tipo" class="btn btn-danger">Eliminar</button>                  
                   <button type="button" onclick="location.href='/edit_activity?id={{actividad.id}}&dni={{usuario.dni}}';" class="btn btn-success">Editar</button>
                 </center>
                 </div>

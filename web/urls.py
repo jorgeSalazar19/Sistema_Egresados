@@ -48,6 +48,10 @@ urlpatterns = [
     url(regex=r'^dashboard_egresado/$',
         view=DashboardEgresado, 
         name="dashboard_egresado"), 
+
+    url(regex=r'^dashboard_egresado/historial/$',
+        view=Historial, 
+        name="historial"),
     
     url(regex=r'^dashboard_root/$',
         view=DashboardRoot, 
@@ -125,6 +129,11 @@ urlpatterns = [
     url(regex=r'^dashboard_egresado/preferences_graduated/$',
         view= PreferencesGraduated,
         name = 'preferences_graduated'
+    ),
+
+    url(regex=r'^dashboard_egresado/search_friend/$',
+        view= Search,
+        name = 'search_friend'
     ),
 
         url(regex=r'^dashboard_egresado/circulo_amigos/$',

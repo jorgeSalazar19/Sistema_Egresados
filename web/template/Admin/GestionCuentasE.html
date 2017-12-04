@@ -33,6 +33,30 @@
         </div>
       </nav>
 
+  <script language="JavaScript">
+  function confirmacion(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas eliminar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_egresados?dni='+username+'&dni_e='+dni+'&action='+action
+      }
+  }
+  </script>
+  
+  <script language="JavaScript">
+  function confirmacion1(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas Deshabilitar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_egresados?dni='+username+'&dni_e='+dni+'&action='+action
+      }
+  }
+  </script>
+
+  <script language="JavaScript">
+  function confirmacion2(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas habilitar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_egresados?dni='+username+'&dni_e='+dni+'&action='+action
+      }
+  }
+  </script> 
+
 <form method="POST">{% csrf_token %}
   <table class="table">
     <thead align="center">
@@ -59,11 +83,11 @@
         	<td>Deshabilitada</td>  	
         {% endif %}
         <td>
-        	<button type="submit" class="btn btn-danger" name="accion" value="{{egresado.dni}} Eliminar {{usuario.dni}}">Eliminar</button>
+        	<button type="button" class="btn btn-danger" name="accion" onclick='confirmacion("{{egresado.dni}}" , "{{usuario.dni}}" , "Eliminar" , "{{egresado.user.first_name}} {{egresado.user.last_name}}")'>Eliminar</button>
         	{% if egresado.is_active == True %}
-        		<button type="submit" class="btn btn-primary" name="accion" value="{{egresado.dni}} Deshabilitar {{usuario.dni}}">Deshabilitar</button>	
+        		<button type="button" class="btn btn-primary" name="accion"  onclick='confirmacion1("{{egresado.dni}}" , "{{usuario.dni}}" , "Deshabilitar" , "{{egresado.user.first_name}} {{egresado.user.last_name}}")'>Deshabilitar</button>	
         	{% else %}
-        		<button type="submit" class="btn btn-primary" name="accion" value="{{egresado.dni}} Habilitar {{usuario.dni}}">Habilitar</button>
+        		<button type="button" class="btn btn-primary" name="accion"  onclick='confirmacion2("{{egresado.dni}}" , "{{usuario.dni}}" , "Habilitar" , "{{egresado.user.first_name}} {{egresado.user.last_name}}")'>Habilitar</button>
         	{% endif %}
         </td>
       </tr>

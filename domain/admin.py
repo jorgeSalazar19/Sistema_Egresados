@@ -8,11 +8,16 @@ from domain.models import (
 	PreRegisterAdmin , 
 	Country,
 	Admin,
-	Activity
+	Activity,
+	Historial
 )
 @admin.register(Graduated)
 class GraduatedAdmin(admin.ModelAdmin):
     list_display = ['user','dni','country','birthday','genre','career','graduation_year']
+
+@admin.register(Historial)
+class HistorialAdmin(admin.ModelAdmin):
+    list_display = ['from_email','to_email','subject','message','date_email']
 
 @admin.register(Admin)
 class AdminAdmin(admin.ModelAdmin):

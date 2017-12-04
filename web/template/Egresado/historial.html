@@ -2,6 +2,7 @@
 {%load staticfiles%}
 
 {% block contenido_egresado %}
+        <title>Historial Correos</title>
         <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse bg-primary ">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,13 +23,13 @@
             <li class="nav-item ">
               <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link " href="/dashboard_egresado/historial?username={{usuario.dni}}">Historial Correos<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="/dashboard_egresado/search_friend?username={{usuario.dni}}">Buscar Amigos<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/dashboard_egresado/profile_graduated?username={{usuario.dni}}">{{usuario.user.first_name}} {{usuario.user.last_name}}</a>
             </li>
             <li class="nav-item">
@@ -38,20 +39,16 @@
         </div>
       </nav>
 
-        <section class="container" style="padding-top: 70px;">
-      	<div class="row">
-      		<div class="col-lg-12">
-      			 <center><h3>Editar Información</h3></center><hr><br>
-      		</div>
-      	</div>
-      	<div class="row">
-      		<div class="col-lg-12">
-      			<center>
-      			<h6>La información fue actualizada con éxito</h6><br>
-      			<button type="button" class="btn btn-success" onclick="location.href='/dashboard_egresado/profile_graduated?username={{usuario.dni}}';">Aceptar</button>
-      			</center>
-      		</div>
-      	</div>
+      <section class="container" style="padding-top: 70px;">
+      <h1 align="center">Historial de Correos Enviados</h1>
+      {% for registro in historial  %}
+            <h5>Asunto: {{registro.subject}}</h5>
+            <h5>Mensaje: {{registro.message}}</h5>
+            <h5>Remitente: {{registro.from_user}}</h5>
+            <h5>Destinatario: {{registro.to_user}}</h5>
+            <h5>Fecha de Envio: {{registro.date_email}}</h5><br>
+        
+      {% endfor %}
       </section>
 
 {% endblock contenido_egresado %}

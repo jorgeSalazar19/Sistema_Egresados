@@ -26,6 +26,7 @@ def DeleteCategory(request):
                 category = Category.objects.get(id=id_categoria)
                 mensaje = (True,"Categoria "+ category.name +" Eliminada")
                 category.delete()
+                return redirect('/delete_categorias?username='+username)
                 
         else:
             return redirect('/')

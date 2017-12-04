@@ -32,6 +32,22 @@
         </div>
       </nav>
 
+      <script language="JavaScript">
+      function confirmacion(id_p , username , action, usuario){
+          if (confirm('¿Estas seguro que deseas activar el registro del usuario '+ usuario +'?')){
+             document.location.href = '/aceptar_cuentas?dni='+username+'&id='+id_p+'&action='+action
+          }
+      }
+      </script>
+
+      <script language="JavaScript">
+      function confirmacion1(id_p , username , action, usuario){
+          if (confirm('¿Estas seguro que deseas eliminar el registro del usuario '+ usuario +'?')){
+             document.location.href = '/aceptar_cuentas?dni='+username+'&id='+id_p+'&action='+action
+          }
+      }
+      </script>
+
       <section class="container" >
         <div class="row justify-content-center">
           <div class="col-md-12">
@@ -61,8 +77,10 @@
 
                           </div>
                           <div class="col-sm-4 col-md-5 col-lg-4 align-self-center ">
-                            <button type="submit" class="btn btn-danger" name="tipo" value="{{pre_registro.id}} Eliminar">Declinar</button>
-                            <button type="submit" class="btn btn-primary" name="tipo" value="{{pre_registro.id}} Aceptar">Crear usuario</button>
+                            <button type="button" class="btn btn-danger" name="tipo" onclick='confirmacion1("{{pre_registro.id}}" , "{{usuario.dni}}" , "Eliminar" , "{{pre_registro.first_name}} {{pre_registro.last_name}}")'>Declinar</button>
+
+                            <button type="button" class="btn btn-primary" name="tipo" onclick='confirmacion("{{pre_registro.id}}" , "{{usuario.dni}}" , "Aceptar" , "{{pre_registro.first_name}} {{pre_registro.last_name}}" )'>Crear usuario</button>
+
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{pre_registro.id}}">
                             <b>!</b>
                             </button>

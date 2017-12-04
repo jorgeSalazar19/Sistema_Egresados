@@ -18,6 +18,8 @@ from .graduated.login_egresado import LoginEgresado
 from .graduated.p_register_graduated import PreRegisterGraduated
 from .graduated.register_done import RegisterDone
 from .graduated.circulo_amigos import CirculoAmigos
+from .graduated.historial import HistorialEmails as Historial
+from .graduated.search_friends import Search
 
 from .graduated.edit_inf_gra import EditInfoGra
 from .graduated.send_email import SendEmail

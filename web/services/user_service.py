@@ -19,8 +19,8 @@ class UserService:
         user = User.objects.create_user(username = self.user_data['dni'],
                             email = self.user_data['email'],
                             password = self.user_data['temporal_password'])
-        user.first_name = self.user_data['first_name']
-        user.last_name = self.user_data['last_name']
+        user.first_name = self.user_data['first_name'].capitalize()
+        user.last_name = self.user_data['last_name'].capitalize()
         user.save()
         self.user = user
 
@@ -28,8 +28,8 @@ class UserService:
         user = User.objects.create_user(username = self.user_data['dni'],
                             email = self.user_data['email'],
                             password = self.user_data['temporal_password'])
-        user.first_name = self.user_data['first_name']
-        user.last_name = self.user_data['last_name']
+        user.first_name = self.user_data['first_name'].capitalize()
+        user.last_name = self.user_data['last_name'].capitalize()
         user.is_staff = True
         user.save()
         self.user = user

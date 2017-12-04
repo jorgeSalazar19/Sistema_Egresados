@@ -3,6 +3,30 @@
 
 {% block contenido_root %}
 
+  <script language="JavaScript">
+  function confirmacion(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas eliminar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_admin?username='+username+'&dni='+dni+'&action='+action
+      }
+  }
+  </script>
+  
+  <script language="JavaScript">
+  function confirmacion1(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas Deshabilitar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_admin?username='+username+'&dni='+dni+'&action='+action
+      }
+  }
+  </script>
+
+  <script language="JavaScript">
+  function confirmacion2(dni , username , action, usuario){
+      if (confirm('¿Estas seguro que deseas habilitar el usuario '+ usuario +'?')){
+         document.location.href = '/gestion_cuentas_admin?username='+username+'&dni='+dni+'&action='+action
+      }
+  }
+  </script>   
+
 <title>Gestion de cuentas</title>
 
 <nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
@@ -59,11 +83,11 @@
         	<td>Deshabilitada</td>  	
         {% endif %}
         <td>
-        	<button type="submit" class="btn btn-danger" name="accion" value="{{admin.dni}} Eliminar {{usuario.username}}">Eliminar</button>
+        	<button type="button" class="btn btn-danger" name="accion" onclick='confirmacion("{{admin.dni}}" , "{{usuario.username}}" , "Eliminar" , "{{admin.user.first_name}} {{admin.user.last_name}}")'>Eliminar</button>
         	{% if admin.is_active == True %}
-        		<button type="submit" class="btn btn-primary" name="accion" value="{{admin.dni}} Deshabilitar {{usuario.username}}">Deshabilitar</button>	
+            <button type="button" class="btn btn-primary" name="accion" onclick='confirmacion1("{{admin.dni}}" , "{{usuario.username}}","Deshabilitar" , "{{admin.user.first_name}} {{admin.user.last_name}}" )'>Deshabilitar</button>
         	{% else %}
-        		<button type="submit" class="btn btn-primary" name="accion" value="{{admin.dni}} Habilitar {{usuario.username}}">Habilitar</button>
+        		<button type="button" class="btn btn-primary" name="accion" onclick='confirmacion2("{{admin.dni}}" , "{{usuario.username}}","Habilitar" , "{{admin.user.first_name}} {{admin.user.last_name}}" )'>Habilitar</button>
         	{% endif %}
         </td>
       </tr>

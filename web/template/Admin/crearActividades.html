@@ -59,20 +59,20 @@
 
                 <div class="form-group">
                   <label for="imageActivity">Imagen</label>
-                  <input type="file" class="form-control" id="imageActivity" name="image_activity">
+                  <input type="file" class="form-control" id="imageActivity" value ="{{imagen.image_activity}}" name="image_activity">
                   <small class="form-text text-muted">Seleccione una imagen para la actividad</small>
                 </div>
 
                 <div class="form-group">
                   <label for="nameActivity">Nombre</label>
-                  <input type="text" name="name"  class="form-control" id="nameActivity" aria-describedby="emailHelp" placeholder="Nombre de la actividad" required="True">
+                  <input type="text" name="name" value="{{datos.name}}" class="form-control" id="nameActivity" aria-describedby="emailHelp" placeholder="Nombre de la actividad" required="True">
                   <small class="form-text text-muted">Ingrese un nombre para la actividad</small>
                 </div>
 
 
                 <div class="form-group">
                   <label for="exampleTextarea">Descripción</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Descripcion de la actividad" required="True" name="description" type="text"></textarea>
+                  <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Descripcion de la actividad" required="True" name="description" type="text">{{datos.description}}</textarea>
                 </div>
 
                 <div class="form-group row">
@@ -82,14 +82,14 @@
                 <div class="form-group row">
                   <label for="example-date-input" class="col-2 col-form-label">Fecha:</label>
                   <div class="col-10">
-                    <input class="form-control" name="date_activity" type="date" value="2017-12-12" id="example-date-input">
+                    <input class="form-control" name="date_activity"  type="date" value="{{fecha}}" id="example-date-input">
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <label for="example-time-input" class="col-2 col-form-label">Hora:</label>
                   <div class="col-10">
-                    <input class="form-control" type="time" name="time_activity" value="13:45:00" id="example-time-input">
+                    <input class="form-control" type="time" name="time_activity" value="{{hora}}" id="example-time-input">
                   </div>
                 </div>
 
