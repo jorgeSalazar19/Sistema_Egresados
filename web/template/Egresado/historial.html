@@ -39,16 +39,25 @@
         </div>
       </nav>
 
-      <section class="container" style="padding-top: 70px;">
-      <h1 align="center">Historial de Correos Enviados</h1>
-      {% for registro in historial  %}
-            <h5>Asunto: {{registro.subject}}</h5>
-            <h5>Mensaje: {{registro.message}}</h5>
-            <h5>Remitente: {{registro.from_user}}</h5>
-            <h5>Destinatario: {{registro.to_user}}</h5>
-            <h5>Fecha de Envio: {{registro.date_email}}</h5><br>
-        
-      {% endfor %}
+      <section class="container" style="padding-top: 110px;">
+      <h1 align="center">Historial de Correos Enviados</h1><hr>
+
+        <div class="container" style="padding-top: 10px;">
+
+        {% if not historial %}
+            <center><h4 style="padding-top: 40px;">No hay mensajes para mostrar</h4></center>
+        {% endif %}
+
+        {% for registro in historial  %}
+              <h5>Asunto:</h5> <p>{{registro.subject}}</p>
+              <h5>Mensaje:</h5>  <p>{{registro.message}}</p>
+              <h5>Remitente:</h5> <p>{{registro.from_user}}</p>
+              <h5>Destinatario:</h5> <p>{{registro.to_user}}</p>
+              <h5>Fecha de Envio:</h5> <p>{{registro.date_email}}</p>
+              <hr>          
+        {% endfor %}
+
+        </div>
       </section>
 
 {% endblock contenido_egresado %}

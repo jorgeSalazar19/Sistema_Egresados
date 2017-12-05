@@ -1,13 +1,13 @@
 $(document).ready(function(){
     var flag = false;
     try{
-      flag = $('#valorFriend').val();
+      flag = $('#valorButton').val();
     }catch(err){
       flag = false;
     }
     console.log(flag);
     if (flag) {
-       $('#modalFriend').modal('show');
+       $('#modalButton').modal('show');
     }
 
 });
@@ -15,14 +15,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     var flag = false;
     try{
-      flag = $('#valorCirFriend').val();
+      flag = $('#valorButtonRoot').val();
     }catch(err){
       flag = false;
     }
     console.log(flag);
     if (flag) {
-       $('#modalCirFriend').modal('show');
+       $('#modalButtonRoot').modal('show');
     }
 
 });
-

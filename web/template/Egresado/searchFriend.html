@@ -54,7 +54,7 @@
   }
   #solicitudes{
     overflow-y: scroll;
-    height: 20vh;
+    height: 45vh;
   }
   #actividades{
     overflow-y: scroll;
@@ -138,14 +138,21 @@
       </nav>
 
       <section class="container" style="padding-top: 130px;">
-        <h1 align="center">Buscador de usuarios egresados</h1>
+        <h1 align="center">Buscar Amigos</h1><br>
         <form method="POST">{% csrf_token %}
-            <div align="center">
-            <input type="text" name="nombre" placeholder="nombre de usuario a buscar" value="{{name}}">
-            <button type="submit">Enviar</button>
+
+            <div class="input-group">
+              <input type="text" name = "nombre" value="{{name}}" class="form-control" placeholder="nombre de usuario a buscar" aria-describedby="basic-addon1">
+            <button class="btn btn-primary" type="submit">Buscar</button>
             </div>
+
             <center><b><label style="padding-top: 20px;">Busqueda</label></b></center><hr>
+
             <div id="solicitudes">
+              {% if not usuarios %}
+                  <center><h4 style="padding-top: 40px;">No hay resultados para mostrar</h4></center>
+              {% endif %}
+
               {% for user in usuarios  %}
               <div class="container-fluid ">
                   <div class="row ">
@@ -167,15 +174,31 @@
                     </div>
                   </div><hr>
               </div>
+              {% endfor %}
             </div>
-        {% endfor %}
+        
         </form>
         </section>
-            {% if mensaje.0 %}
 
-                <h5 align="center">{{mensaje.1}}</h5>
-              
-            {% endif %}
+
+{% if mensaje.0 %}
+        <input id="valorFinal" style="display: none" value="{{mensaje.0}}">
+        <div class="modal fade" id="modalFinal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <center>
+                    <h6>{{mensaje.1}}</h6>
+                </center>
+              </div>
+            </div>
+          </div>
+        </div>        
+{% endif %}
+
 
 
 
@@ -185,6 +208,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <script src={% static "js/addFriend.js" %}></script>
+
+    <script src={% static "js/searchF.js" %}></script>
 
   </body>
 </html>
