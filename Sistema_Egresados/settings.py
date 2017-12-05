@@ -69,9 +69,9 @@ WSGI_APPLICATION = 'Sistema_Egresados.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'egresadosutp_db3',
-        'USER': 'postgres',
-        'PASSWORD': '@Err0r404_LINUX',
+        'NAME': 'sistemaegresados_db',
+        'USER': 'jorge',
+        'PASSWORD': 'jorge97',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -138,8 +138,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 #sesion settings
-#SESSION_COOKIE_AGE = 300 
-#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 300 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 

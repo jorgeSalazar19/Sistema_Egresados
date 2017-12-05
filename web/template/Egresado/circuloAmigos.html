@@ -54,9 +54,6 @@
               <a class="nav-link " href="/dashboard_egresado/edit_info_gra?username={{usuario.dni}}">Cuenta<span class="sr-only">(current)</span></a>
 
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
               <a class="nav-link " href="/dashboard_egresado/historial?username={{usuario.dni}}">Historial Correos<span class="sr-only">(current)</span></a>
           </li>
@@ -68,6 +65,9 @@
           </li>
           <li class="nav-item">
             <img class="circular1" src="{{usuario.profile_picture.url}}" >
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>

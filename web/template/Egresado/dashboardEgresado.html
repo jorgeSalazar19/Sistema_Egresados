@@ -116,10 +116,6 @@
 
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item ">
               <a class="nav-link " href="/dashboard_egresado/historial?username={{usuario.dni}}">Historial Correos<span class="sr-only">(current)</span></a>
             </li>
 
@@ -133,6 +129,10 @@
         	<li class="nav-item">
 				<img class="circular" src="{{usuario.profile_picture.url}}" >
         	</li>
+        	<li class="nav-item ">
+              <a class="nav-link" href="/logout">Cerrar Sesión <span class="sr-only">(current)</span></a>
+            </li>
+
         	</ul>
 		</div>
       </nav>
